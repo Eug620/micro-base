@@ -46,8 +46,14 @@ microApp.start({
       vue3: [{
         loader(code: string) {
           if (process.env.NODE_ENV === 'development') {
+            console.log(code, 'vue3 plugins development');
             code = code.replace(/(from|import)(\s*['"])(\/micro-app\/vue3\/)/g, (all) => {
-              return all.replace('/micro-app/vue3/', 'http://localhost:8081/micro-app/vue3/')
+              return all.replace('/micro-app/vue3/', 'http://127.0.0.1:8081/micro-app/vue3/')
+            })
+          } else {
+            console.log(code, 'vue3 plugins production');
+            code = code.replace(/(from|import)(\s*['"])(\/micro-app\/vue3\/)/g, (all) => {
+              return all.replace('/micro-app/vue3/', 'http://127.0.0.1:8081/micro-app/vue3/')
             })
           }
           return code
