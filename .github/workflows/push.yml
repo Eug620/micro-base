@@ -1,4 +1,4 @@
-name: chat
+name: micro-base
 on: [push]
 jobs:
   build-and-deploy:
