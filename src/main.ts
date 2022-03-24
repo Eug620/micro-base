@@ -1,10 +1,10 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-03-24 14:38:38
+ * @LastEditTime : 2022-03-24 17:06:02
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
- * @FilePath     : /test-micro/micro-base/src/main.ts
+ * @FilePath     : /micro-base/src/main.ts
  */
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -47,7 +47,7 @@ microApp.start({
         loader(code: string) {
           if (process.env.NODE_ENV === 'development') {
             code = code.replace(/(from|import)(\s*['"])(\/micro-app\/vue3\/)/g, (all) => {
-              return all.replace('/micro-app/vue3/', 'http://localhost:3001/micro-app/vue3/')
+              return all.replace('/micro-app/vue3/', 'http://localhost:8081/micro-app/vue3/')
             })
           }
           return code

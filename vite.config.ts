@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-03-24 16:35:50
+ * @LastEditTime : 2022-03-24 17:05:40
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -13,7 +13,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    port: 3000,
+    port: 8080,
     fs: {
       strict: false
     },

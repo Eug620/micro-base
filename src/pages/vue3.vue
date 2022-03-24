@@ -1,17 +1,17 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:11:51
- * @LastEditTime : 2022-03-24 11:00:41
+ * @LastEditTime : 2022-03-24 17:06:45
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
- * @FilePath     : /test-micro/micro-base/src/pages/vue3.vue
+ * @FilePath     : /micro-base/src/pages/vue3.vue
 -->
 <template>
   <div class="vue3">
     <component
       is="micro-app"
       name="vue3"
-      url="http://localhost:3001/micro-app/vue3/"
+      url="http://localhost:8081/micro-app/vue3/"
       :data="data"
       macro
       baseRoute="/vue3"
