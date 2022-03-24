@@ -8,10 +8,20 @@
 -->
 <template>
   <div class="vue3">
+    <!-- <component
+      v-bind:is="'micro-app'"
+      name="vue3"
+      v-bind:url="`http://${process.env.NODE_ENV === 'development' ? 'localhost' : '47.93.229.170'}:8081/micro-app/vue3/`"
+      :data="data"
+      macro
+      baseRoute="/vue3"
+      disableSandbox
+      inline
+    /> -->
     <component
       is="micro-app"
       name="vue3"
-      url="http://localhost:8081/micro-app/vue3/"
+      url="http://127.0.0.1:8081/micro-app/vue3/"
       :data="data"
       macro
       baseRoute="/vue3"
@@ -20,7 +30,7 @@
     />
     <!-- <micro-app
       name="vue3"
-      url="http://localhost:3001/micro-app/vue3/"
+      :url="`http://127.0.0.1:8081/micro-app/vue3/`"
       :data="data"
       macro
       baseRoute="/vue3"
