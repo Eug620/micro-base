@@ -51,10 +51,10 @@ microApp.start({
               return all.replace('/micro-app/vue3/', 'http://127.0.0.1:8081/micro-app/vue3/')
             })
           } else {
-            console.log(code, 'vue3 plugins production');
-            code = code.replace(/(from|import)(\s*['"])(\/micro-app\/vue3\/)/g, (all) => {
-              return all.replace('/micro-app/vue3/', 'http://127.0.0.1')
-            })
+            // console.log(code, 'vue3 plugins production');
+            // code = code.replace(/(from|import)(\s*['"])(\/micro-app\/vue3\/)/g, (all) => {
+            //   return all.replace('/micro-app/vue3/', 'http://127.0.0.1')
+            // })
           }
           return code
         }
