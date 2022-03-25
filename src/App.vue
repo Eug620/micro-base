@@ -57,6 +57,7 @@ watch(currentRoute, (newVal, oldVal) => {
   left: 0;
   cursor: pointer;
   padding: 0;
+  z-index: 999999;
 }
 .base-menu-active{
   background-color: #ccc;
