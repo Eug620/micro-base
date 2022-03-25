@@ -1,0 +1,1 @@
+import{d as a,r as e,a as s,o,c as r,e as t}from"./vendor.0c72a80f.js";const u={class:"vue3"},n=a({setup(a){const n=e({from:"来自基座的初始化数据"});return(a,e)=>{const c=s("micro-app");return o(),r("div",u,[t(c,{name:"vue3",url:"http://127.0.0.1:8081/micro-app/vue3/",data:n.value,macro:"",baseRoute:"/vue3",disableSandbox:"",inline:""},null,8,["data"])])}}});export{n as default};
