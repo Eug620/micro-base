@@ -38,7 +38,10 @@ import { useRouter } from "vue-router";
 
 const activeIndex = ref("/chat/");
 
-const menuList = ref(["/chat/", "/react/"]);
+const menuList = ref([
+  "/chat/", 
+  // "/react/"
+  ]);
 const { currentRoute } = useRouter();
 watch(currentRoute, (newVal, oldVal) => {
   activeIndex.value = currentRoute.value.fullPath;
