@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:11:51
- * @LastEditTime : 2022-03-25 11:43:39
+ * @LastEditTime : 2022-03-25 15:26:24
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/pages/vue3.vue
@@ -18,7 +18,7 @@
       disableSandbox
       inline
     /> -->
-    <component
+    <!-- <component
       is="micro-app"
       name="vue3"
       url="http://47.93.229.170:8081/micro-app/vue3/"
@@ -27,15 +27,17 @@
       baseRoute="/vue3"
       disableSandbox
       inline
-    />
-    <!-- <micro-app
+    /> -->
+    <micro-app
       name="vue3"
-      :url="`http://127.0.0.1:8081/micro-app/vue3/`"
+      url="http://127.0.0.1:8081/micro-app/vue3/"
       :data="data"
       macro
       baseRoute="/vue3"
+      disableSandbox
+      inline
     >
-    </micro-app> -->
+    </micro-app>
   </div>
 </template>
 
