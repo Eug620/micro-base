@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:11:51
- * @LastEditTime : 2022-03-25 11:09:50
+ * @LastEditTime : 2022-03-25 11:43:39
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/pages/vue3.vue
@@ -21,7 +21,7 @@
     <component
       is="micro-app"
       name="vue3"
-      url="http://47.93.229.170:8081"
+      url="http://47.93.229.170:8081/micro-app/vue3/"
       :data="data"
       macro
       baseRoute="/vue3"
