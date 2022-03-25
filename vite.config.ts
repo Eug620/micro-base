@@ -1,17 +1,29 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-03-25 11:49:53
+ * @LastEditTime : 2022-03-25 17:15:52
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/vite.config.ts
  */
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
+import { createHtmlPlugin } from 'vite-plugin-html'
+const getEnvFn = (mode, target) => {
+  return loadEnv(mode, process.cwd())[target]
+}
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()],
+export default ({mode}) =>  defineConfig({
+  plugins: [
+    vue(),
+    createHtmlPlugin({
+      inject: {
+        data:{
+          VITE_APP_TITLE: getEnvFn(mode, 'VITE_APP_TITLE')
+        }
+      }
+    })
+  ],
   server: {
     port: 8080,
     fs: {

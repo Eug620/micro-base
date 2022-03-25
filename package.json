@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "dev:t": "vite --mode test",
+    "dev:p": "vite --mode production",
     "build": "vue-tsc --noEmit && vite build",
+    "build:t": "vue-tsc --noEmit && vite build --mode test",
+    "build:p": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -12,6 +16,7 @@
     "@types/lodash-es": "^4.17.6",
     "element-plus": "^2.1.3",
     "type-fest": "^2.12.1",
+    "vite-plugin-html": "^3.2.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.11"
   },
