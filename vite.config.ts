@@ -1,10 +1,10 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-03-24 17:05:40
+ * @LastEditTime : 2022-03-25 11:49:53
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
- * @FilePath     : /micro-base/vite.config.ts
+ * @FilePath     : /github/micro-base/vite.config.ts
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -36,7 +36,7 @@ export default defineConfig({
       ],
     },
   },
-  base: './',
+  base: '/',
   build: {
     assetsDir: 'assets',
     //设置为 false 来禁用将构建后的文件写入磁盘
