@@ -40,7 +40,7 @@ const activeIndex = ref("/chat/");
 
 const menuList = ref([
   "/chat/", 
-  // "/react/"
+  "/react/"
   ]);
 const { currentRoute } = useRouter();
 watch(currentRoute, (newVal, oldVal) => {

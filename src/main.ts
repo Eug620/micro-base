@@ -9,7 +9,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 // @ts-ignore
-import microApp from '@micro-zoe/micro-app'
+import microApp,{ EventCenterForMicroApp } from '@micro-zoe/micro-app'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import router from './router';
@@ -81,4 +81,12 @@ microApp.start({
   }
 })
 
+// 注意：每个vite子应用根据appName单独分配一个通信对象
+window.eventCenterForMicroVue = new EventCenterForMicroApp('chat')
+function dataListener (data:any):void {
+  console.log('来自子应用my-app的数据', data)
+  const { callback } = data
+  callback()
+}
+microApp.addDataListener('chat', dataListener, false)
 createApp(App).use(router).use(ElementPlus).mount('#app')
