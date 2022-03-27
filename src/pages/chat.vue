@@ -8,7 +8,7 @@
 -->
 <template>
   <!-- 线上 -->
-  <!-- <micro-app
+  <micro-app
     name="chat"
     url="http://47.93.229.170:8081/base/chat/"
     :data="data"
@@ -16,9 +16,9 @@
     baseRoute="/chat"
     disableSandbox
     inline
-  /> -->
+  />
   <!-- 本地 -->
-  <micro-app
+  <!-- <micro-app
     name="chat"
     url="http://127.0.0.1:8081/base/chat/"
     :data="data"
@@ -26,7 +26,7 @@
     baseRoute="/chat"
     disableSandbox
     inline
-  />
+  /> -->
 </template>
 
 <script lang="ts" setup>
