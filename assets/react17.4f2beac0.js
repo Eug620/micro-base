@@ -1,0 +1,1 @@
+import{d as a,r as t,a as s,o as r,c as o,e}from"./vendor.a9900446.js";const c={class:"react17"},l=a({setup(a){const l=t({from:"来自基座的初始化数据"});return(a,t)=>{const n=s("micro-app");return r(),o("div",c,[e(n,{name:"react17",url:"http://localhost:3002/",data:l.value},null,8,["data"])])}}});export{l as default};
