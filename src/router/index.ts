@@ -14,9 +14,9 @@ const routes = [
     redirect: '/chat/'
   },
   {
-    path: '/react17/:page*',
-    name: 'react17',
-    component: () => import('../pages/react17.vue'),
+    path: '/react/:page*',
+    name: 'react',
+    component: () => import('../pages/react.vue'),
   },
   {
     path: '/chat/:page*',

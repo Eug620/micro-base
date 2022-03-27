@@ -9,10 +9,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 // @ts-ignore
-import microApp,{ EventCenterForMicroApp } from '@micro-zoe/micro-app'
+import microApp from '@micro-zoe/micro-app'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import router from './router';
+import useEventCenter from './eventCenter'
 
 microApp.start({
   lifeCycles: {
@@ -34,15 +35,15 @@ microApp.start({
   },
   plugins: {
     modules: {
-      react17: [{
-        loader(code: string, url: string) {
-          if (process.env.NODE_ENV === 'development' && code.indexOf('sockjs-node') > -1) {
-            console.log('react17插件', url)
-            code = code.replace('window.location.port', '3002')
-          }
-          return code
-        }
-      }],
+      // react17: [{
+      //   loader(code: string, url: string) {
+      //     if (process.env.NODE_ENV === 'development' && code.indexOf('sockjs-node') > -1) {
+      //       console.log('react17插件', url)
+      //       code = code.replace('window.location.port', '3002')
+      //     }
+      //     return code
+      //   }
+      // }],
       chat: [{
         loader(code: string) {
           if (process.env.NODE_ENV === 'development') {
@@ -80,13 +81,6 @@ microApp.start({
     })
   }
 })
-
-// 注意：每个vite子应用根据appName单独分配一个通信对象
-window.eventCenterForMicroVue = new EventCenterForMicroApp('chat')
-function dataListener (data:any):void {
-  console.log('来自子应用my-app的数据', data)
-  const { callback } = data
-  callback()
-}
-microApp.addDataListener('chat', dataListener, false)
+// 注册事件
+useEventCenter()
 createApp(App).use(router).use(ElementPlus).mount('#app')

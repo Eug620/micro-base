@@ -1,12 +1,12 @@
 <template>
-<div class="react17">
-  <micro-app
+<div class="react">
+  有待开发
+  <!-- <micro-app
     name='react17'
     url='http://localhost:3002/'
     :data='data'
   >
-    <!-- destroy inline -->
-  </micro-app>
+  </micro-app> -->
 </div>
 </template>
 
