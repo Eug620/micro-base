@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-03-25 18:16:38
+ * @LastEditTime : 2022-04-01 16:27:01
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/App.vue
@@ -40,7 +40,7 @@ const activeIndex = ref("/chat/");
 
 const menuList = ref([
   "/chat/", 
-  "/react/"
+  "/developer/"
   ]);
 const { currentRoute } = useRouter();
 watch(currentRoute, (newVal, oldVal) => {

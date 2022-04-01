@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2022-03-25 18:20:44
+ * @LastEditTime : 2022-04-01 16:25:57
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/router/index.ts
@@ -14,9 +14,9 @@ const routes = [
     redirect: '/chat/'
   },
   {
-    path: '/react/:page*',
-    name: 'react',
-    component: () => import('../pages/react.vue'),
+    path: '/developer/:page*',
+    name: 'developer',
+    component: () => import('../pages/developer.vue'),
   },
   {
     path: '/chat/:page*',

@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-03-25 18:21:05
+ * @LastEditTime : 2022-04-01 16:28:48
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/main.ts
@@ -49,6 +49,16 @@ microApp.start({
           if (process.env.NODE_ENV === 'development') {
             code = code.replace(/(from|import)(\s*['"])(\/base\/chat\/)/g, (all) => {
               return all.replace('/base/chat/', 'http://127.0.0.1:8081/base/chat/')
+            })
+          }
+          return code
+        }
+      }],
+      developer: [{
+        loader(code: string) {
+          if (process.env.NODE_ENV === 'development') {
+            code = code.replace(/(from|import)(\s*['"])(\/base\/developer\/)/g, (all) => {
+              return all.replace('/base/developer/', 'http://127.0.0.1:8082/base/developer/')
             })
           }
           return code
