@@ -1,13 +1,15 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-01 16:28:48
+ * @LastEditTime : 2022-04-19 16:27:18
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/main.ts
  */
 import { createApp } from 'vue'
 import App from './App.vue'
+import 'nprogress/nprogress.css'
+import './assets/styles/index.scss'
 // @ts-ignore
 import microApp from '@micro-zoe/micro-app'
 import ElementPlus from 'element-plus'
