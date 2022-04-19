@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-19 18:48:47
+ * @LastEditTime : 2022-04-19 19:58:47
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -47,7 +47,7 @@ const menus = computed(() => {
   return routes[0]?.children || []
 })
 
-const useMenuItemClick = (menu) => {
+const useMenuItemClick = (menu: any) => {
   router.push({
     name: menu.name
   })
