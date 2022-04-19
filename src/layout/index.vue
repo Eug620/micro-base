@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-19 15:45:50
+ * @LastEditTime : 2022-04-19 18:48:47
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -18,7 +18,7 @@
         </el-menu-item>
       </el-menu>
     </el-aside>
-    <el-main style="padding:0;">
+    <el-main class="layout-main">
       <router-view v-slot="{ Component, route }">
         <template v-if="route.meta.keepAlive">
           <transition name="el-fade-in">
@@ -55,4 +55,8 @@ const useMenuItemClick = (menu) => {
 </script>
 
 <style>
+.layout-main{
+  padding: 0 !important;
+  background-color: #f4f5f5;
+}
 </style>
