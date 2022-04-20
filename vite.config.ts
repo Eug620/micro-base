@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-03-25 17:15:52
+ * @LastEditTime : 2022-04-20 13:23:56
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/vite.config.ts
@@ -22,7 +22,7 @@ export default ({mode}) =>  defineConfig({
           VITE_APP_TITLE: getEnvFn(mode, 'VITE_APP_TITLE')
         }
       }
-    })
+    }),
   ],
   server: {
     port: 8080,
@@ -31,23 +31,23 @@ export default ({mode}) =>  defineConfig({
     },
     open: true,
   },
-  css: {
-    // [WARNING] "@charset" must be the first rule in the file
-    postcss: {
-      plugins: [
-        {
-          postcssPlugin: 'internal:charset-removal',
-          AtRule: {
-            charset: (atRule) => {
-              if (atRule.name === 'charset') {
-                atRule.remove();
-              }
-            }
-          }
-        }
-      ],
-    },
-  },
+  // css: {
+  //   // [WARNING] "@charset" must be the first rule in the file
+  //   postcss: {
+  //     plugins: [
+  //       {
+  //         postcssPlugin: 'internal:charset-removal',
+  //         AtRule: {
+  //           charset: (atRule) => {
+  //             if (atRule.name === 'charset') {
+  //               atRule.remove();
+  //             }
+  //           }
+  //         }
+  //       }
+  //     ],
+  //   },
+  // },
   base: '/',
   build: {
     assetsDir: 'assets',

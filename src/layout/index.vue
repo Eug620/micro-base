@@ -1,24 +1,33 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-19 19:58:47
+ * @LastEditTime : 2022-04-20 17:53:35
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
 -->
 <template>
-  <el-container class="vh-100">
-    <el-aside width="200px">
-      <el-menu class="w-100 h-100" :default-active="menus[0].name">
-        <el-menu-item :index="menu.name" v-for="(menu,idx) in menus" :key="menu.path" @click="useMenuItemClick(menu)">
-          <el-icon>
-            <component :is="IconList[idx]" />
-          </el-icon>
-          <span>{{menu.name}}</span>
-        </el-menu-item>
-      </el-menu>
-    </el-aside>
-    <el-main class="layout-main">
+  <div class="bg-gray-200 w-screen h-screen flex dark:bg-black dark:text-white">
+    <div
+      class="flex-none h-screen bg-white dark:bg-black border-r border-slate-900/10 overflow-auto"
+      :class="isShow ? 'w-52' : 'w-20'"
+    >
+      <div class="w-full h-full flex flex-col">
+        <div class="h-20 bg-green-200 dark:bg-gray-200" @click="isShow=!isShow">{{isShow}}</div>
+        <div class="flex-1 bg-white-100 dark:bg-gray-300">
+          <div
+            class="text-left pl-2 py-8 text-base border-b-2"
+            :class="active === menu.name && 'bg-emerald-200'"
+            v-for="menu in menus"
+            :key="menu.path"
+            @click="useTo(menu)"
+          >{{menu.name}}</div>
+        </div>
+        <div class="h-20 bg-blue-200 dark:bg-gray-200" @click="useChangeTheme">{{theme}}</div>
+      </div>
+    </div>
+
+    <div class="flex-1">
       <router-view v-slot="{ Component, route }">
         <template v-if="route.meta.keepAlive">
           <transition name="el-fade-in">
@@ -31,32 +40,51 @@
           <component :is="Component" />
         </template>
       </router-view>
-    </el-main>
-  </el-container>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import  * as Icons from "@element-plus/icons-vue";
-import { useRouter } from 'vue-router'
-import { computed } from 'vue'
-const router = useRouter()
-const { routes } = router.options
-const IconList = Object.values(Icons)
-
+// import  * as Icons from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
+import { computed, ref } from "vue";
+const router = useRouter();
+const { routes } = router.options;
+// const IconList = Object.values(Icons)
+const isShow = ref(true);
 const menus = computed(() => {
-  return routes[0]?.children || []
-})
-
-const useMenuItemClick = (menu: any) => {
+  return routes[0]?.children || [];
+});
+console.log();
+const { name } = router.currentRoute.value
+const useTo =(menu) => {
   router.push({
     name: menu.name
   })
 }
+const active = computed(() => {
+  return router.currentRoute.value.name
+})
+
+const theme = ref("light");
+const useTheme = v => {
+  if (v === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+};
+const useChangeTheme = () => {
+  theme.value = theme.value === "dark" ? "light" : "dark";
+  useTheme(theme.value);
+};
+
+const useMenuItemClick = (menu: any) => {
+  router.push({
+    name: menu.name
+  });
+};
 </script>
 
-<style>
-.layout-main{
-  padding: 0 !important;
-  background-color: #f4f5f5;
-}
+<style lang="scss">
 </style>

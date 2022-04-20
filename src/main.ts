@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-19 16:27:18
+ * @LastEditTime : 2022-04-20 13:42:57
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/main.ts
@@ -12,10 +12,11 @@ import 'nprogress/nprogress.css'
 import './assets/styles/index.scss'
 // @ts-ignore
 import microApp from '@micro-zoe/micro-app'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
+// import ElementPlus from 'element-plus'
+// import 'element-plus/dist/index.css'
 import router from './router';
 import useEventCenter from './eventCenter'
+import './index.css'
 
 microApp.start({
   lifeCycles: {
@@ -95,4 +96,7 @@ microApp.start({
 })
 // 注册事件
 useEventCenter()
-createApp(App).use(router).use(ElementPlus).mount('#app')
+createApp(App)
+.use(router)
+// .use(ElementPlus)
+.mount('#app')
