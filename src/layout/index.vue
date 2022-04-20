@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-20 17:53:35
+ * @LastEditTime : 2022-04-20 18:26:31
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -46,8 +46,8 @@
 
 <script setup lang="ts">
 // import  * as Icons from "@element-plus/icons-vue";
-import { useRouter } from "vue-router";
-import { computed, ref } from "vue";
+import { useRouter, RouteRecordRaw } from "vue-router";
+import { computed, ref, Ref } from "vue";
 const router = useRouter();
 const { routes } = router.options;
 // const IconList = Object.values(Icons)
@@ -55,27 +55,30 @@ const isShow = ref(true);
 const menus = computed(() => {
   return routes[0]?.children || [];
 });
-console.log();
-const { name } = router.currentRoute.value
-const useTo =(menu) => {
+declare const enum ThemeType {
+  light = "light",
+  dark = "dark"
+}
+const { name } = router.currentRoute.value;
+const useTo = (menu: RouteRecordRaw) => {
   router.push({
     name: menu.name
-  })
-}
+  });
+};
 const active = computed(() => {
-  return router.currentRoute.value.name
-})
-
-const theme = ref("light");
-const useTheme = v => {
-  if (v === "dark") {
-    document.documentElement.classList.add("dark");
+  return router.currentRoute.value.name;
+});
+const theme: Ref<ThemeType> = ref(ThemeType.light);
+const useTheme = (v: ThemeType) => {
+  if (v === ThemeType.dark) {
+    document.documentElement.classList.add(ThemeType.dark);
   } else {
-    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.remove(ThemeType.light);
   }
 };
 const useChangeTheme = () => {
-  theme.value = theme.value === "dark" ? "light" : "dark";
+  theme.value =
+    theme.value === ThemeType.dark ? ThemeType.light : ThemeType.dark;
   useTheme(theme.value);
 };
 
