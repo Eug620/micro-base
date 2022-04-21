@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-21 11:57:25
+ * @LastEditTime : 2022-04-21 15:56:51
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -9,7 +9,7 @@
 <template>
   <div class="bg-gray-200 w-screen h-screen flex dark:bg-black dark:text-white">
     <div
-      class="flex-none h-screen bg-white dark:bg-black border-r border-slate-900/10 overflow-auto"
+      class="flex-none h-screen bg-white dark:bg-black overflow-auto "
       :class="isShow ? 'w-52' : 'w-20'"
     >
       <div class="w-full h-full flex flex-col">
@@ -17,7 +17,7 @@
         <div class="flex-1 bg-white-100 dark:bg-gray-300">
           <div
             class="text-left pl-2 py-8 text-base border-b-2"
-            :class="active === menu.name && 'bg-emerald-200'"
+            :class="active === menu.name && 'bg-emerald-200 dark:bg-black'"
             v-for="menu in menus"
             :key="menu.path"
             @click="useTo(menu)"
@@ -70,10 +70,12 @@ const active = computed(() => {
 });
 const theme: Ref<ThemeType> = ref(ThemeType.light);
 const useTheme = (v: ThemeType) => {
+  console.log(ThemeType.dark, ThemeType.light);
+  
   if (v === ThemeType.dark) {
     document.documentElement.classList.add(ThemeType.dark);
   } else {
-    document.documentElement.classList.remove(ThemeType.light);
+    document.documentElement.classList.remove(ThemeType.dark);
   }
 };
 const useChangeTheme = () => {
