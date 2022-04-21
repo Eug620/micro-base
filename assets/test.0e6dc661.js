@@ -1,1 +1,0 @@
-import{_ as a}from"./index.a2aabd16.js";import{o as r,h as s,i as o}from"./vendor.69d0d158.js";const d={},e={class:"bg-white h-full flex"},t=[o("div",{class:"bg-gray-300 w-1/2 h-1/2 m-auto"}," 12 ",-1)];var i=a(d,[["render",function(a,o){return r(),s("div",e,t)}]]);export{i as default};
