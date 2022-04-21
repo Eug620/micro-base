@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2022-04-20 16:00:24
+ * @LastEditTime : 2022-04-21 11:56:57
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/router/index.ts
@@ -18,7 +18,7 @@ const routes = [
     path:'/',
     name:'layout',
     component:() => import('../layout/index.vue'),
-    redirect: '/test',
+    redirect: '/chat/',
     children:[
       {
         path: '/developer/:page*',

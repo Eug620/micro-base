@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-20 18:26:31
+ * @LastEditTime : 2022-04-21 11:57:25
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -55,7 +55,7 @@ const isShow = ref(true);
 const menus = computed(() => {
   return routes[0]?.children || [];
 });
-declare const enum ThemeType {
+const enum ThemeType {
   light = "light",
   dark = "dark"
 }
