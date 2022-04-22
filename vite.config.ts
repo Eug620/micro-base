@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-20 13:23:56
+ * @LastEditTime : 2022-04-22 16:35:57
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/vite.config.ts
@@ -9,12 +9,15 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import DefineOptions from 'unplugin-vue-define-options/vite'
+
 const getEnvFn = (mode, target) => {
   return loadEnv(mode, process.cwd())[target]
 }
 // https://vitejs.dev/config/
 export default ({mode}) =>  defineConfig({
   plugins: [
+    // scriptName(),
     vue(),
     createHtmlPlugin({
       inject: {
@@ -23,6 +26,7 @@ export default ({mode}) =>  defineConfig({
         }
       }
     }),
+    DefineOptions()
   ],
   server: {
     port: 8080,

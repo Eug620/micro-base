@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-20 13:42:57
+ * @LastEditTime : 2022-04-22 14:29:24
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/main.ts
@@ -16,6 +16,7 @@ import microApp from '@micro-zoe/micro-app'
 // import 'element-plus/dist/index.css'
 import router from './router';
 import useEventCenter from './eventCenter'
+import useComponents from './components/useComponents'
 import './index.css'
 
 microApp.start({
@@ -96,7 +97,8 @@ microApp.start({
 })
 // 注册事件
 useEventCenter()
-createApp(App)
-.use(router)
+const app = createApp(App)
+useComponents(app)
+app.use(router)
 // .use(ElementPlus)
-.mount('#app')
+app.mount('#app')
