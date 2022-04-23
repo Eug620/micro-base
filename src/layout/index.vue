@@ -9,21 +9,30 @@
 <template>
   <div class="bg-gray-200 w-screen h-screen flex dark:bg-black dark:text-white">
     <div
-      class="flex-none h-screen bg-white dark:bg-black overflow-auto "
+      class="flex-none h-screen bg-white dark:bg-black overflow-auto border-r light:border-r-zinc-200 dark:border-r-zinc-100"
       :class="isShow ? 'w-52' : 'w-20'"
     >
       <div class="w-full h-full flex flex-col">
-        <div class="h-20 bg-green-200 dark:bg-gray-200" @click="isShow=!isShow">{{isShow}}</div>
-        <div class="flex-1 bg-white-100 dark:bg-gray-300">
+        <div class="h-20 bg-green-200 " @click="isShow=!isShow">{{isShow}}</div>
+        <div class="flex-1 bg-white-100">
           <div
             class="text-left pl-2 py-8 text-base border-b-2"
-            :class="active === menu.name && 'bg-emerald-200 dark:bg-black'"
+            :class="active === menu.name && 'bg-emerald-200'"
             v-for="menu in menus"
             :key="menu.path"
             @click="useTo(menu)"
           >{{menu.name}}</div>
         </div>
-        <div class="h-20 bg-blue-200 dark:bg-gray-200" @click="useChangeTheme">{{theme}}</div>
+        <div class="h-20 light:bg-blue-200 justify-items-center grid">
+          <base-switch v-model="themeType" @change="useThemeChange">
+            <template v-if="themeType">
+              <i class="fas fa-sun"></i>
+            </template>
+            <template v-else>
+              <i class="fas fa-moon"></i>
+            </template>
+          </base-switch>
+        </div>
       </div>
     </div>
 
@@ -69,19 +78,17 @@ const active = computed(() => {
   return router.currentRoute.value.name;
 });
 const theme: Ref<ThemeType> = ref(ThemeType.light);
-const useTheme = (v: ThemeType) => {
-  console.log(ThemeType.dark, ThemeType.light);
-  
-  if (v === ThemeType.dark) {
-    document.documentElement.classList.add(ThemeType.dark);
-  } else {
+const useTheme = (v: Boolean) => {
+  if (v) {
     document.documentElement.classList.remove(ThemeType.dark);
+    document.documentElement.classList.add(ThemeType.light);
+
+  } else {
+    document.documentElement.classList.add(ThemeType.dark);
+    document.documentElement.classList.remove(ThemeType.light);
+
+
   }
-};
-const useChangeTheme = () => {
-  theme.value =
-    theme.value === ThemeType.dark ? ThemeType.light : ThemeType.dark;
-  useTheme(theme.value);
 };
 
 const useMenuItemClick = (menu: any) => {
@@ -89,6 +96,12 @@ const useMenuItemClick = (menu: any) => {
     name: menu.name
   });
 };
+
+
+const themeType = ref(true)
+const useThemeChange = (v:any) => {
+  useTheme(v);
+}
 </script>
 
 <style lang="scss">

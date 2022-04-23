@@ -9,7 +9,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { createHtmlPlugin } from 'vite-plugin-html'
-import DefineOptions from 'unplugin-vue-define-options/vite'
 
 const getEnvFn = (mode, target) => {
   return loadEnv(mode, process.cwd())[target]
@@ -26,7 +25,6 @@ export default ({mode}) =>  defineConfig({
         }
       }
     }),
-    DefineOptions()
   ],
   server: {
     port: 8080,
