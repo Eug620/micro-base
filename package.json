@@ -80,7 +80,7 @@
       "tag": true
     },
     "scripts": {
-      "postchangelog": "npm run changelog-slice"
+      "postchangelog": "yarn run changelog-slice"
     }
   }
 }
