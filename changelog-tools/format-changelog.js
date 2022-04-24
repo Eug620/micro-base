@@ -1,7 +1,7 @@
-/*
+/* 
  * @Author       : Eug
  * @Date         : 2022-04-24 15:09:08
- * @LastEditTime : 2022-04-24 15:09:09
+ * @LastEditTime : 2022-04-24 15:24:09
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/changelog-tools/format-changelog.js
@@ -16,7 +16,7 @@ const reg_title = /Changelog/;
 
 replace({
   regex: reg_title,
-  replacement: 'Appic Changelog',
+  replacement: 'Micro-Base Changelog',
   paths: ['CHANGELOG.md'],
   recursive: true,
 });
@@ -24,7 +24,7 @@ replace({
 replace({
   regex: reg_notable,
   replacement:
-    'Automatically Generate Appic Changelog, Remember not to modify changelog manually',
+    'micro-app基座项目',
   paths: ['CHANGELOG.md'],
   recursive: true,
 });
