@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-
+# 处理mac找不到yarn
+PATH="/usr/local/bin:$PATH"
+# commit信息做校验
 yarn commitlint
