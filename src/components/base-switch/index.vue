@@ -9,17 +9,7 @@
 <template>
   <div
     @click="useSwitchClick"
-    class="
-      w-10
-      h-5
-      rounded-full
-      flex
-      px-0.5
-      items-center
-      grid
-      ease-in-out
-      duration-300
-    "
+    class="w-10 h-5 rounded-full flex px-0.5 items-center grid ease-in-out duration-300"
     :class="[
       'animate__fadeInLeft',
       useProsValue && 'justify-items-end',
@@ -34,16 +24,7 @@
     ]"
   >
     <div
-      class="
-        animate__animated animate__faster
-        w-4
-        h-4
-        bg-white
-        rounded-full
-        dark:bg-black
-        text-center
-        items-center
-      "
+      class="animate__animated animate__faster w-4 h-4 bg-white rounded-full dark:bg-black text-center items-center"
       :class="[
         useProsValue ? 'animate__slideInLeft' : 'animate__slideInRight',
         loading && 'animate__rotateIn',
@@ -59,12 +40,11 @@
   </div>
 </template>
 
-
 <script lang="ts">
 // import { defineProps, defineEmits, computed } from "vue";
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent } from 'vue';
 export default defineComponent({
-  name: "base-switch",
+  name: 'base-switch',
   props: {
     modelValue: {
       type: [Boolean, String, Number],
@@ -93,8 +73,8 @@ export default defineComponent({
     });
     const useSwitchClick = () => {
       if (!props.readonley && !props.disabled) {
-        emit("change", !useProsValue.value);
-        emit("update:modelValue", !useProsValue.value);
+        emit('change', !useProsValue.value);
+        emit('update:modelValue', !useProsValue.value);
       }
     };
     return {
@@ -146,5 +126,4 @@ export default defineComponent({
 // };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

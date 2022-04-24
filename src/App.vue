@@ -7,11 +7,9 @@
  * @FilePath     : /github/micro-base/src/App.vue
 -->
 <template>
-  <router-view/>
+  <router-view />
 </template>
 
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
-<style>
-</style>
+<style></style>

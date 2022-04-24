@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-21 15:56:51
+ * @LastEditTime : 2022-04-24 11:47:40
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -13,7 +13,9 @@
       :class="isShow ? 'w-52' : 'w-20'"
     >
       <div class="w-full h-full flex flex-col">
-        <div class="h-20 bg-green-200 " @click="isShow=!isShow">{{isShow}}</div>
+        <div class="h-20 bg-green-200" @click="isShow = !isShow">
+          {{ isShow }}
+        </div>
         <div class="flex-1 bg-white-100">
           <div
             class="text-left pl-2 py-8 text-base border-b-2"
@@ -21,7 +23,9 @@
             v-for="menu in menus"
             :key="menu.path"
             @click="useTo(menu)"
-          >{{menu.name}}</div>
+          >
+            {{ menu.name }}
+          </div>
         </div>
         <div class="h-20 light:bg-blue-200 justify-items-center grid">
           <base-switch v-model="themeType" @change="useThemeChange">
@@ -55,23 +59,23 @@
 
 <script setup lang="ts">
 // import  * as Icons from "@element-plus/icons-vue";
-import { useRouter, RouteRecordRaw } from "vue-router";
-import { computed, ref, Ref } from "vue";
+import { useRouter, RouteRecordRaw } from 'vue-router';
+import { computed, ref, Ref } from 'vue';
 const router = useRouter();
 const { routes } = router.options;
 // const IconList = Object.values(Icons)
-const isShow = ref(true);
+const isShow = ref(false);
 const menus = computed(() => {
   return routes[0]?.children || [];
 });
 const enum ThemeType {
-  light = "light",
-  dark = "dark"
+  light = 'light',
+  dark = 'dark',
 }
 const { name } = router.currentRoute.value;
 const useTo = (menu: RouteRecordRaw) => {
   router.push({
-    name: menu.name
+    name: menu.name,
   });
 };
 const active = computed(() => {
@@ -82,27 +86,22 @@ const useTheme = (v: Boolean) => {
   if (v) {
     document.documentElement.classList.remove(ThemeType.dark);
     document.documentElement.classList.add(ThemeType.light);
-
   } else {
     document.documentElement.classList.add(ThemeType.dark);
     document.documentElement.classList.remove(ThemeType.light);
-
-
   }
 };
 
 const useMenuItemClick = (menu: any) => {
   router.push({
-    name: menu.name
+    name: menu.name,
   });
 };
 
-
-const themeType = ref(true)
-const useThemeChange = (v:any) => {
+const themeType = ref(true);
+const useThemeChange = (v: any) => {
   useTheme(v);
-}
+};
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -1,4 +1,4 @@
-/* 
+/*
  * @Author       : Eug
  * @Date         : 2022-04-20 11:43:55
  * @LastEditTime : 2022-04-20 11:43:55
@@ -10,5 +10,5 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-  }
-}
+  },
+};

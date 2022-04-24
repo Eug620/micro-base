@@ -7,9 +7,9 @@
  * @FilePath     : /github/micro-base/src/pages/test.vue
 -->
 <template>
-  <div class=" h-full flex">
+  <div class="h-full flex">
     <base-switch v-model="switchValue" disabled />
-    <base-switch v-model="switchValue"  >
+    <base-switch v-model="switchValue">
       <template v-if="switchValue">
         <i class="fas fa-sun"></i>
       </template>
@@ -17,10 +17,15 @@
         <i class="fas fa-moon"></i>
       </template>
     </base-switch>
-    <base-switch v-model="switchValue" :loading="isLoading"  @change="useChange">
+    <base-switch v-model="switchValue" :loading="isLoading" @change="useChange">
     </base-switch>
-    <button @click="isLoading = !isLoading" class="w-28 h-8 bg-yellow-200 border">click</button>
-    {{switchValue}}
+    <button
+      @click="isLoading = !isLoading"
+      class="w-28 h-8 bg-yellow-200 border"
+    >
+      click
+    </button>
+    {{ switchValue }}
 
     <i class="fa fa-heart"></i>
     <i class="fas fa-spinner"></i>
@@ -31,15 +36,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-const switchValue = ref(false)
-const isLoading = ref(true)
+import { ref } from 'vue';
+const switchValue = ref(false);
+const isLoading = ref(true);
 
 const useChange = (v: any) => {
-  console.log('change',v);
-  
-}
+  console.log('change', v);
+};
 </script>
 
-<style>
-</style>
+<style></style>

@@ -9,30 +9,80 @@
     "build": "vue-tsc --noEmit && vite build",
     "build:t": "vue-tsc --noEmit && vite build --mode test",
     "build:p": "vue-tsc --noEmit && vite build --mode production",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,vue,md,json}'",
+    "release:r": "standard-version -r",
+    "release:alpha": "standard-version -prerelease alpha -n",
+    "release:beta": "standard-version -prerelease beta",
+    "release:major": "standard-version -r major -n",
+    "release:minor": "standard-version -r minor -n",
+    "release:patch": "standard-version -r patch -n",
+    "changelog-slice": "node ./appic-tools/format-changelog.js",
+    "check-commit-version": "node ./appic-tools/check-commit-version.js",
+    "ct:b": "git add . && git-cz && npm run release:beta",
+    "ct:a": "git add . && git-cz && npm version prerelease --preid=alpha",
+    "ct:m": "git add . && git-cz && npm run release:minor",
+    "ct:mj": "git add . && git-cz && npm run release:major",
+    "ct:p": "git add . && git-cz && npm run release:patch",
+    "ct:r": "git add . && git-cz && npm run release:r",
+    "ct:all": "git add . && git-cz",
+    "ct": "git-cz"
   },
   "dependencies": {
     "@micro-zoe/micro-app": "^0.8.5",
     "@types/lodash-es": "^4.17.6",
     "@types/nprogress": "^0.2.0",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-config-spec": "^2.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
     "nprogress": "^0.2.0",
     "sass": "^1.50.1",
     "sass-loader": "^12.6.0",
+    "standard-version": "^9.3.2",
     "type-fest": "^2.12.1",
     "vite-plugin-html": "^3.2.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@types/node": "^16.6.2",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "@vitejs/plugin-vue": "^2.2.0",
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.4.4",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.0",
     "postcss": "^8.4.12",
+    "prettier": "^2.6.2",
     "tailwindcss": "^3.0.24",
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
     "vue-tsc": "^0.29.8",
     "zone.js": "~0.11.4"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,jsx,tsx}": [
+      "yarn lint",
+      "yarn prettier"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
   }
 }
