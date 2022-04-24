@@ -73,6 +73,8 @@ const enum ThemeType {
   dark = 'dark',
 }
 const { name } = router.currentRoute.value;
+console.log(name);
+
 const useTo = (menu: RouteRecordRaw) => {
   router.push({
     name: menu.name,
