@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,vue,md,json}'",
+    "lint:p": "yarn lint ** yarn prettier",
     "release:r": "standard-version -r",
     "release:alpha": "standard-version -prerelease alpha -n",
     "release:beta": "standard-version -prerelease beta",
@@ -71,19 +72,26 @@
   },
   "lint-staged": {
     "*.{js,ts,vue,jsx,tsx}": [
-      "yarn lint",
-      "yarn prettier"
+      "yarn lint:p"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-customizable"
+    }
+  },
+  "standard-version": {
+    "skip": {
+      "tag": true
+    },
+    "scripts": {
+      "postchangelog": "npm run changelog-slice"
     }
   }
 }
