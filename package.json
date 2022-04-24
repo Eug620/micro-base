@@ -19,9 +19,16 @@
     "release:major": "standard-version -r major -n",
     "release:minor": "standard-version -r minor -n",
     "release:patch": "standard-version -r patch -n",
+    "ct:b": "git add . && git-cz && npm run release:beta",
+    "ct:a": "git add . && git-cz && npm version prerelease --preid=alpha",
+    "ct:m": "git add . && git-cz && npm run release:minor",
+    "ct:mj": "git add . && git-cz && npm run release:major",
+    "ct:p": "git add . && git-cz && npm run release:patch",
+    "ct:r": "git add . && git-cz && npm run release:r",
     "ct:all": "git add . && git-cz",
     "ct": "git-cz",
-    "commitlint": "commitlint --config commitlint.config.js -e -V"
+    "commitlint": "commitlint --config commitlint.config.js -e -V",
+    "changelog-slice": "node ./changelog-tools/format-changelog.js"
   },
   "dependencies": {
     "@micro-zoe/micro-app": "^0.8.5",
@@ -32,6 +39,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
     "nprogress": "^0.2.0",
+    "replace": "^1.2.1",
     "sass": "^1.50.1",
     "sass-loader": "^12.6.0",
     "standard-version": "^9.3.2",
