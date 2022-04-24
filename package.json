@@ -10,7 +10,7 @@
     "build:t": "vue-tsc --noEmit && vite build --mode test",
     "build:p": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue src/",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,vue,md,json}'",
     "lint:p": "yarn prettier && yarn lint",
     "release:r": "standard-version -r",

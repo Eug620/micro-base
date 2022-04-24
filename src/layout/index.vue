@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-24 13:58:11
+ * @LastEditTime : 2022-04-24 14:37:46
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -74,7 +74,7 @@ const enum ThemeType {
 }
 const { name } = router.currentRoute.value;
 const useTo = (menu: RouteRecordRaw) => {
-  const a=()=> {
+  const a =()=> {
     console.log('this is a');
 
 
@@ -82,8 +82,6 @@ const useTo = (menu: RouteRecordRaw) => {
 
 
 
-    
-    
   };
   a();
   router.push({
