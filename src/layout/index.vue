@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-24 11:47:40
+ * @LastEditTime : 2022-04-24 11:59:22
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -74,6 +74,12 @@ const enum ThemeType {
 }
 const { name } = router.currentRoute.value;
 const useTo = (menu: RouteRecordRaw) => {
+
+  const a=()=>{
+    console.log('this is a');
+    
+  }
+  a()
   router.push({
     name: menu.name,
   });
