@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-24 12:06:37
+ * @LastEditTime : 2022-04-24 12:11:30
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -77,6 +77,7 @@ const useTo = (menu: RouteRecordRaw) => {
   const a=()=> {
     console.log('this is a');
 
+    
     
   };
   a();

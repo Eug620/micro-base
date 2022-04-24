@@ -72,7 +72,7 @@
   },
   "lint-staged": {
     "*.{js,ts,vue,jsx,tsx}": [
-      "yarn lint:p"
+      "lint:p"
     ]
   },
   "husky": {
