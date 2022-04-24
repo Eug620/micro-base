@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-24 13:31:55
+ * @LastEditTime : 2022-04-24 13:41:19
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -76,6 +76,7 @@ const { name } = router.currentRoute.value;
 const useTo = (menu: RouteRecordRaw) => {
   const a=()=> {
     console.log('this is a');
+
 
 
     
