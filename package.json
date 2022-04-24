@@ -27,7 +27,8 @@
     "ct:p": "git add . && git-cz && npm run release:patch",
     "ct:r": "git add . && git-cz && npm run release:r",
     "ct:all": "git add . && git-cz",
-    "ct": "git-cz"
+    "ct": "git-cz",
+    "commitlint": "commitlint --config commitlint.config.js -e -V"
   },
   "dependencies": {
     "@micro-zoe/micro-app": "^0.8.5",

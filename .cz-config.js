@@ -1,3 +1,11 @@
+/* 
+ * @Author       : Eug
+ * @Date         : 2022-04-24 11:31:57
+ * @LastEditTime : 2022-04-24 11:58:18
+ * @LastEditors  : Eug
+ * @Descripttion : Descripttion
+ * @FilePath     : /github/micro-base/.cz-config.js
+ */
 /*
  * @Author       : Eug
  * @Date         : 2022-02-25 12:03:41
@@ -33,47 +41,11 @@ module.exports = {
   ],
 
   scopes: [
-    // AFN - 网盟相关
-    { name: 'afn - 网盟' },
-    { name: 'afn - 网盟 - 配量' },
-    { name: 'afn - 网盟 - 详情' },
-    { name: 'afn - 网盟 - 详情 - 渠道' },
-    { name: 'afn - 流量' },
-    { name: 'afn - 流量 - 详情 - all' },
-    { name: 'afn - 流量 - 详情 - 渠道' },
-    { name: 'afn - 流量 - 详情 - 媒体' },
-    { name: 'afn - 投放 - all' },
-    { name: 'afn - 投放' },
-    { name: 'afn - 投放 - 新增' },
-    { name: 'afn - 投放 - 编辑' },
-    { name: 'afn - 投放 - 创意' },
-    { name: 'afn - 投放 - 详情 - all' },
-    { name: 'afn - 投放 - 详情 - 流量' },
-    { name: 'afn - 投放 - 详情 - 渠道' },
-    { name: 'afn - 投放 - 配量 - all' },
-    { name: 'afn - 监测' },
-    { name: 'afn - 监测 - all' },
-    { name: 'afn - 监测 - 流量' },
-    { name: 'afn - 监测 - 流量 - 参数' },
-    { name: 'afn - 监测 - 网盟' },
-    { name: 'afn - 监测 - 网盟 - 参数' },
-    { name: 'afn - 监测 - 网盟链接' },
-    { name: 'afn - 监测 - 网盟链接 - 参数' },
-    { name: 'afn - 回调' },
-    { name: 'afn - 回调 - all' },
-    { name: 'afn - 回调 - 流量' },
-    { name: 'afn - 回调 - 流量 - 宏替换' },
-    { name: 'afn - 回调 - 网盟' },
-    { name: 'afn - 回调 - 网盟 - 参数' },
-    { name: '全局页面 - 首页' },
-    { name: '全局页面 - 前端日志' },
     { name: '公共组件' },
     { name: 'package.json' },
-    { name: 'appi-use' },
     { name: 'mock' },
     { name: 'code-format' },
     { name: 'all' },
-    { name: '配置文件' },
   ],
   allowTicketNumber: false,
   isTicketNumberRequired: false,
