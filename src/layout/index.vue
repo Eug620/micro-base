@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-19 14:13:27
- * @LastEditTime : 2022-04-24 17:39:44
+ * @LastEditTime : 2022-04-24 17:50:38
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/layout/index.vue
@@ -9,12 +9,22 @@
 <template>
   <div class="bg-gray-200 w-screen h-screen flex dark:bg-black dark:text-white">
     <div
-      class="flex-none h-screen bg-white dark:bg-black overflow-auto border-r light:border-r-zinc-200 dark:border-r-zinc-100 animate__animated  animate__fadeInLeft transition-all"
+      class="flex-none h-screen bg-white dark:bg-black overflow-auto border-r light:border-r-zinc-200 dark:border-r-zinc-100 animate__animated animate__fadeInLeft transition-all"
       :class="isShow ? 'w-52' : 'w-20'"
     >
       <div class="w-full h-full flex flex-col">
-        <div class="h-10 items-center flex justify-center cursor-pointer animate__animated border-b" @click="isShow = !isShow" >
-          <i class="fa-solid text-2xl" :class="[isShow ? 'fa-angles-left animate__slideInLeft' : 'fa-angles-right animate__slideInRight']"></i>
+        <div
+          class="h-10 items-center flex justify-center cursor-pointer animate__animated border-b"
+          @click="isShow = !isShow"
+        >
+          <i
+            class="fa-solid text-2xl"
+            :class="[
+              isShow
+                ? 'fa-angles-left animate__slideInLeft'
+                : 'fa-angles-right animate__slideInRight',
+            ]"
+          ></i>
         </div>
         <div class="flex-1 bg-white-100">
           <div
@@ -73,7 +83,6 @@ const enum ThemeType {
   dark = 'dark',
 }
 const { name } = router.currentRoute.value;
-console.log(name);
 
 const useTo = (menu: RouteRecordRaw) => {
   router.push({
