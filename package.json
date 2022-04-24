@@ -62,17 +62,6 @@
     "vue-tsc": "^0.29.8",
     "zone.js": "~0.11.4"
   },
-  "lint-staged": {
-    "src/**/*.{js,ts,vue,jsx,tsx}": [
-      "yarn run lint"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-customizable"
