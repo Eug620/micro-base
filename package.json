@@ -1,7 +1,7 @@
 {
   "name": "micro-base",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "dev:t": "vite --mode test",

@@ -1,4 +1,4 @@
-/* 
+/*
  * @Author       : Eug
  * @Date         : 2022-04-24 15:09:08
  * @LastEditTime : 2022-04-24 15:24:09
@@ -23,8 +23,7 @@ replace({
 
 replace({
   regex: reg_notable,
-  replacement:
-    'micro-app基座项目',
+  replacement: 'micro-app基座项目',
   paths: ['CHANGELOG.md'],
   recursive: true,
 });
