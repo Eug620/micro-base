@@ -1,6 +1,13 @@
 # Micro-Base Changelog
 
-micro-app 基座项目
+micro-app基座项目
+
+### [0.0.3](https://github.com/Eug620/micro-base/compare/v0.0.2...v0.0.3) (2022-04-25)
+
+
+### Features
+
+* **all:** 集成jest单元测试 ([bdc2dd8](https://github.com/Eug620/micro-base/commit/bdc2dd8bd2423e6dbe203d00ede92d685abe3bb0))
 
 ### [0.0.3](https://github.com/Eug620/micro-base/compare/v0.0.2...v0.0.3) (2022-04-25)
 
