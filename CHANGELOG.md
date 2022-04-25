@@ -2,17 +2,28 @@
 
 micro-app基座项目
 
-### [0.0.2](https://github.com/Eug620/micro-base/compare/v0.0.1...v0.0.2) (2022-04-24)
+### [0.0.3](https://github.com/Eug620/micro-base/compare/v0.0.2...v0.0.3) (2022-04-25)
 
 
 ### Features
 
-* **all:** 0.0.2 ([1687c48](https://github.com/Eug620/micro-base/commit/1687c48b16ab7257060be6945fc1b5d46c5cec6e))
+* **all:** 集成jest单元测试 ([bdc2dd8](https://github.com/Eug620/micro-base/commit/bdc2dd8bd2423e6dbe203d00ede92d685abe3bb0))
 
+### [0.0.3](https://github.com/Eug620/micro-base/compare/v0.0.2...v0.0.3) (2022-04-25)
+
+### Features
+
+- **all:** 集成 jest 单元测试 ([f306f7a](https://github.com/Eug620/micro-base/commit/f306f7a129977487cbf13063b26203150b64f08f))
+
+### [0.0.2](https://github.com/Eug620/micro-base/compare/v0.0.1...v0.0.2) (2022-04-24)
+
+### Features
+
+- **all:** 0.0.2 ([1687c48](https://github.com/Eug620/micro-base/commit/1687c48b16ab7257060be6945fc1b5d46c5cec6e))
 
 ### Bug Fixes
 
-* **all:** 更换最新font-awesome ([7d268a9](https://github.com/Eug620/micro-base/commit/7d268a94d2e6056306cc5c9bb97d1790832fc8c0))
+- **all:** 更换最新 font-awesome ([7d268a9](https://github.com/Eug620/micro-base/commit/7d268a94d2e6056306cc5c9bb97d1790832fc8c0))
 
 ### 0.0.1 (2022-04-24)
 

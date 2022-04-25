@@ -4,3 +4,4 @@
 PATH="/usr/local/bin:$PATH"
 # 代码美化
 yarn lint:p
+git add .
