@@ -1,10 +1,10 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-22 14:29:24
+ * @LastEditTime : 2022-04-25 16:12:38
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
- * @FilePath     : /github/micro-base/src/main.ts
+ * @FilePath     : /micro-base/src/main.ts
  */
 import { createApp } from 'vue';
 import App from './App.vue';

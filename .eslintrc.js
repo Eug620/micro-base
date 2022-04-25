@@ -20,6 +20,7 @@ module.exports = {
     'plugin:vue/vue3-recommended', // 添加 vue3 规则
     // 3 启用 eslint-config-prettier: 禁用 ESLint部分规则(与 Prettier 冲突) 注意: 一定要放在最后一项
     'prettier',
+    'plugin:jest/recommended',
   ],
   parserOptions: {
     ecmaVersion: 'latest',
