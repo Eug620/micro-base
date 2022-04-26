@@ -1,7 +1,8 @@
-#!/bin/sh
+ #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 # 处理mac找不到yarn
 PATH="/usr/local/bin:$PATH"
 # 代码美化
-yarn lint:p
+yarn lint
+yarn prettier
 git add .

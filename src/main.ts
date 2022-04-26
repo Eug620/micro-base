@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-25 16:12:38
+ * @LastEditTime : 2022-04-26 14:27:38
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
@@ -18,6 +18,9 @@ import router from './router';
 import useEventCenter from './eventCenter';
 import useComponents from './components/useComponents';
 import './index.css';
+
+// i18n
+import i18n from './locales/i18n';
 
 microApp.start({
   lifeCycles: {
@@ -116,5 +119,6 @@ useEventCenter();
 const app = createApp(App);
 useComponents(app);
 app.use(router);
+app.use(i18n);
 // .use(ElementPlus)
 app.mount('#app');
