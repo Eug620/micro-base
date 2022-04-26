@@ -1,15 +1,16 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-22 16:35:57
+ * @LastEditTime : 2022-04-26 15:04:58
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
- * @FilePath     : /github/micro-base/vite.config.ts
+ * @FilePath     : /micro-base/vite.config.ts
  */
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { createHtmlPlugin } from 'vite-plugin-html';
 
+// TODO 解决控制台警报i8n
 const getEnvFn = (mode, target) => {
   return loadEnv(mode, process.cwd())[target];
 };

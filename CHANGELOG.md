@@ -2,6 +2,13 @@
 
 micro-app基座项目
 
+### [0.0.4](https://github.com/Eug620/micro-base/compare/v0.0.3...v0.0.4) (2022-04-26)
+
+
+### Features
+
+* **admin:** 集成i8n国际化 ([cb9c36a](https://github.com/Eug620/micro-base/commit/cb9c36a83212a277638f17aa595cb21640538054))
+
 ### [0.0.3](https://github.com/Eug620/micro-base/compare/v0.0.2...v0.0.3) (2022-04-25)
 
 
