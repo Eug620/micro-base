@@ -2,6 +2,13 @@
 
 micro-app基座项目
 
+### [0.0.5](https://github.com/Eug620/micro-base/compare/v0.0.4...v0.0.5) (2022-04-28)
+
+
+### Features
+
+* **admin:** 加入arco-design&pinia ([9c58524](https://github.com/Eug620/micro-base/commit/9c58524979cbad245d6334955265efd79ddd8f80))
+
 ### [0.0.4](https://github.com/Eug620/micro-base/compare/v0.0.3...v0.0.4) (2022-04-26)
 
 
