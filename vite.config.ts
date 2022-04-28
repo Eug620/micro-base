@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-26 15:04:58
+ * @LastEditTime : 2022-04-28 15:39:50
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -9,6 +9,9 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import Components from 'unplugin-vue-components/vite';
+import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+const { resolve } = require('path');
 
 // TODO 解决控制台警报i8n
 const getEnvFn = (mode, target) => {
@@ -27,6 +30,9 @@ export default ({ mode }) =>
           },
         },
       }),
+      Components({
+        resolvers: [ArcoResolver()],
+      }),
     ],
     server: {
       port: 8080,
@@ -34,6 +40,13 @@ export default ({ mode }) =>
         strict: false,
       },
       open: true,
+    },
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, 'src'),
+        store: resolve(__dirname, './src/store'),
+      },
+      extensions: ['.js', '.json', '.ts', '.vue'], // 使用路径别名时想要省略的后缀名，可以自己 增减
     },
     // css: {
     //   // [WARNING] "@charset" must be the first rule in the file
