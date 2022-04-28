@@ -9,8 +9,12 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "types": ["vite/client", "jest", "@types/node"],
-    "lib": ["esnext", "dom"]
+    "types": ["vite/client", "jest", "@types/node", "vue"],
+    "lib": ["esnext", "dom"],
+    "paths": {
+      "@/*": ["src/*"],
+      "store/*": ["src/store/*"]
+    }
   },
   "include": [
     "src/**/*.ts",

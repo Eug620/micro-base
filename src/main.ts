@@ -1,11 +1,12 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-26 14:27:38
+ * @LastEditTime : 2022-04-28 17:42:33
  * @LastEditors  : Eug
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
  */
+import './index.css';
 import { createApp } from 'vue';
 import App from './App.vue';
 import 'nprogress/nprogress.css';
@@ -16,8 +17,10 @@ import microApp from '@micro-zoe/micro-app';
 // import 'element-plus/dist/index.css'
 import router from './router';
 import useEventCenter from './eventCenter';
-import useComponents from './components/useComponents';
-import './index.css';
+// import useComponents from './components/useComponents';
+
+// pinia
+import { pinia } from './store';
 
 // i18n
 import i18n from './locales/i18n';
@@ -117,7 +120,8 @@ microApp.start({
 // 注册事件
 useEventCenter();
 const app = createApp(App);
-useComponents(app);
+// useComponents(app);
+app.use(pinia);
 app.use(router);
 app.use(i18n);
 // .use(ElementPlus)
