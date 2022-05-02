@@ -47,6 +47,7 @@ const useThemeChange = (value: any) => {
 <style lang="scss">
 .micro-base-layout {
   height: 100vh;
+  overflow: hidden;
   .logo {
     text-align: center;
   }

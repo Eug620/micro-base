@@ -2,6 +2,13 @@
 
 micro-app基座项目
 
+### [0.0.6](https://github.com/Eug620/micro-base/compare/v0.0.5...v0.0.6) (2022-05-02)
+
+
+### Bug Fixes
+
+* **admin:** 禁止出现滚动条 ([88b2937](https://github.com/Eug620/micro-base/commit/88b2937ff17cb072efa21ba1154618e3d9ca40d9))
+
 ### [0.0.5](https://github.com/Eug620/micro-base/compare/v0.0.4...v0.0.5) (2022-04-28)
 
 
