@@ -10,6 +10,7 @@ import { storeToRefs } from 'pinia';
 const userStore = useUserStore()
 const { getToken } = storeToRefs(userStore)
 import { Notification } from '@arco-design/web-vue'
+import '@arco-design/web-vue/es/notification/style/css.js'
 
 // 创建一个错误
 function errorCreate(msg: any) {
@@ -46,8 +47,6 @@ function errorLog(error: Error) {
   //   duration: 5 * 1000
   // })
 
-  console.log( 'getCurrentInstance');
-  
   Notification.error({
     content: errorMsg,
     title: 'Error',

@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-28 14:31:36
- * @LastEditTime: 2022-08-26 12:38:00
+ * @LastEditTime: 2022-08-26 13:34:38
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/LayoutMenu.vue
@@ -53,7 +53,7 @@ const { history } = router.options;
 console.log(routes);
 
 const menus = computed(() => {
-  return routes || [];
+  return routes;
 });
 
 const defaultSelectedKey = ref([route.name]);
