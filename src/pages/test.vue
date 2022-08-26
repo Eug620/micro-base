@@ -1,8 +1,8 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-20 15:59:50
- * @LastEditTime : 2022-04-28 17:44:34
- * @LastEditors  : Eug
+ * @LastEditTime: 2022-08-27 02:27:02
+ * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/pages/test.vue
 -->
@@ -34,8 +34,8 @@
     <a-card :style="{ width: '360px' }" title="语言切换">
       <a-radio-group
         type="button"
-        v-model="LanguageStore.lang"
-        @change="LanguageStore.toggleLanguage"
+        :default-value="system.lang"
+        @change="system.setLang"
       >
         <a-radio value="en">en</a-radio>
         <a-radio value="zh">zh</a-radio>
@@ -46,8 +46,8 @@
     <a-card :style="{ width: '360px' }" title="主题切换">
       <a-radio-group
         type="button"
-        v-model="ThemeStore.theme"
-        @change="ThemeStore.toggleTheme"
+        :default-value="system.theme"
+        @change="system.setTheme"
       >
         <a-radio value="dark">dark</a-radio>
         <a-radio value="light">light</a-radio>
@@ -61,8 +61,16 @@ import { ref } from 'vue';
 import i18n from '@/locales/i18n';
 import { useThemeStore } from 'store/theme';
 import { useLanguageStore } from 'store/language';
+import { useSystemStore } from 'store/modules/app'
+import { LangEnum } from '@/enums/system';
+import { useUserWithStore } from '@/store/modules/user'
+console.log(useUserWithStore().load(), 'useUserWithStore');
+console.log(useUserWithStore().info, 'useUserWithStore');
 
+const system = useSystemStore()
 const ThemeStore = useThemeStore();
+
+
 
 const LanguageStore = useLanguageStore();
 const switchValue = ref(false);
@@ -71,8 +79,8 @@ const isLoading = ref(true);
 console.log(i18n.global.t('message.hello'));
 
 const localeLang = ref(i18n.global.locale);
-const useLangChange = (v: LanguageType) => {
-  i18n.global.locale = v;
+const useLangChange = (v: LangEnum) => {
+  // i18n.global.locale = v;
 };
 </script>
 

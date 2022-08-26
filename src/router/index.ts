@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime: 2022-08-26 12:37:15
+ * @LastEditTime: 2022-08-27 03:20:48
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -16,6 +16,7 @@ import {
   IconCustomerService,
   IconMenu
 } from '@arco-design/web-vue/es/icon';
+import { App } from 'vue';
 //配置进度条参数
 // NProgress.configure({ showSpinner: false, minimum: 0.2, easeing: 'swing', speed: 1000, trickleRate: 0.2 });
 NProgress.configure({
@@ -26,7 +27,7 @@ NProgress.configure({
   trickle: false,
   trickleSpeed: 800,
 });
-
+// rgb(var(--primary-6)
 export const routes = [
   {
     path: '/',
@@ -86,4 +87,8 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach((to) => {
   NProgress.done();
 });
-export default router;
+export { router };
+
+export function setupRouter(app: App) {
+  app.use(router)
+}

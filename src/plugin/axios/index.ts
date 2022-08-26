@@ -5,10 +5,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 // import util from '@/libs/util'
 // import loading from '@/libs/util.loading'
 import { API_SERVICE_ENUM } from '@/settings'
-import { useUserStore } from 'store/user'
-import { storeToRefs } from 'pinia';
-const userStore = useUserStore()
-const { getToken } = storeToRefs(userStore)
+import { useUserWithStore } from  '@/store/modules/user'
 import { Notification } from '@arco-design/web-vue'
 import '@arco-design/web-vue/es/notification/style/css.js'
 
@@ -87,12 +84,13 @@ service.interceptors.request.use(
     if (config.service) {
       config.baseURL = API_SERVICE_ENUM[config.service]
     }
+    console.log(config.baseURL,'baseURL')
     // store.dispatch('d2admin/tags/toggle', true)
     // 在请求发送之前做一些处理
     // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
     config.headers['Base-Version'] = import.meta.env.VITE_APP_VERSION
-    if (getToken.value) {
-      config.headers['Authorization'] =  `Bearer ${getToken.value}`
+    if (useUserWithStore().getToken) {
+      config.headers['Authorization'] =  `Bearer ${useUserWithStore().getToken}`
     }
     
     

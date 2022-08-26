@@ -33,6 +33,7 @@
     "conventional-changelog-config-spec": "^2.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
+    "lowdb": "^3.0.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.13",
     "replace": "^1.2.1",
@@ -46,7 +47,7 @@
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
-    "@arco-design/web-vue": "^2.25.0",
+    "@arco-design/web-vue": "^2.35.1",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@types/jest": "^27.4.1",

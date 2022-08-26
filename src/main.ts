@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-26 11:19:26
+ * @LastEditTime: 2022-08-27 01:20:27
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
@@ -15,15 +15,15 @@ import './assets/styles/index.scss';
 import microApp from '@micro-zoe/micro-app';
 // import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
-import router from './router';
-import useEventCenter from './eventCenter';
+import { setupRouter } from './router';
+import { useMicroEvent } from './eventCenter';
 // import useComponents from './components/useComponents';
 
 // pinia
-import { pinia } from './store';
+import { setupStore } from './store';
 
 // i18n
-import i18n from './locales/i18n';
+import i18n from '@/locales/i18n';
 console.log(import.meta, 'import.meta');
 
 // import.meta.env.VITE_APP_VERSION = import('../package.json').version
@@ -120,12 +120,18 @@ microApp.start({
     });
   },
 });
-// 注册事件
-useEventCenter();
-const app = createApp(App);
-// useComponents(app);
-app.use(pinia);
-app.use(router);
-app.use(i18n);
-// .use(ElementPlus)
-app.mount('#app');
+
+function bootstrap() {
+  // 微前端 注册事件
+  useMicroEvent();
+  const app = createApp(App);
+  // useComponents(app);
+  setupStore(app)
+  setupRouter(app)
+  app.use(i18n);
+  // .use(ElementPlus)
+  app.mount('#app');
+}
+
+bootstrap()
+
