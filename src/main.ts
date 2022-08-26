@@ -1,32 +1,31 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-27 01:20:27
+ * @LastEditTime: 2022-08-27 05:37:35
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
  */
-import './index.css';
+import '@/index.css';
 import { createApp } from 'vue';
-import App from './App.vue';
+import App from '@/App.vue';
 import 'nprogress/nprogress.css';
-import './assets/styles/index.scss';
+import '@/assets/styles/index.scss';
 // @ts-ignore
 import microApp from '@micro-zoe/micro-app';
 // import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
-import { setupRouter } from './router';
-import { useMicroEvent } from './eventCenter';
+import { setupRouter } from '@/router';
+import { useMicroEvent } from '@/eventCenter';
 // import useComponents from './components/useComponents';
+import { version } from '../package.json'
 
 // pinia
-import { setupStore } from './store';
+import { setupStore } from '@/store';
 
 // i18n
 import i18n from '@/locales/i18n';
-console.log(import.meta, 'import.meta');
-
-// import.meta.env.VITE_APP_VERSION = import('../package.json').version
+import.meta.env.VITE_APP_VERSION = version
 
 microApp.start({
   lifeCycles: {

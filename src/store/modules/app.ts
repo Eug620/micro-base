@@ -11,7 +11,6 @@ import { defineStore } from 'pinia';
 import i18n from '@/locales/i18n';
 import { useDBStore } from '@/store/modules/db'
 import { DataBaseName, DATABASEPUBLIC } from '@/enums/database';
-import { useUserWithStore } from '@/store/modules/user'
 
 export const useSystemStore = defineStore({
   id: 'app',
@@ -29,11 +28,9 @@ export const useSystemStore = defineStore({
   actions: {
     reload() {
       const db = useDBStore()
-      DataBaseName
       const defaultConfig = db.get({ dbName: DataBaseName.SYSTEM, defaultValue: {} })
       this.setTheme(defaultConfig?.theme)
       this.setLang(defaultConfig?.lang)
-      // useUserWithStore().load()
 
     },
     setTheme(theme: ThemeEnum = ThemeEnum.DARK) {
