@@ -63,7 +63,7 @@ console.log( import.meta.env.VITE_APP_BASE_API, ' import.meta.env.VITE_APP_API')
 
 // 创建一个 axios 实例
 const service = axios.create({
-  withCredentials: true,
+  // withCredentials: true,
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 10 * 60 * 1000, // 请求超时时间
 })
