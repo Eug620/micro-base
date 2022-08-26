@@ -7,6 +7,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 import { API_SERVICE_ENUM } from '@/settings'
 import { useUserWithStore } from  '@/store/modules/user'
 import { Notification } from '@arco-design/web-vue'
+import Cookies from 'js-cookie'
 import '@arco-design/web-vue/es/notification/style/css.js'
 
 // 创建一个错误
@@ -78,6 +79,10 @@ const service = axios.create({
 interface ServiceRequestConfig extends AxiosRequestConfig {
   service?: string
 }
+
+/* eggjs 默认值，可修改 */
+const xsrfCookieName = 'csrfToken';
+const xsrfHeaderName = 'x-csrf-token';
 // 请求拦截器
 service.interceptors.request.use(
   (config: ServiceRequestConfig) => {
@@ -89,6 +94,8 @@ service.interceptors.request.use(
     // 在请求发送之前做一些处理
     // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
     config.headers['Base-Version'] = import.meta.env.VITE_APP_VERSION
+    /* header 中添加 csrfToken */
+    config.headers[xsrfHeaderName] = Cookies.get(xsrfCookieName);
     if (useUserWithStore().getToken) {
       config.headers['Authorization'] =  `Bearer ${useUserWithStore().getToken}`
     }
