@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-04-26 14:23:43
- * @LastEditTime : 2022-04-28 16:31:08
- * @LastEditors  : Eug
+ * @LastEditTime: 2022-08-25 14:53:55
+ * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/locales/lang/zh.ts
  */
@@ -15,6 +15,7 @@ export default {
     developer: 'react项目',
     chat: 'vue项目',
     test: '测试',
+    menu: '菜单',
     notFound: '404',
   },
 };

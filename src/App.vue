@@ -1,8 +1,8 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-19 14:24:22
- * @LastEditors  : Eug
+ * @LastEditTime: 2022-08-25 18:28:37
+ * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/App.vue
 -->
@@ -10,6 +10,9 @@
   <router-view />
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useUserStore } from 'store/user'
+useUserStore().reloadData()
+</script>
 
 <style></style>

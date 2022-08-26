@@ -1,8 +1,8 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-28 14:31:36
- * @LastEditTime : 2022-04-28 17:52:01
- * @LastEditors  : Eug
+ * @LastEditTime: 2022-08-26 12:38:00
+ * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/LayoutMenu.vue
 -->
@@ -18,13 +18,13 @@
       <template v-if="menu.children">
         <a-sub-menu :key="menu.name">
           <template #icon>
-            <component :is="menu?.meta?.icon" />
+            <component :is="menu.meta.icon" />
           </template>
           <template #title>{{ $t(`menu.${String(menu.name)}`) }}</template>
           <template v-if="menu.children">
             <a-menu-item :key="m.name" v-for="m in menu.children">
               <template #icon>
-                <component :is="m?.meta?.icon" />
+                <component :is="m.meta.icon" />
               </template>
               {{ $t(`menu.${String(m.name)}`) }}
             </a-menu-item>
@@ -44,11 +44,14 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed, ref, unref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { routes } from '@/router'
 const router = useRouter();
 const route = useRoute();
-const { routes, history } = router.options;
+const { history } = router.options;
+console.log(routes);
+
 const menus = computed(() => {
   return routes || [];
 });

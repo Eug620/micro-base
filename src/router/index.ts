@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2022-04-28 17:35:51
- * @LastEditors  : Eug
+ * @LastEditTime: 2022-08-26 12:37:15
+ * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
  */
@@ -14,6 +14,7 @@ import {
   IconCodeBlock,
   IconCode,
   IconCustomerService,
+  IconMenu
 } from '@arco-design/web-vue/es/icon';
 //配置进度条参数
 // NProgress.configure({ showSpinner: false, minimum: 0.2, easeing: 'swing', speed: 1000, trickleRate: 0.2 });
@@ -26,7 +27,7 @@ NProgress.configure({
   trickleSpeed: 800,
 });
 
-const routes = [
+export const routes = [
   {
     path: '/',
     name: 'layout',
@@ -54,8 +55,15 @@ const routes = [
         meta: { icon: IconCodeBlock },
         component: () => import('@/pages/test.vue'),
       },
+      {
+        path: '/menu',
+        name: 'menu',
+        meta: { icon: IconMenu },
+        component: () => import('@/pages/menu.vue'),
+      },
     ],
   },
+
   {
     path: '/:pathMatch(.*)*',
     name: 'notFound',

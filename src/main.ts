@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-28 17:42:33
- * @LastEditors  : Eug
+ * @LastEditTime: 2022-08-26 11:19:26
+ * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
  */
@@ -24,6 +24,9 @@ import { pinia } from './store';
 
 // i18n
 import i18n from './locales/i18n';
+console.log(import.meta, 'import.meta');
+
+// import.meta.env.VITE_APP_VERSION = import('../package.json').version
 
 microApp.start({
   lifeCycles: {
