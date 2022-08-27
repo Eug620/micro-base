@@ -61,7 +61,7 @@ import { ref } from 'vue';
 import i18n from '@/locales/i18n';
 import { useSystemStore } from 'store/modules/app'
 import { LangEnum } from '@/enums/system';
-import { useUserWithStore } from '@/store/modules/user'
+import { useUserStore } from '@/store/modules/user'
 
 const system = useSystemStore()
 

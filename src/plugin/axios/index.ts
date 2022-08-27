@@ -5,7 +5,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 // import util from '@/libs/util'
 // import loading from '@/libs/util.loading'
 import { API_SERVICE_ENUM } from '@/settings'
-import { useUserWithStore } from  '@/store/modules/user'
+import { useUserStore } from  '@/store/modules/user'
 import { Notification } from '@arco-design/web-vue'
 import Cookies from 'js-cookie'
 import '@arco-design/web-vue/es/notification/style/css.js'
@@ -96,8 +96,8 @@ service.interceptors.request.use(
     config.headers['Base-Version'] = import.meta.env.VITE_APP_VERSION
     /* header 中添加 csrfToken */
     config.headers[xsrfHeaderName] = Cookies.get(xsrfCookieName);
-    if (useUserWithStore().getToken) {
-      config.headers['Authorization'] =  `Bearer ${useUserWithStore().getToken}`
+    if (useUserStore().getToken) {
+      config.headers['Authorization'] =  `Bearer ${useUserStore().getToken}`
     }
     
     

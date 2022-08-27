@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-27 03:10:20
+ * @LastEditTime: 2022-08-27 19:57:18
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/App.vue
@@ -11,12 +11,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useUserWithStore } from '@/store/modules/user'
+import { useUserStore } from '@/store/modules/user'
 import { useSystemStore } from '@/store/modules/app'
 
-
+// 配置信息
 useSystemStore().reload()
-useUserWithStore().load()
+// 用户信息
+useUserStore().load()
 </script>
 
 <style></style>

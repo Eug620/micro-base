@@ -2,7 +2,7 @@
  * @Author: eug yyh3531@163.com
  * @Date: 2022-08-25 17:15:54
  * @LastEditors: eug yyh3531@163.com
- * @LastEditTime: 2022-08-25 17:55:32
+ * @LastEditTime: 2022-08-27 17:41:41
  * @FilePath: /micro-base/src/api/menu/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,6 +13,10 @@ const Url = {
     'server': {
         'userLogin': '/user/login',
         'userAll': '/user/all',
+        'userAdd': '/user/add',
+        'userUpdate': '/user/update',
+        'userDelete': '/user/delete',
+        'userIndex': '/user/index',
     }
 }
 
@@ -28,7 +32,7 @@ const isMock = import.meta.env.VITE_APP_BUILD_MODE === 'true'
 const requestServerName = isMock ? 'mock' : 'server'
 
 export default {
-    GetUserAll(params: any | undefined) {
+    GetUserAll(params?: any) {
         return request({
             url: Url[requestServerName].userAll,
             method: 'get',
@@ -41,5 +45,33 @@ export default {
             method: 'post',
             data
         })
-    }
+    },
+    UserAdd(data) {
+        return request({
+            url: Url[requestServerName].userAdd,
+            method: 'post',
+            data
+        })
+    },
+    UserUpdate(data) {
+        return request({
+            url: Url[requestServerName].userUpdate,
+            method: 'post',
+            data
+        })
+    },
+    UserDelete(data) {
+        return request({
+            url: Url[requestServerName].userDelete,
+            method: 'post',
+            data
+        })
+    },
+    UserIndex(params?: any) {
+        return request({
+            url: Url[requestServerName].userIndex,
+            method: 'get',
+            params
+        })
+    },
 }

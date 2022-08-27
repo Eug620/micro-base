@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-27 01:25:07
+ * @LastEditTime: 2022-08-27 14:45:22
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -42,8 +42,8 @@ export default ({ mode }) =>
       open: true,
       proxy: {
         '/dev_base_api': {
-          // target: 'http://127.0.0.1:5000',
-          target: 'http://47.93.229.170:5000',
+          target: 'http://127.0.0.1:5000',
+          // target: 'http://47.93.229.170:5000',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/dev_base_api/, '')
         }

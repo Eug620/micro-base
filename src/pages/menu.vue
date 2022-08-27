@@ -2,7 +2,7 @@
  * @Author: eug yyh3531@163.com
  * @Date: 2022-08-25 14:52:51
  * @LastEditors: eug yyh3531@163.com
- * @LastEditTime: 2022-08-27 04:37:02
+ * @LastEditTime: 2022-08-27 22:27:06
  * @FilePath: /micro-base/src/pages/menu.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,37 +10,30 @@
   <div class="menu-container">
     <a-card title="User">
       <template #extra>
-        <a-link>
-          <a-button v-if="!userStore.isLogin" type="primary" @click="useLogin"
-            >login</a-button
-          >
-          <a-button v-else type="primary" @click="userStore.logout"
-            >logout</a-button
-          >
-        </a-link>
+        <template v-if="!userStore.isLogin">
+          <a-radio-group v-model="position" type="button">
+            <a-radio value="SignIn">Sign in</a-radio>
+            <a-radio value="SignUp">Sign up</a-radio>
+          </a-radio-group>
+        </template>
+        <template v-else>
+          <base-edit-info  v-model:value="isInfoEdit" @update:value="isInfoEdit"/>
+          <a-divider direction="vertical" />
+          <base-sign-out/>
+          <a-divider direction="vertical" />
+          <base-draw-down/>
+        </template>
       </template>
       <template v-if="!userStore.isLogin">
-        <a-form :model="loginForm" auto-label-width>
-          <a-form-item field="name" label="name">
-            <a-input
-              v-model="loginForm.name"
-              placeholder="please enter your name..."
-            />
-          </a-form-item>
-          <a-form-item field="password" label="password">
-            <a-input
-              v-model="loginForm.password"
-              placeholder="please enter your password..."
-            />
-          </a-form-item>
-        </a-form>
+        <base-sign-form v-model:type="position"/>
       </template>
       <template v-else>
-        <a-descriptions :data="infoData" title="User Info" fill :column="1" />
+        <base-user-info v-model:value="isInfoEdit"/>
       </template>
     </a-card>
 
-    <a-card title="Menu" style="margin-top: 10px">
+
+    <a-card title="Menu" style="margin-top: 10px" v-if="userStore.isLogin">
       <template #extra>
         <a-button
           :disabled="!userStore.isLogin"
@@ -48,7 +41,9 @@
           @click="useAddMenu"
           >add</a-button
         >
-        <a-button style="margin-left:10px;" :disabled="!userStore.isLogin" type="primary" @click="useMenu"
+          <a-divider direction="vertical" />
+
+        <a-button :disabled="!userStore.isLogin" type="primary" @click="useMenu"
           >menu</a-button
         >
       </template>
@@ -90,6 +85,12 @@
 
         <a-form-item field="path" label="path">
           <a-input v-model="menuForm.path" placeholder="please enter path..." />
+        </a-form-item>
+        <a-form-item field="title" label="title">
+          <a-input
+            v-model="menuForm.title"
+            placeholder="please enter title..."
+          />
         </a-form-item>
         <a-form-item field="component_path" label="component_path">
           <a-input
@@ -159,32 +160,14 @@ import ServerApi from '@/api';
 import { computed, reactive, ref, unref } from 'vue';
 // import { useUserStore } from 'store/user';
 import { storeToRefs } from 'pinia';
-import { useUserWithStore } from '@/store/modules/user';
-const userStore = useUserWithStore();
-const loginLoading = ref(false);
+import { useUserStore } from '@/store/modules/user';
+const userStore = useUserStore();
 const { getInfo } = storeToRefs(userStore);
-console.log(userStore.info, '????');
+const position = ref('SignIn');
 
+
+const isInfoEdit = ref(false)
 const subMenu = ref([]);
-const loginForm = reactive({
-  name: '',
-  password: '',
-});
-const keys = computed(() => {
-  return Object.keys(unref(getInfo));
-});
-const infoData = computed(() => {
-  return unref(keys).map((k) => {
-    return { label: k, value: getInfo.value[k] };
-  });
-});
-const useLogin = async () => {
-  try {
-    let res: any = await userStore.login(loginForm);
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 const useMenu = async () => {
   try {
@@ -203,6 +186,7 @@ const dataIndex = [
   'custom',
   'id',
   'name',
+  'title',
   'description',
   'path',
   'component_path',
@@ -235,6 +219,7 @@ const baseItem = {
   name: '',
   description: '',
   path: '',
+  title: '',
   component_path: '',
   affix: false,
   isEle: false,
@@ -248,11 +233,12 @@ const baseItem = {
   isChecked: false,
   redirect: '',
   service: '',
-}
+};
 const menuForm = reactive({
   name: '',
   description: '',
   path: '',
+  title: '',
   component_path: '',
   affix: false,
   isEle: false,
@@ -268,44 +254,48 @@ const menuForm = reactive({
   service: '',
 });
 const useEditRoute = (record) => {
-  isEdit.value = true
+  const _record = unref(record)
+  Object.keys(_record).forEach(k => {
+    menuForm[k] = _record[k]
+  })
+  
+  isEdit.value = true;
   visibleDrawer.value = true;
 };
 
 const useSubmitEdit = async () => {
   try {
-    let res:any = await ServerApi.AddBaseMenu(menuForm)
+    let res: any = await ServerApi.AddBaseMenu(menuForm);
     console.log(res);
     if (res.code === 200) {
       Notification.success({
         title: 'Add Success',
-        content: res.msg
-      })
-      useCancelEdit()
+        content: res.msg,
+      });
+      useCancelEdit();
     } else {
       Notification.error({
-      title: 'Error',
-      content: res.msg
-    })
+        title: 'Error',
+        content: res.msg,
+      });
     }
-    
   } catch (error) {
     Notification.error({
       title: 'Error',
-      content: error
-    })
+      content: error,
+    });
   }
 };
 const useResetDrawer = () => {
   for (const key in baseItem) {
-    menuForm[key] = baseItem[key]
+    menuForm[key] = baseItem[key];
   }
-}
+};
 const useCancelEdit = () => {
   visibleDrawer.value = false;
-  useResetDrawer()
-
+  useResetDrawer();
 };
+
 </script>
 
 <style lang="scss">
