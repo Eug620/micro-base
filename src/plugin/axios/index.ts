@@ -11,14 +11,14 @@ import Cookies from 'js-cookie'
 import '@arco-design/web-vue/es/notification/style/css.js'
 
 // 创建一个错误
-function errorCreate(msg: any) {
+function errorCreate(msg: any, path: any) {
   const error = new Error(msg)
-  errorLog(error)
+  errorLog(error, path)
   throw error
 }
 
 // 记录和显示错误
-function errorLog(error: Error) {
+function errorLog(error: Error, path: any) {
   // 添加到日志
   // store.dispatch('d2admin/log/push', {
   //   message: '数据请求异常',
@@ -28,7 +28,7 @@ function errorLog(error: Error) {
   //   }
   // })
   // 打印到控制台
-  if (process.env.NODE_ENV === 'development') {
+  if (import.meta.env.MODE === 'development') {
     // util.log.danger('>>>>>> Error >>>>>>')
     console.log(error)
   }
@@ -47,7 +47,7 @@ function errorLog(error: Error) {
 
   Notification.error({
     content: errorMsg,
-    title: 'Error',
+    title: path || 'Error',
     duration: 5 * 1000
   })
   /// 如果是401那就去登录 并且不能是mock
@@ -136,20 +136,20 @@ service.interceptors.response.use(
           return dataAxios.data
         case 403:
           // [ 示例 ] 其它和后台约定的 code
-          errorCreate(`[ code: 403 ] ${dataAxios.msg} : ${response.config.url}`)
+          errorCreate(dataAxios.msg,response.config.url)
           break
         case 204:
           // [ 示例 ] 其它和后台约定的 code
-          errorCreate(`[ code: 204 ] ${dataAxios.msg}: ${response.config.url}`)
+          errorCreate(dataAxios.msg,response.config.url)
           break
         case 401:
           /// 需要去退出到登录页
           // [ 示例 ] 其它和后台约定的 code
-          errorCreate(`[ code: 401 ] ${dataAxios.msg}, 2秒后自动跳转至登录 : ${response.config.url}`)
+          errorCreate(dataAxios.msg,response.config.url)
           break
         default:
           // 不是正确的 code
-          errorCreate(`${dataAxios.msg}: ${response.config.url}`)
+          errorCreate(dataAxios.msg,response.config.url)
           break
       }
     }

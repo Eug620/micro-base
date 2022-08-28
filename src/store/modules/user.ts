@@ -2,11 +2,11 @@
  * @Author: eug yyh3531@163.com
  * @Date: 2022-08-27 00:22:07
  * @LastEditors: eug yyh3531@163.com
- * @LastEditTime: 2022-08-27 19:29:22
+ * @LastEditTime: 2022-08-28 02:43:54
  * @FilePath: /micro-base/src/store/modules/user.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { defineStore, StoreDefinition } from 'pinia';
+import { defineStore } from 'pinia';
 import { useDBStore } from '@/store/modules/db'
 import { DataBaseName } from '@/enums/database';
 import ServerApi from '@/api';
