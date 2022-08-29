@@ -41,13 +41,13 @@ export const routes = [
       {
         path: '/developer/:page*',
         name: 'developer',
-        meta: { icon: IconCustomerService },
+        meta: { icon: IconCustomerService, keepAlive: true },
         component: () => import('@/pages/developer.vue'),
       },
       {
         path: '/chat/:page*',
         name: 'chat',
-        meta: { icon: IconCode },
+        meta: { icon: IconCode, keepAlive: true },
         component: () => import('@/pages/chat.vue'),
       },
       {

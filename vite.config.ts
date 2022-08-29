@@ -22,7 +22,16 @@ export default ({ mode }) =>
   defineConfig({
     plugins: [
       // scriptName(),
-      vue(),
+      vue(
+        // 消除控制台警告 [Vue warn]: Failed to resolve component: micro-app
+        {
+          template: {
+            compilerOptions: {
+              isCustomElement: (tag) => tag.startsWith('micro-'),
+            },
+          },
+        },
+      ),
       createHtmlPlugin({
         inject: {
           data: {
@@ -45,15 +54,15 @@ export default ({ mode }) =>
           // target: 'http://127.0.0.1:5000',
           target: 'http://47.93.229.170:5000',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/dev_base_api/, '')
-        }
-      }
+          rewrite: (path) => path.replace(/^\/dev_base_api/, ''),
+        },
+      },
     },
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
         store: resolve(__dirname, './src/store'),
-        'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js'
+        'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
       },
       extensions: ['.js', '.json', '.ts', '.vue'], // 使用路径别名时想要省略的后缀名，可以自己 增减
     },
