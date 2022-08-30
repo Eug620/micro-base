@@ -11,14 +11,14 @@ import Cookies from 'js-cookie'
 import '@arco-design/web-vue/es/notification/style/css.js'
 
 // 创建一个错误
-function errorCreate(msg: any, path: any) {
+function errorCreate(msg: any, path?: any) {
   const error = new Error(msg)
   errorLog(error, path)
   throw error
 }
 
 // 记录和显示错误
-function errorLog(error: Error, path: any) {
+function errorLog(error: Error, path?: any) {
   // 添加到日志
   // store.dispatch('d2admin/log/push', {
   //   message: '数据请求异常',
