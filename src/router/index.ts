@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime: 2022-08-27 03:20:48
+ * @LastEditTime: 2022-08-31 16:49:34
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -51,14 +51,14 @@ export const routes = [
         component: () => import('@/pages/chat.vue'),
       },
       {
-        path: '/test',
-        name: 'test',
+        path: '/theme',
+        name: 'theme',
         meta: { icon: IconCodeBlock },
         component: () => import('@/pages/test.vue'),
       },
       {
-        path: '/menu',
-        name: 'menu',
+        path: '/login',
+        name: 'login',
         meta: { icon: IconMenu },
         component: () => import('@/pages/menu.vue'),
       },
