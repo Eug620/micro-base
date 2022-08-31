@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-27 23:00:08
+ * @LastEditTime: 2022-08-31 16:34:18
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -64,6 +64,7 @@ export default ({ mode }) =>
         store: resolve(__dirname, './src/store'),
         'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
       },
+      dedupe: ['vue'],
       extensions: ['.js', '.json', '.ts', '.vue'], // 使用路径别名时想要省略的后缀名，可以自己 增减
     },
     // css: {
@@ -104,6 +105,7 @@ export default ({ mode }) =>
         },
       },
     },
+    
     //调整控制台输出的级别 'info' | 'warn' | 'error' | 'silent'
     logLevel: 'info',
     //设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息
