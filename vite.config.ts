@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-31 16:34:18
+ * @LastEditTime: 2022-08-31 17:18:56
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -63,6 +63,7 @@ export default ({ mode }) =>
         '@': resolve(__dirname, 'src'),
         store: resolve(__dirname, './src/store'),
         'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
+        'vue': resolve(__dirname, './node_modules/vue')
       },
       dedupe: ['vue'],
       extensions: ['.js', '.json', '.ts', '.vue'], // 使用路径别名时想要省略的后缀名，可以自己 增减

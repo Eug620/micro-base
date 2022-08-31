@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime: 2022-08-31 16:49:34
+ * @LastEditTime: 2022-08-31 17:19:25
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -36,7 +36,7 @@ export const routes = [
     component: () => import('@/layout/index.vue'),
     meta: { icon: IconApps },
     // redirect: '/chat/',
-    redirect: '/test/',
+    redirect: '/login/',
     children: [
       {
         path: '/developer/:page*',
