@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-31 17:29:47
+ * @LastEditTime: 2022-08-31 18:08:20
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -68,16 +68,6 @@ export default ({ mode }) =>
       dedupe: ['vue'],
       extensions: ['.js', '.json', '.ts', '.vue'], // 使用路径别名时想要省略的后缀名，可以自己 增减
     },
-    worker: {
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          globals: {
-            vue: 'Vue',
-          },
-        },
-      },
-    },
     // css: {
     //   // [WARNING] "@charset" must be the first rule in the file
     //   postcss: {
@@ -97,6 +87,14 @@ export default ({ mode }) =>
     // },
     base: '/',
     build: {
+      rollupOptions: {
+        external: ['vue'],
+        output: {
+          globals: {
+            vue: 'Vue',
+          },
+        },
+      },
       assetsDir: 'assets',
       //设置为 false 来禁用将构建后的文件写入磁盘
       write: true,
