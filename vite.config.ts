@@ -63,7 +63,7 @@ export default ({ mode }) =>
         '@': resolve(__dirname, 'src'),
         store: resolve(__dirname, './src/store'),
         'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
-        'vue': resolve(__dirname, './node_modules/vue')
+        // 'vue': resolve(__dirname, './node_modules/vue')
       },
       dedupe: ['vue'],
       extensions: ['.js', '.json', '.ts', '.vue'], // 使用路径别名时想要省略的后缀名，可以自己 增减
@@ -87,14 +87,6 @@ export default ({ mode }) =>
     // },
     base: '/',
     build: {
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          globals: {
-            vue: 'Vue',
-          },
-        },
-      },
       assetsDir: 'assets',
       //设置为 false 来禁用将构建后的文件写入磁盘
       write: true,
