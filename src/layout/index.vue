@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-26 16:22:06
- * @LastEditTime: 2022-08-28 11:37:48
+ * @LastEditTime: 2022-08-31 18:46:02
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/_index.vue
@@ -12,8 +12,10 @@
       <LayoutMenu />
     </a-layout-sider>
     <a-layout class="micro-base-layout-view ">
-      <router-view v-slot="{ Component, route }">
-        <template v-if="route.meta.keepAlive">
+      <!-- <router-view v-slot="{ Component, route }"> -->
+      <router-view v-slot="{ Component }">
+        <component :is="Component"  class="animate__animated animate__fadeIn"/>
+        <!-- <template v-if="route.meta.keepAlive">
           <transition name="el-fade-in">
             <keep-alive>
               <component :is="Component"  class="animate__animated animate__fadeIn"/>
@@ -22,7 +24,7 @@
         </template>
         <template v-else>
           <component :is="Component" class="animate__animated animate__fadeIn" />
-        </template>
+        </template> -->
       </router-view>
     </a-layout>
   </a-layout>

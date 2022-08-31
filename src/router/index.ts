@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime: 2022-08-31 17:19:25
+ * @LastEditTime: 2022-08-31 18:45:16
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -41,13 +41,15 @@ export const routes = [
       {
         path: '/developer/:page*',
         name: 'developer',
-        meta: { icon: IconCustomerService, keepAlive: true },
+        // meta: { icon: IconCustomerService, keepAlive: true },
+        meta: { icon: IconCustomerService },
         component: () => import('@/pages/developer.vue'),
       },
       {
         path: '/chat/:page*',
         name: 'chat',
-        meta: { icon: IconCode, keepAlive: true },
+        // meta: { icon: IconCode, keepAlive: true },
+        meta: { icon: IconCode },
         component: () => import('@/pages/chat.vue'),
       },
       {
