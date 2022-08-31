@@ -1,0 +1,1 @@
+import{defineComponent as e,ref as a,openBlock as o,createElementBlock as r}from"vue";const t=["data"],l=e({__name:"developer",setup(e){const l=a({from:"来自基座的初始化数据"});return(e,a)=>(o(),r("micro-app",{name:"developer",url:"http://47.93.229.170:8082/base/developer/",data:l.value,macro:"",baseRoute:"/developer",disableSandbox:"",inline:""},null,8,t))}});export{l as default};

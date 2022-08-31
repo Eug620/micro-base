@@ -1,0 +1,1 @@
+import{openBlock as r,createElementBlock as t}from"vue";var n=((r,t)=>{const n=r.__vccOpts||r;for(const[o,e]of t)n[o]=e;return n})({},[["render",function(n,o){return r(),t("div",null,"404")}]]);export{n as default};
