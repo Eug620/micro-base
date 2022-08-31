@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-31 17:18:56
+ * @LastEditTime: 2022-08-31 17:29:47
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -68,6 +68,16 @@ export default ({ mode }) =>
       dedupe: ['vue'],
       extensions: ['.js', '.json', '.ts', '.vue'], // 使用路径别名时想要省略的后缀名，可以自己 增减
     },
+    worker: {
+      rollupOptions: {
+        external: ['vue'],
+        output: {
+          globals: {
+            vue: 'Vue',
+          },
+        },
+      },
+    },
     // css: {
     //   // [WARNING] "@charset" must be the first rule in the file
     //   postcss: {
@@ -106,7 +116,7 @@ export default ({ mode }) =>
         },
       },
     },
-    
+
     //调整控制台输出的级别 'info' | 'warn' | 'error' | 'silent'
     logLevel: 'info',
     //设为 false 可以避免 Vite 清屏而错过在终端中打印某些关键信息
