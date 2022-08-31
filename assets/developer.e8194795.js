@@ -1,0 +1,1 @@
+import{d as e,r as a,o,a as r}from"./index.1ed9e7c6.js";const d=["data"],s=e({__name:"developer",setup(e){const s=a({from:"来自基座的初始化数据"});return(e,a)=>(o(),r("micro-app",{name:"developer",url:"http://47.93.229.170:8082/base/developer/",data:s.value,macro:"",baseRoute:"/developer",disableSandbox:"",inline:""},null,8,d))}});export{s as default};
