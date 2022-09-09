@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime: 2022-08-27 19:34:55
+ * @LastEditTime: 2022-09-09 10:01:47
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
@@ -29,6 +29,15 @@ import.meta.env.VITE_APP_VERSION = version
 
 microApp.start({
   lifeCycles: {
+    beforeshow(){
+      console.log('beforeshow 全局监听');
+    },
+    aftershow(){
+      console.log('aftershow 全局监听');
+    },
+    afterhidden(){
+      console.log('afterhidden 全局监听');
+    },
     created() {
       console.log('created 全局监听');
     },
