@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:11:51
- * @LastEditTime: 2022-08-28 14:54:45
+ * @LastEditTime: 2022-09-09 09:50:44
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/pages/chat.vue
@@ -16,6 +16,7 @@
     baseRoute="/chat"
     disableSandbox
     inline
+    keep-alive
   />
   <!-- 本地 -->
   <!-- <micro-app

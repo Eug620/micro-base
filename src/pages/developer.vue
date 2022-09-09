@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-28 14:09:28
- * @LastEditTime: 2022-08-27 23:26:08
+ * @LastEditTime: 2022-09-09 09:55:04
  * @LastEditors: eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /github/micro-base/src/pages/developer.vue
@@ -16,6 +16,7 @@
     baseRoute="/developer"
     disableSandbox
     inline
+    keep-alive
   />
   <!-- 本地 -->
   <!-- <micro-app
