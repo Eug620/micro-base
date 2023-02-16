@@ -1,1 +1,0 @@
-import{d as a,r as e,o as t,a as s}from"./index.5093ef28.js";const o=["data"],n=a({__name:"chat",setup(a){const n=e({from:"来自基座的初始化数据"});return(a,e)=>(t(),s("micro-app",{name:"chat",url:"http://47.93.229.170:8081/base/chat/",data:n.value,macro:"",baseRoute:"/chat",disableSandbox:"",inline:"","keep-alive":""},null,8,o))}});export{n as default};
