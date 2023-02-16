@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-28 15:39:50
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-16 16:11:56
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
  */
@@ -40,6 +40,25 @@ export default ({ mode }) =>
         strict: false,
       },
       open: true,
+      proxy: {
+        '/api': {
+          target: 'http://47.93.229.170:3000',
+          // target: 'http://localhost:3000',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, '')
+        },
+        '/dev_base_api': {
+          // target: 'http://127.0.0.1:5000',
+          target: 'http://47.93.229.170:5000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/dev_base_api/, '')
+        },
+        '/dev_han_api': {
+          target: 'https://api.vvhan.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/dev_han_api/, '')
+        },
+      }
     },
     resolve: {
       alias: {
