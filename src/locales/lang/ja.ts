@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-04-26 14:24:28
- * @LastEditTime : 2023-02-21 15:05:31
+ * @LastEditTime : 2023-02-21 15:38:02
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/locales/lang/ja.ts
@@ -16,5 +16,6 @@ export default {
     chat: 'チャット',
     setting: 'テスト',
     notFound: '見出されない',
+    dashboard: 'XXXX'
   },
 };

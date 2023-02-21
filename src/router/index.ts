@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2023-02-21 15:08:00
+ * @LastEditTime : 2023-02-21 16:26:57
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -13,7 +13,8 @@ import {
   IconApps,
   IconCode,
   IconTool,
-  IconSettings
+  IconSettings,
+  IconCommand
 } from '@arco-design/web-vue/es/icon';
 //配置进度条参数
 // NProgress.configure({ showSpinner: false, minimum: 0.2, easeing: 'swing', speed: 1000, trickleRate: 0.2 });
@@ -27,6 +28,12 @@ NProgress.configure({
 });
 
 export const frameIn = [
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    meta: { icon: IconCommand },
+    component: () => import('@/pages/dashboard.vue'),
+  },
   {
     path: '/setting',
     name: 'setting',
@@ -55,7 +62,7 @@ const routes = [
     component: () => import('@/layout/index.vue'),
     meta: { icon: IconApps },
     // redirect: '/chat/',
-    redirect: '/setting/',
+    redirect: '/dashboard/',
     children: [
       ...frameIn
     ],

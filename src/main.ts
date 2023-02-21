@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-28 17:42:33
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-21 15:28:49
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
  */
@@ -18,6 +18,9 @@ import microApp from '@micro-zoe/micro-app';
 import router from './router';
 import useEventCenter from './eventCenter';
 // import useComponents from './components/useComponents';
+
+// arco-design notification
+import '@arco-design/web-vue/es/notification/style/css.js'
 
 // pinia
 import { pinia } from './store';
