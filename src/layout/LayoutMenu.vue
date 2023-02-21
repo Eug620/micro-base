@@ -1,8 +1,8 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-28 14:31:36
- * @LastEditTime : 2022-04-28 17:52:01
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-21 14:13:36
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/LayoutMenu.vue
 -->
@@ -14,8 +14,8 @@
     auto-open-selected
     @menu-item-click="useMenuItemClick"
   >
-    <template v-for="menu in menus">
-      <template v-if="menu.children">
+    <!-- <template v-for="menu in menus"> -->
+      <!-- <template v-if="menu.children">
         <a-sub-menu :key="menu.name">
           <template #icon>
             <component :is="menu?.meta?.icon" />
@@ -31,26 +31,29 @@
           </template>
         </a-sub-menu>
       </template>
-      <template v-else>
-        <a-menu-item :key="menu.name">
+      <template v-else> -->
+        <a-menu-item :key="menu.name" v-for="menu in menus">
           <template #icon>
             <component :is="menu?.meta?.icon" />
           </template>
           {{ $t(`menu.${String(menu.name)}`) }}
         </a-menu-item>
-      </template>
-    </template>
+      <!-- </template> -->
+    <!-- </template> -->
   </a-menu>
 </template>
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { frameIn } from '@/router'
 const router = useRouter();
 const route = useRoute();
 const { routes, history } = router.options;
+console.log(routes);
+
 const menus = computed(() => {
-  return routes || [];
+  return frameIn || [];
 });
 
 const defaultSelectedKey = ref([route.name]);

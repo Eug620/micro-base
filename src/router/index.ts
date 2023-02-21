@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2022-04-28 17:35:51
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-21 15:08:00
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
  */
@@ -11,9 +11,9 @@ import NProgress from 'nprogress';
 import {
   IconQuestion,
   IconApps,
-  IconCodeBlock,
   IconCode,
-  IconCustomerService,
+  IconTool,
+  IconSettings
 } from '@arco-design/web-vue/es/icon';
 //配置进度条参数
 // NProgress.configure({ showSpinner: false, minimum: 0.2, easeing: 'swing', speed: 1000, trickleRate: 0.2 });
@@ -26,6 +26,27 @@ NProgress.configure({
   trickleSpeed: 800,
 });
 
+export const frameIn = [
+  {
+    path: '/setting',
+    name: 'setting',
+    meta: { icon: IconSettings },
+    component: () => import('@/pages/setting.vue'),
+  },
+  {
+    path: '/developer/:page*',
+    name: 'developer',
+    meta: { icon: IconTool },
+    component: () => import('@/pages/developer.vue'),
+  },
+  {
+    path: '/chat/:page*',
+    name: 'chat',
+    meta: { icon: IconCode },
+    component: () => import('@/pages/chat.vue'),
+  },
+  
+]
 const routes = [
   {
     path: '/',
@@ -34,26 +55,9 @@ const routes = [
     component: () => import('@/layout/index.vue'),
     meta: { icon: IconApps },
     // redirect: '/chat/',
-    redirect: '/test/',
+    redirect: '/setting/',
     children: [
-      {
-        path: '/developer/:page*',
-        name: 'developer',
-        meta: { icon: IconCustomerService },
-        component: () => import('@/pages/developer.vue'),
-      },
-      {
-        path: '/chat/:page*',
-        name: 'chat',
-        meta: { icon: IconCode },
-        component: () => import('@/pages/chat.vue'),
-      },
-      {
-        path: '/test',
-        name: 'test',
-        meta: { icon: IconCodeBlock },
-        component: () => import('@/pages/test.vue'),
-      },
+      ...frameIn
     ],
   },
   {

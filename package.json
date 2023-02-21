@@ -32,6 +32,7 @@
     "conventional-changelog-config-spec": "^2.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
+    "lowdb": "^3.0.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.13",
     "replace": "^1.2.1",
