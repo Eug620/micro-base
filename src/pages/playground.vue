@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-22 10:35:27
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-02-22 10:55:56
+ * @LastEditTime : 2023-02-22 11:09:57
  * @FilePath     : /micro-base/src/pages/playground.vue
  * @Description  : filename
  * 
@@ -65,7 +65,7 @@ store.setImportMap({
 .playground-container {
     .arco-card-size-medium,
     .arco-card-body {
-        padding: 0px;
+        padding: 0px !important;
     }
 }
 </style>
