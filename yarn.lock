@@ -779,10 +779,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@micro-zoe/micro-app@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.npmmirror.com/@micro-zoe/micro-app/-/micro-app-0.8.5.tgz#44883941fbc46cd68d5ece261dc353c9525efb4e"
-  integrity sha512-PFnoAxepT/njBEP1fkavvxVoyWsEexcq/BGq7rcW+3kavOHwrm3yNpDlsLEkVT3FVGA11tCWe0TmbJMsFYTTSg==
+"@micro-zoe/micro-app@^1.0.0-alpha.10":
+  version "1.0.0-alpha.10"
+  resolved "https://registry.npmmirror.com/@micro-zoe/micro-app/-/micro-app-1.0.0-alpha.10.tgz#3e797ac1fff89767c5a3035f05924edf8677cf4d"
+  integrity sha512-8pILuTZyoFOm0itZ6a78AkNqfsyZhGpNkH5oMk+22Bz3xyRlplRpvjujjtEgkg06rCFHWYwvttiV03UQ2aqh1Q==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
