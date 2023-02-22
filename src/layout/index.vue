@@ -1,10 +1,10 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-26 16:22:06
- * @LastEditTime : 2022-04-28 17:05:22
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-22 13:16:13
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
- * @FilePath     : /micro-base/src/layout/_index.vue
+ * @FilePath     : /micro-base/src/layout/index.vue
 -->
 <template>
   <a-layout class="micro-base-layout">
@@ -13,16 +13,21 @@
     </a-layout-sider>
     <a-layout class="micro-base-layout-view">
       <router-view v-slot="{ Component, route }">
-        <template v-if="route.meta.keepAlive">
-          <transition name="el-fade-in">
-            <keep-alive>
-              <component :is="Component" />
-            </keep-alive>
-          </transition>
-        </template>
-        <template v-else>
-          <component :is="Component" />
-        </template>
+        <component
+          :is="Component"
+          :key="route.fullPath"
+          class="animate__animated animate__fadeIn"
+          v-if="!route.meta.keepAlive"
+        />
+
+        <keep-alive>
+          <component
+            :is="Component"
+            :key="route.fullPath"
+            class="animate__animated animate__fadeIn"
+            v-if="route.meta.keepAlive"
+          />
+        </keep-alive>
       </router-view>
     </a-layout>
   </a-layout>

@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2023-02-22 10:39:16
+ * @LastEditTime : 2023-02-22 13:16:43
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -32,34 +32,34 @@ export const frameIn = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    meta: { icon: IconCommand },
+    meta: { icon: IconCommand, keepAlive: true  },
     component: () => import('@/pages/dashboard.vue'),
   },
   {
     path: '/setting',
     name: 'setting',
-    meta: { icon: IconSettings },
+    meta: { icon: IconSettings, keepAlive: true  },
     component: () => import('@/pages/setting.vue'),
   },
   {
     path: '/developer/:page*',
     name: 'developer',
-    meta: { icon: IconTool },
+    meta: { icon: IconTool, keepAlive: true },
     component: () => import('@/pages/developer.vue'),
   },
   {
     path: '/chat/:page*',
     name: 'chat',
-    meta: { icon: IconCode },
+    meta: { icon: IconCode, keepAlive: true },
     component: () => import('@/pages/chat.vue'),
   },
   {
     path: '/playground',
     name: 'playground',
-    meta: { icon: IconCodeSquare },
+    meta: { icon: IconCodeSquare, keepAlive: true  },
     component: () => import('@/pages/playground.vue'),
   },
-  
+
 ]
 const routes = [
   {
