@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2023-02-21 16:26:57
+ * @LastEditTime : 2023-02-22 10:39:16
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -14,7 +14,8 @@ import {
   IconCode,
   IconTool,
   IconSettings,
-  IconCommand
+  IconCommand,
+  IconCodeSquare
 } from '@arco-design/web-vue/es/icon';
 //配置进度条参数
 // NProgress.configure({ showSpinner: false, minimum: 0.2, easeing: 'swing', speed: 1000, trickleRate: 0.2 });
@@ -51,6 +52,12 @@ export const frameIn = [
     name: 'chat',
     meta: { icon: IconCode },
     component: () => import('@/pages/chat.vue'),
+  },
+  {
+    path: '/playground',
+    name: 'playground',
+    meta: { icon: IconCodeSquare },
+    component: () => import('@/pages/playground.vue'),
   },
   
 ]
