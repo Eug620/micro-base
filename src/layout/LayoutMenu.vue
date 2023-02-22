@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-28 14:31:36
- * @LastEditTime : 2023-02-21 14:13:36
+ * @LastEditTime : 2023-02-22 14:24:21
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/LayoutMenu.vue
@@ -50,7 +50,6 @@ import { frameIn } from '@/router'
 const router = useRouter();
 const route = useRoute();
 const { routes, history } = router.options;
-console.log(routes);
 
 const menus = computed(() => {
   return frameIn || [];

@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-26 16:22:06
- * @LastEditTime : 2023-02-22 13:16:13
+ * @LastEditTime : 2023-02-22 14:15:31
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/index.vue
@@ -36,17 +36,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import LayoutMenu from './LayoutMenu.vue';
-const switchTheme = ref('light');
 
-const useThemeChange = (value: any) => {
-  if (value === 'dark') {
-    document.body.setAttribute('arco-theme', 'dark');
-  } else {
-    // 设置为暗黑主题
-    // 恢复亮色主题
-    document.body.removeAttribute('arco-theme');
-  }
-};
 </script>
 
 <style lang="scss">
