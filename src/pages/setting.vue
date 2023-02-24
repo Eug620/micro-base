@@ -1,10 +1,10 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-20 15:59:50
- * @LastEditTime : 2023-02-21 15:32:13
- * @LastEditors  : eug yyh3531@163.com
+ * @LastEditTime : 2023-02-24 20:37:42
+ * @LastEditors  : Eug yyh3531@163.com
  * @Descripttion : Descripttion
- * @FilePath     : /micro-base/src/pages/setting.vue
+ * @FilePath     : \micro-base\src\pages\setting.vue
 -->
 <template>
   <div class="h-full p-2.5">
@@ -16,13 +16,13 @@
       {{ $t('message.hello') }}
     </h3>
 
-    <a-card class="mb-4 w-2/5" title="语言切换">
+    <a-card class="mb-4 sm:w-1/2 lg:w-2/5  " title="语言切换">
       <a-radio-group type="button" v-model="SystemStore.lang" @change="SystemStore.setLang">
         <a-radio :value="lang" :key="lang" v-for="lang in LangEnum">{{ lang }}</a-radio>
       </a-radio-group>
     </a-card>
 
-    <a-card class="w-2/5" title="主题切换">
+    <a-card class="lg:w-2/5 sm:w-1/2" title="主题切换">
       <a-radio-group type="button" v-model="SystemStore.theme" @change="SystemStore.setTheme">
         <a-radio :value="theme" v-for="theme in ThemeEnum" :key="theme">{{ theme }}</a-radio>
       </a-radio-group>
