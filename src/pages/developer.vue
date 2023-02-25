@@ -11,7 +11,7 @@
     <!-- 线上 -->
     <micro-app
       name="developer"
-      url="http://eug.asia:8082/base/developer/"
+      url="https://eug.asia:8082/base/developer/"
       :data="data"
       macro
       baseRoute="/developer"
