@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-26 16:22:06
- * @LastEditTime : 2023-02-22 14:15:31
+ * @LastEditTime : 2023-03-06 17:24:33
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/index.vue
@@ -42,6 +42,7 @@ import LayoutMenu from './LayoutMenu.vue';
 <style lang="scss">
 .micro-base-layout {
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
   .logo {
     text-align: center;
@@ -50,6 +51,9 @@ import LayoutMenu from './LayoutMenu.vue';
   &-view {
     background-color: rgb(var(--gray-2));
     color: rgb(var(--gray-10));
+    overflow: hidden;
+    width: 100%;
+    position: relative;
   }
 }
 </style>
