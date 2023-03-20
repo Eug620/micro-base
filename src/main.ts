@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-28 17:42:33
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-22 17:17:39
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/main.ts
  */
@@ -19,6 +19,9 @@ import router from './router';
 import useEventCenter from './eventCenter';
 // import useComponents from './components/useComponents';
 
+// arco-design notification
+import '@arco-design/web-vue/es/notification/style/css.js'
+
 // pinia
 import { pinia } from './store';
 
@@ -26,6 +29,17 @@ import { pinia } from './store';
 import i18n from './locales/i18n';
 
 microApp.start({
+  'disable-memory-router': true, // 关闭虚拟路由系统
+  'disable-patch-request': true, // 关闭对子应用请求的拦截
+
+  inline: false, // 默认值false
+  destroy: false, // 默认值false
+  shadowDOM: false, // 默认值false
+  ssr: false, // 默认值false
+  'disable-scopecss': false, // 默认值false
+  'disable-sandbox': false, // 默认值false
+  'keep-alive': true, // 默认值false
+  'keep-router-state': true, // 默认值false
   lifeCycles: {
     created() {
       console.log('created 全局监听');
@@ -42,6 +56,18 @@ microApp.start({
     error() {
       console.log('error 全局监听');
     },
+    aftershow() {
+      console.log('aftershow');
+
+    },
+    afterhidden() {
+      console.log('afterhidden');
+
+    },
+    beforeshow() {
+      console.log('beforeshow');
+
+    }
   },
   plugins: {
     modules: {

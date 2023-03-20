@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2022-04-28 15:39:50
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-03-20 14:15:23
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
  */
@@ -11,6 +11,7 @@ import vue from '@vitejs/plugin-vue';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import Components from 'unplugin-vue-components/vite';
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+import { visualizer } from 'rollup-plugin-visualizer'
 const { resolve } = require('path');
 
 // TODO 解决控制台警报i8n
@@ -23,6 +24,9 @@ export default ({ mode }) =>
     plugins: [
       // scriptName(),
       vue(),
+      visualizer({
+        filename: 'visualizer.html'
+      }),
       createHtmlPlugin({
         inject: {
           data: {
@@ -40,6 +44,25 @@ export default ({ mode }) =>
         strict: false,
       },
       open: true,
+      proxy: {
+        '/api': {
+          target: 'http://47.93.229.170:3000',
+          // target: 'http://localhost:3000',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, '')
+        },
+        '/dev_base_api': {
+          // target: 'http://127.0.0.1:5000',
+          target: 'http://47.93.229.170:5000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/dev_base_api/, '')
+        },
+        '/dev_han_api': {
+          target: 'https://api.vvhan.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/dev_han_api/, '')
+        },
+      }
     },
     resolve: {
       alias: {
@@ -85,6 +108,17 @@ export default ({ mode }) =>
           drop_debugger: true,
         },
       },
+      rollupOptions: {
+        output: {
+          // 拆分js
+          manualChunks: {
+            lodash:['lodash'],
+            lowdb: ['lowdb'],
+            typed: ['typed.js'],
+            ['acro-design']: ['@arco-design/web-vue'],
+          }
+        }
+      }
     },
     //调整控制台输出的级别 'info' | 'warn' | 'error' | 'silent'
     logLevel: 'info',

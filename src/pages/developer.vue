@@ -1,17 +1,17 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-28 14:09:28
- * @LastEditTime : 2022-04-01 16:38:02
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-25 18:20:04
+ * @LastEditors  : Eug yyh3531@163.com
  * @Descripttion : Descripttion
- * @FilePath     : /github/micro-base/src/pages/developer.vue
+ * @FilePath     : \micro-base\src\pages\developer.vue
 -->
 <template>
   <div class="developer">
     <!-- 线上 -->
     <micro-app
       name="developer"
-      url="http://47.93.229.170:8082/base/developer/"
+      url="https://eug.asia:8082/base/developer/"
       :data="data"
       macro
       baseRoute="/developer"

@@ -10,7 +10,7 @@
   <!-- 线上 -->
   <micro-app
     name="chat"
-    url="http://47.93.229.170:8081/base/chat/"
+    url="https://eug.asia:8081/base/chat/"
     :data="data"
     macro
     baseRoute="/chat"

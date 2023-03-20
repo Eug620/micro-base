@@ -1,10 +1,10 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-26 16:22:06
- * @LastEditTime : 2022-04-28 17:05:22
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-03-06 17:24:33
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
- * @FilePath     : /micro-base/src/layout/_index.vue
+ * @FilePath     : /micro-base/src/layout/index.vue
 -->
 <template>
   <a-layout class="micro-base-layout">
@@ -13,16 +13,21 @@
     </a-layout-sider>
     <a-layout class="micro-base-layout-view">
       <router-view v-slot="{ Component, route }">
-        <template v-if="route.meta.keepAlive">
-          <transition name="el-fade-in">
-            <keep-alive>
-              <component :is="Component" />
-            </keep-alive>
-          </transition>
-        </template>
-        <template v-else>
-          <component :is="Component" />
-        </template>
+        <component
+          :is="Component"
+          :key="route.fullPath"
+          class="animate__animated animate__fadeIn"
+          v-if="!route.meta.keepAlive"
+        />
+
+        <keep-alive>
+          <component
+            :is="Component"
+            :key="route.fullPath"
+            class="animate__animated animate__fadeIn"
+            v-if="route.meta.keepAlive"
+          />
+        </keep-alive>
       </router-view>
     </a-layout>
   </a-layout>
@@ -31,22 +36,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import LayoutMenu from './LayoutMenu.vue';
-const switchTheme = ref('light');
 
-const useThemeChange = (value: any) => {
-  if (value === 'dark') {
-    document.body.setAttribute('arco-theme', 'dark');
-  } else {
-    // 设置为暗黑主题
-    // 恢复亮色主题
-    document.body.removeAttribute('arco-theme');
-  }
-};
 </script>
 
 <style lang="scss">
 .micro-base-layout {
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
   .logo {
     text-align: center;
@@ -55,6 +51,9 @@ const useThemeChange = (value: any) => {
   &-view {
     background-color: rgb(var(--gray-2));
     color: rgb(var(--gray-10));
+    overflow: hidden;
+    width: 100%;
+    position: relative;
   }
 }
 </style>

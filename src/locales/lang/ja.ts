@@ -1,8 +1,8 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-04-26 14:24:28
- * @LastEditTime : 2022-04-28 17:41:50
- * @LastEditors  : Eug
+ * @LastEditTime : 2023-02-22 10:37:15
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/locales/lang/ja.ts
  */
@@ -14,7 +14,9 @@ export default {
     layout: 'レイアウト',
     developer: '開発者',
     chat: 'チャット',
-    test: 'テスト',
+    setting: 'テスト',
     notFound: '見出されない',
+    dashboard: 'dashboard',
+    playground: 'playground'
   },
 };
