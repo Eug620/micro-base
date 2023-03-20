@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2023-02-16 16:11:56
+ * @LastEditTime : 2023-03-20 14:15:23
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -11,6 +11,7 @@ import vue from '@vitejs/plugin-vue';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import Components from 'unplugin-vue-components/vite';
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+import { visualizer } from 'rollup-plugin-visualizer'
 const { resolve } = require('path');
 
 // TODO 解决控制台警报i8n
@@ -23,6 +24,9 @@ export default ({ mode }) =>
     plugins: [
       // scriptName(),
       vue(),
+      visualizer({
+        filename: 'visualizer.html'
+      }),
       createHtmlPlugin({
         inject: {
           data: {
@@ -104,6 +108,17 @@ export default ({ mode }) =>
           drop_debugger: true,
         },
       },
+      rollupOptions: {
+        output: {
+          // 拆分js
+          manualChunks: {
+            lodash:['lodash'],
+            lowdb: ['lowdb'],
+            typed: ['typed.js'],
+            ['acro-design']: ['@arco-design/web-vue'],
+          }
+        }
+      }
     },
     //调整控制台输出的级别 'info' | 'warn' | 'error' | 'silent'
     logLevel: 'info',

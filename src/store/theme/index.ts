@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-04-28 14:42:06
- * @LastEditTime : 2023-02-21 14:36:38
+ * @LastEditTime : 2023-03-20 14:03:13
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/store/theme/index.ts
@@ -34,7 +34,7 @@ export const useThemeStore = defineStore({
       }
     },
     actions: {
-      setTheme(theme: ThemeEnum = ThemeEnum.DARK) {
+      setTheme(theme: ThemeEnum = ThemeEnum.LIGHT) {
         const db = useDBStore()
         this.theme = theme
         document.body.setAttribute('arco-theme', theme);
