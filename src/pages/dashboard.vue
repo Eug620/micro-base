@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-20 17:09:42
+ * @LastEditTime : 2023-03-20 18:45:36
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -21,12 +21,13 @@
 import Typed from "typed.js";
 import { onActivated, onMounted, ref } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
-let stringsArray:any[] = []
-let typed: any = null
-let timeoutID: any = null
+let typedStrings = ref('')
+let typedInstances: any = ref(null)
+let timeoutID: any = ref(null)
+const resetTyped = ref(false)
 const initTyped = () => {
-    typed = new Typed('.dashboard-title', {
-        strings: stringsArray,
+    typedInstances.value = new Typed('.dashboard-title', {
+        strings: [typedStrings.value],
         typeSpeed: 60,
         // loop: true,
         cursorChar: ' /',
@@ -35,9 +36,9 @@ const initTyped = () => {
         // backDelay: 8000,
         // startDelay: 4000
         onStringTyped: function () {
-            clearTimeout(timeoutID)
-            timeoutID = setTimeout(() => {
-                typed.destroy()
+            clearTimeout(timeoutID.value)
+            timeoutID.value = setTimeout(() => {
+                typedInstances.value.destroy()
                 useResetTyped()
             }, 9000)
         }
@@ -46,7 +47,7 @@ const initTyped = () => {
 const useResetTyped = () => {
     fetch('https://api.vvhan.com/api/ian?type=json').then(async res => {
         let result = await res.json()
-        stringsArray = [result.data.vhan]
+        typedStrings.value = result.data.vhan
         initTyped()
     })
 }
@@ -56,12 +57,16 @@ onMounted(() => {
 })
 
 onBeforeRouteLeave(() => {
-    typed.stop()
-    clearTimeout(timeoutID)
+    resetTyped.value = true
+    clearTimeout(timeoutID.value)
+    typedInstances.value.destroy()
 })
 
 onActivated(() => {
-    typed?.reset()
+    if (resetTyped.value) {
+        initTyped()
+        resetTyped.value = false
+    }
 })
 
 </script>
