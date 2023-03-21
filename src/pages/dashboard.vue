@@ -2,14 +2,14 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-20 18:45:36
+ * @LastEditTime : 2023-03-21 11:40:43
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
  * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
 -->
 <template>
-    <a-card title="Welcome" class="ml-2.5 h-full relative" :bordered="false">
+    <a-card title="Welcome" class="ml-2.5 h-full relative dashboard" :bordered="false">
         <span class="dashboard-title"></span>
         <div class="absolute bottom-3 left-0 text-center w-full dashboard-beian">
             <a href="https://beian.miit.gov.cn">豫ICP备2023002857</a>
@@ -73,14 +73,19 @@ onActivated(() => {
 
 <style lang="scss">
 .dashboard {
-    &-title {
-        color: rgb(var(--warning-3));
-
+    &-title{
+        color: rgb(var(--primary-3)) !important;
+        font-size: 1rem;
+    }
+    .typed-cursor {
+        color: rgb(var(--danger-3)) !important;
+        font-size: 1rem;
     }
 
     &-beian {
         a {
             color: var(--color-text-1);
+            // color: rgb(var(--danger-6))
         }
     }
 }
