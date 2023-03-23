@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2023-03-20 14:15:23
+ * @LastEditTime : 2023-03-22 17:53:03
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -115,7 +115,8 @@ export default ({ mode }) =>
             lodash:['lodash'],
             lowdb: ['lowdb'],
             typed: ['typed.js'],
-            ['acro-design']: ['@arco-design/web-vue'],
+            'acro-design': ['@arco-design/web-vue'],
+            'vue-repl' :['@vue/repl']
           }
         }
       }

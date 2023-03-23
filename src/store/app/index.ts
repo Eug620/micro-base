@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 14:36:15
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-02-21 14:36:18
+ * @LastEditTime : 2023-03-23 09:49:25
  * @FilePath     : /micro-base/src/store/app/index.ts
  * @Description  : filename
  * 
@@ -20,11 +20,16 @@ export const useSystemStore = defineStore({
     // 主题
     theme: '',
     // 语言
-    lang: ''
+    lang: '',
+    // 菜单栏展开状态
+    collapsed: true
   }),
   getters: {
     getTheme(store) {
       return store.theme
+    },
+    getCollapsed(store) {
+      return store.collapsed
     }
   },
   actions: {
@@ -33,7 +38,7 @@ export const useSystemStore = defineStore({
       const defaultConfig = db.get({ dbName: DataBaseName.SYSTEM, defaultValue: {} })
       this.setTheme(defaultConfig?.theme)
       this.setLang(defaultConfig?.lang)
-
+      this.setCollapsed(defaultConfig?.collapsed)
     },
     setTheme(theme: ThemeEnum = ThemeEnum.DARK) {
       const db = useDBStore()
@@ -46,6 +51,13 @@ export const useSystemStore = defineStore({
       this.lang = lang
       i18n.global.locale = lang
       db.set({ dbName: DataBaseName.SYSTEM, path: DATABASEPUBLIC.LANG, value: lang })
+    },
+    setCollapsed(collapsed: boolean, type?: string) {
+      if ([void 0, 'clickTrigger'].includes(type)) {
+        const db = useDBStore()
+        this.collapsed = collapsed
+        db.set({ dbName: DataBaseName.SYSTEM, path: DATABASEPUBLIC.COLLAPSED, value: collapsed })
+      }
     }
   },
 });

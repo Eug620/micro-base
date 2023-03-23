@@ -1,32 +1,25 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-26 16:22:06
- * @LastEditTime : 2023-03-06 17:24:33
+ * @LastEditTime : 2023-03-23 09:52:13
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/index.vue
 -->
 <template>
   <a-layout class="micro-base-layout">
-    <a-layout-sider breakpoint="lg" :width="200" collapsible>
+    <a-layout-sider breakpoint="lg" :width="200" @collapse="systemStore.setCollapsed" collapsible
+    :collapsed="systemStore.collapsed">
       <LayoutMenu />
     </a-layout-sider>
     <a-layout class="micro-base-layout-view">
       <router-view v-slot="{ Component, route }">
-        <component
-          :is="Component"
-          :key="route.fullPath"
-          class="animate__animated animate__fadeIn"
-          v-if="!route.meta.keepAlive"
-        />
+        <component :is="Component" :key="route.fullPath" class="animate__animated animate__fadeIn"
+          v-if="!route.meta.keepAlive" />
 
         <keep-alive>
-          <component
-            :is="Component"
-            :key="route.fullPath"
-            class="animate__animated animate__fadeIn"
-            v-if="route.meta.keepAlive"
-          />
+          <component :is="Component" :key="route.fullPath" class="animate__animated animate__fadeIn"
+            v-if="route.meta.keepAlive" />
         </keep-alive>
       </router-view>
     </a-layout>
@@ -36,7 +29,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import LayoutMenu from './LayoutMenu.vue';
-
+import { useSystemStore } from '@/store/app'
+const systemStore = useSystemStore()
 </script>
 
 <style lang="scss">
@@ -44,6 +38,7 @@ import LayoutMenu from './LayoutMenu.vue';
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+
   .logo {
     text-align: center;
   }

@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-21 11:40:43
+ * @LastEditTime : 2023-03-22 17:55:08
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -45,11 +45,15 @@ const initTyped = () => {
     });
 }
 const useResetTyped = () => {
-    fetch('https://api.vvhan.com/api/ian?type=json').then(async res => {
-        let result = await res.json()
-        typedStrings.value = result.data.vhan
-        initTyped()
-    })
+    try {
+        fetch('https://api.vvhan.com/api/ian?type=json').then(async res => {
+            let result = await res.json()
+            typedStrings.value = result.data.vhan
+            initTyped()
+        })
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 onMounted(() => {
@@ -73,10 +77,11 @@ onActivated(() => {
 
 <style lang="scss">
 .dashboard {
-    &-title{
+    &-title {
         color: rgb(var(--primary-3)) !important;
         font-size: 1rem;
     }
+
     .typed-cursor {
         color: rgb(var(--danger-3)) !important;
         font-size: 1rem;

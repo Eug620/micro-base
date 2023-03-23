@@ -12,11 +12,7 @@ declare module '@vue/runtime-core' {
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
     ARadio: typeof import('@arco-design/web-vue')['Radio']
     ARadioGroup: typeof import('@arco-design/web-vue')['RadioGroup']
-    BaseEditInfo: typeof import('./src/components/base-edit-info/index.vue')['default']
-    BaseSignForm: typeof import('./src/components/base-sign-form/index.vue')['default']
-    BaseSignOut: typeof import('./src/components/base-sign-out/index.vue')['default']
     BaseSwitch: typeof import('./src/components/base-switch/index.vue')['default']
-    BaseUserInfo: typeof import('./src/components/base-user-info/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
