@@ -5,16 +5,21 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AAvatar: typeof import('@arco-design/web-vue')['Avatar']
+    AButton: typeof import('@arco-design/web-vue')['Button']
     ACard: typeof import('@arco-design/web-vue')['Card']
+    ACardMeta: typeof import('@arco-design/web-vue')['CardMeta']
     ACol: typeof import('@arco-design/web-vue')['Col']
     ALayout: typeof import('@arco-design/web-vue')['Layout']
     ALayoutSider: typeof import('@arco-design/web-vue')['LayoutSider']
+    ALink: typeof import('@arco-design/web-vue')['Link']
     AMenu: typeof import('@arco-design/web-vue')['Menu']
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
     ARadio: typeof import('@arco-design/web-vue')['Radio']
     ARadioGroup: typeof import('@arco-design/web-vue')['RadioGroup']
     ARow: typeof import('@arco-design/web-vue')['Row']
     ASpace: typeof import('@arco-design/web-vue')['Space']
+    ATypographyText: typeof import('@arco-design/web-vue')['TypographyText']
     BaseSwitch: typeof import('./src/components/base-switch/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

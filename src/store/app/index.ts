@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 14:36:15
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-23 14:52:15
+ * @LastEditTime : 2023-03-23 15:31:07
  * @FilePath     : /micro-base/src/store/app/index.ts
  * @Description  : filename
  * 
@@ -67,10 +67,11 @@ export const useSystemStore = defineStore({
         db.set({ dbName: DataBaseName.SYSTEM, path: DATABASEPUBLIC.COLLAPSED, value: collapsed })
       }
     },
-    setSpecialEfficiency(specialEfficiency: SpecialEfficiencyEnum | boolean = false) {
+    setSpecialEfficiency(specialEfficiency: SpecialEfficiencyEnum | boolean = false, reload?: any) {
       const db = useDBStore()
       this.specialEfficiency = specialEfficiency
       db.set({ dbName: DataBaseName.SYSTEM, path: DATABASEPUBLIC.SPCIALEFFICIENCY, value: specialEfficiency })
+      reload && location.reload()
     },
     fetchSpecialEfficiency() {
       if (this.specialEfficiency) {

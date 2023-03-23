@@ -1,7 +1,7 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-25 11:02:42
- * @LastEditTime : 2023-03-23 14:37:31
+ * @LastEditTime : 2023-03-23 15:52:16
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/index.html
@@ -18,11 +18,90 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
     integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"> -->
-  <title><%= VITE_APP_TITLE %></title>
+  <title>
+    <%= VITE_APP_TITLE %>
+  </title>
+  <style>
+    .base-container {
+      width: 100px;
+      height: 100px;
+      perspective: 780px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .base-child {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 50%;
+    }
+
+    .base-child:nth-of-type(1) {
+      left: 0%;
+      top: 0%;
+      animation: rotate-one 1.15s linear infinite;
+      border-bottom: 3px solid #5c5edc;
+    }
+
+    .base-child:nth-of-type(2) {
+      right: 0%;
+      top: 0%;
+      animation: rotate-two 1.15s linear infinite;
+      border-right: 3px solid #9e85c3;
+    }
+
+    .base-child:nth-of-type(3) {
+      right: 0%;
+      bottom: 0%;
+      animation: rotate-three 1.15s linear infinite;
+      border-top: 3px solid #e9908a;
+    }
+
+
+    @keyframes rotate-one {
+      0% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+      }
+
+      100% {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+      }
+    }
+
+    @keyframes rotate-two {
+      0% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+      }
+
+      100% {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+      }
+    }
+
+    @keyframes rotate-three {
+      0% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+      }
+
+      100% {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body onselectstart="return false;">
-  <div id="app"></div>
+  <div id="app">
+    <div class="base-container">
+      <div class="base-child"></div>
+      <div class="base-child"></div>
+      <div class="base-child"></div>
+    </div>
+  </div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 

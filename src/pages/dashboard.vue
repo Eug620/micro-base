@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-23 14:53:25
+ * @LastEditTime : 2023-03-23 15:43:44
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -92,7 +92,7 @@ onMounted(() => {
 onBeforeRouteLeave(() => {
     resetTyped.value = true
     clearTimeout(timeoutID.value)
-    typedInstances.value.destroy()
+    typedInstances.value?.destroy()
 })
 
 onActivated(() => {
