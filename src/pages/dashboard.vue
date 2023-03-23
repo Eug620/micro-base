@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-22 17:55:08
+ * @LastEditTime : 2023-03-23 10:19:36
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -10,6 +10,19 @@
 -->
 <template>
     <a-card title="Welcome" class="ml-2.5 h-full relative dashboard" :bordered="false">
+        <template #extra>
+            <a-space>
+                <a-radio-group type="button" v-model="SystemStore.lang" @change="SystemStore.setLang">
+                    <a-radio :value="lang" :key="lang" v-for="lang in LangEnum">{{ lang.toLocaleUpperCase() }}</a-radio>
+                </a-radio-group>
+                <a-radio-group type="button" v-model="SystemStore.theme" @change="SystemStore.setTheme">
+                    <a-radio :value="theme" v-for="theme in ThemeEnum" :key="theme">
+                        <i class="fa-solid fa-sun" v-if="theme === ThemeEnum.LIGHT"></i>
+                        <i class="fa-solid fa-moon" v-if="theme === ThemeEnum.DARK"></i>
+                    </a-radio>
+                </a-radio-group>
+            </a-space>
+        </template>
         <span class="dashboard-title"></span>
         <div class="absolute bottom-3 left-0 text-center w-full dashboard-beian">
             <a href="https://beian.miit.gov.cn">豫ICP备2023002857</a>
@@ -21,6 +34,10 @@
 import Typed from "typed.js";
 import { onActivated, onMounted, ref } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
+import { ThemeEnum, LangEnum } from '@/enums/system';
+import { useSystemStore } from 'store/app';
+const SystemStore = useSystemStore()
+
 let typedStrings = ref('')
 let typedInstances: any = ref(null)
 let timeoutID: any = ref(null)

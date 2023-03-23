@@ -1,32 +1,49 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-20 15:59:50
- * @LastEditTime : 2023-02-24 20:37:42
- * @LastEditors  : Eug yyh3531@163.com
+ * @LastEditTime : 2023-03-23 10:39:29
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
- * @FilePath     : \micro-base\src\pages\setting.vue
+ * @FilePath     : /micro-base/src/pages/setting.vue
 -->
+<!-- https://fontawesome.com/icons -->
 <template>
-  <div class="h-full p-2.5">
-    <h3 class="animate__animated animate__slideInRight"><i class="fa fa-heart mb-4"></i></h3>
-    <h3><i class="fas fa-spinner mb-4"></i></h3>
-    <h3 class="animate__animated animate__slideInRight"><i class="fal fa-spinner mb-4"></i></h3>
-    <h3>
-      <!-- 页面中使用方式 -->
-      {{ $t('message.hello') }}
-    </h3>
-
-    <a-card class="mb-4 sm:w-1/2 lg:w-2/5  " title="语言切换">
-      <a-radio-group type="button" v-model="SystemStore.lang" @change="SystemStore.setLang">
-        <a-radio :value="lang" :key="lang" v-for="lang in LangEnum">{{ lang }}</a-radio>
-      </a-radio-group>
-    </a-card>
-
-    <a-card class="lg:w-2/5 sm:w-1/2" title="主题切换">
-      <a-radio-group type="button" v-model="SystemStore.theme" @change="SystemStore.setTheme">
-        <a-radio :value="theme" v-for="theme in ThemeEnum" :key="theme">{{ theme }}</a-radio>
-      </a-radio-group>
-    </a-card>
+  <div class="h-full pl-2.5 setting-container">
+    <a-row :gutter="10" class="mb-2.5">
+      <a-col :span="8">
+        <a-card :bordered="false" class="setting-container-card">
+          <h3 class="animate__animated animate__slideInRight"><i class="fa fa-heart mb-4"></i></h3>
+          <h3><i class="fas fa-spinner mb-4"></i></h3>
+          <h3 class="animate__animated animate__slideInRight"><i class="fal fa-spinner mb-4"></i></h3>
+          <h3>
+            <!-- 页面中使用方式 -->
+            {{ $t('message.hello') }}
+          </h3>
+        </a-card>
+      </a-col>
+      <a-col :span="8">
+        <a-card :bordered="false" class="setting-container-card">
+          Card content
+        </a-card>
+      </a-col>
+      <a-col :span="8">
+        <a-card :bordered="false" class="setting-container-card">
+          Card content
+        </a-card>
+      </a-col>
+    </a-row>
+    <a-row :gutter="10">
+      <a-col :span="16">
+        <a-card :bordered="false" class="setting-container-card">
+          Card content
+        </a-card>
+      </a-col>
+      <a-col :span="8">
+        <a-card :bordered="false" class="setting-container-card">
+          Card content
+        </a-card>
+      </a-col>
+    </a-row>
   </div>
 </template>
 
@@ -43,9 +60,15 @@ console.log(i18n.global.t('message.hello'));
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 .test-background {
   background-color: rgb(var(--gray-2));
   color: rgb(var(--gray-10));
+}
+
+.setting-container {
+  &-card {
+    height: calc((100vh - 0.625rem) / 2);
+  }
 }
 </style>
