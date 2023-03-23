@@ -2,14 +2,17 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-23 15:43:44
+ * @LastEditTime : 2023-03-23 18:17:04
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
  * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
 -->
 <template>
-    <a-card title="Welcome" class="ml-2.5 h-full relative dashboard" :bordered="false">
+    <a-card class="ml-2.5 h-full relative dashboard" :bordered="false">
+        <template #title>
+            {{ typedTitle || 'Welcome' }}
+        </template>
         <template #extra>
             <a-space>
                 <a-radio-group type="button" v-model="SystemStore.specialEfficiency"
@@ -51,6 +54,7 @@ import { useSystemStore } from 'store/app';
 const SystemStore = useSystemStore()
 
 let typedStrings = ref('')
+let typedTitle = ref('')
 let typedInstances: any = ref(null)
 let timeoutID: any = ref(null)
 const resetTyped = ref(false)
@@ -78,6 +82,7 @@ const useResetTyped = () => {
         fetch('https://api.vvhan.com/api/ian?type=json').then(async res => {
             let result = await res.json()
             typedStrings.value = result.data.vhan
+            typedTitle.value = result.data.source
             initTyped()
         })
     } catch (err) {
