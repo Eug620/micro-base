@@ -2,17 +2,18 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 14:36:15
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-23 09:49:25
+ * @LastEditTime : 2023-03-23 14:52:15
  * @FilePath     : /micro-base/src/store/app/index.ts
  * @Description  : filename
  * 
  * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
  */
-import { LangEnum, ThemeEnum } from '@/enums/system';
+import { LangEnum, ThemeEnum, SpecialEfficiencyEnum } from '@/enums/system';
 import { defineStore } from 'pinia';
 import i18n from '@/locales/i18n';
 import { useDBStore } from '@/store/db'
 import { DataBaseName, DATABASEPUBLIC } from '@/enums/database';
+import { nextTick } from "vue";
 
 export const useSystemStore = defineStore({
   id: 'app',
@@ -22,7 +23,9 @@ export const useSystemStore = defineStore({
     // 语言
     lang: '',
     // 菜单栏展开状态
-    collapsed: true
+    collapsed: true,
+    // 页面特效
+    specialEfficiency: <String | boolean>false
   }),
   getters: {
     getTheme(store) {
@@ -30,6 +33,9 @@ export const useSystemStore = defineStore({
     },
     getCollapsed(store) {
       return store.collapsed
+    },
+    getSpecialEfficiency(store) {
+      return store.specialEfficiency
     }
   },
   actions: {
@@ -39,6 +45,8 @@ export const useSystemStore = defineStore({
       this.setTheme(defaultConfig?.theme)
       this.setLang(defaultConfig?.lang)
       this.setCollapsed(defaultConfig?.collapsed)
+      this.setSpecialEfficiency(defaultConfig?.specialEfficiency)
+      this.fetchSpecialEfficiency()
     },
     setTheme(theme: ThemeEnum = ThemeEnum.DARK) {
       const db = useDBStore()
@@ -57,6 +65,20 @@ export const useSystemStore = defineStore({
         const db = useDBStore()
         this.collapsed = collapsed
         db.set({ dbName: DataBaseName.SYSTEM, path: DATABASEPUBLIC.COLLAPSED, value: collapsed })
+      }
+    },
+    setSpecialEfficiency(specialEfficiency: SpecialEfficiencyEnum | boolean = false) {
+      const db = useDBStore()
+      this.specialEfficiency = specialEfficiency
+      db.set({ dbName: DataBaseName.SYSTEM, path: DATABASEPUBLIC.SPCIALEFFICIENCY, value: specialEfficiency })
+    },
+    fetchSpecialEfficiency() {
+      if (this.specialEfficiency) {
+        const scripts = document.createElement('script')
+        scripts.src = `${this.getSpecialEfficiency}`
+        nextTick(() => {
+          document.body.appendChild(scripts)
+        })
       }
     }
   },

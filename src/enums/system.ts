@@ -17,3 +17,9 @@ export enum LangEnum {
     ZH  = 'zh',
     JA  = 'ja',
 }
+
+export enum SpecialEfficiencyEnum {
+    YH  = 'https://api.vvhan.com/api/yinghua',
+    XH  = 'https://api.vvhan.com/api/snow',
+    MH  = 'https://api.vvhan.com/api/meihua',
+}

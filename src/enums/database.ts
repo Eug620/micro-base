@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2022-08-31 15:08:14
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-23 09:30:38
+ * @LastEditTime : 2023-03-23 11:37:27
  * @FilePath     : /micro-base/src/enums/database.ts
  * @Description  : filename
  * 
@@ -15,6 +15,7 @@ export enum DataBaseName {
 export enum DATABASEPUBLIC {
     LANG = 'lang',
     THEME = 'theme',
+    SPCIALEFFICIENCY = 'specialEfficiency',
     COLLAPSED = 'collapsed',
     ASYNCMENU = 'asyncMenu'
 }

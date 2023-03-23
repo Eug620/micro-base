@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-23 10:19:36
+ * @LastEditTime : 2023-03-23 14:53:25
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -12,6 +12,18 @@
     <a-card title="Welcome" class="ml-2.5 h-full relative dashboard" :bordered="false">
         <template #extra>
             <a-space>
+                <a-radio-group type="button" v-model="SystemStore.specialEfficiency"
+                    @change="SystemStore.setSpecialEfficiency">
+                    <a-radio :value="specialEfficiency" :key="specialEfficiency"
+                        v-for="specialEfficiency in SpecialEfficiencyEnum">
+                        <i class="fa-regular fa-snowflake" v-if="specialEfficiency === SpecialEfficiencyEnum.XH"></i>
+                        <i class="fa-solid fa-clover" v-if="specialEfficiency === SpecialEfficiencyEnum.YH"></i>
+                        <i class="fa-solid fa-fan" v-if="specialEfficiency === SpecialEfficiencyEnum.MH"></i>
+                    </a-radio>
+                    <a-radio :value="false">
+                        <i class="fa-solid fa-ban"></i>
+                    </a-radio>
+                </a-radio-group>
                 <a-radio-group type="button" v-model="SystemStore.lang" @change="SystemStore.setLang">
                     <a-radio :value="lang" :key="lang" v-for="lang in LangEnum">{{ lang.toLocaleUpperCase() }}</a-radio>
                 </a-radio-group>
@@ -34,7 +46,7 @@
 import Typed from "typed.js";
 import { onActivated, onMounted, ref } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
-import { ThemeEnum, LangEnum } from '@/enums/system';
+import { ThemeEnum, LangEnum, SpecialEfficiencyEnum } from '@/enums/system';
 import { useSystemStore } from 'store/app';
 const SystemStore = useSystemStore()
 
