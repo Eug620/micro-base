@@ -1,1 +1,0 @@
-const e=Vue.defineComponent({setup(e){const a=Vue.ref({from:"来自基座的初始化数据"});return(e,t)=>{const o=Vue.resolveComponent("micro-app");return Vue.openBlock(),Vue.createBlock(o,{name:"chat",url:"https://eug.asia:8081/base/chat/",data:a.value,macro:"",baseRoute:"/chat",disableSandbox:"",inline:""},null,8,["data"])}}});export{e as default};
