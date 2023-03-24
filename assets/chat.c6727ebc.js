@@ -1,1 +1,0 @@
-import{v as a,r as t,y as s,z as e,A as r}from"./vue-repl.4304f319.js";const o=a({setup(a){const o=t({from:"来自基座的初始化数据"});return(a,t)=>{const n=s("micro-app");return e(),r(n,{name:"chat",url:"https://eug.asia:8081/base/chat/",data:o.value,macro:"",baseRoute:"/chat",disableSandbox:"",inline:""},null,8,["data"])}}});export{o as default};
