@@ -1,1 +1,0 @@
-import{d as a,r as t,q as s,c as e,e as r}from"./index.a9d06459.js";const n=a({setup(a){const n=t({from:"来自基座的初始化数据"});return(a,t)=>{const o=s("micro-app");return e(),r(o,{name:"chat",url:"https://eug.asia:8081/base/chat/",data:n.value,macro:"",baseRoute:"/chat",disableSandbox:"",inline:""},null,8,["data"])}}});export{n as default};
