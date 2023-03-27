@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-27 17:48:51
+ * @LastEditTime : 2023-03-27 18:16:02
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -76,15 +76,6 @@
             </a-col>
             <a-col :span="8">
                 <a-card :bordered="false" class="dashboard-container-card mb-2.5">
-
-                </a-card>
-            </a-col>
-            <a-col :span="8">
-                <a-card :bordered="false" class="dashboard-container-card">
-                </a-card>
-            </a-col>
-            <a-col :span="16">
-                <a-card :bordered="false" class="dashboard-container-card ">
                     <template #title>
                         <a-space fill align="center">
                             <a-select placeholder="Please select ..." v-model="type">
@@ -97,7 +88,16 @@
                             </a-select>
                         </a-space>
                     </template>
-                    <a-descriptions class="h-3/4 w-full overflow-scroll" :data="data" fill column="1" />
+                    <a-descriptions class="h-3/4 w-full overflow-scroll" :data="topdata" :title="current.title" fill column="2" />
+                </a-card>
+            </a-col>
+            <a-col :span="8">
+                <a-card :bordered="false" class="dashboard-container-card">
+                </a-card>
+            </a-col>
+            <a-col :span="16">
+                <a-card :bordered="false" class="dashboard-container-card ">
+                    <a-descriptions class="h-full w-full overflow-scroll" :data="data" :title="current.title" fill column="1" />
                 </a-card>
             </a-col>
         </a-row>
@@ -109,7 +109,7 @@
 
 <script lang="ts" setup>
 import Typed from "typed.js";
-import { onActivated, onMounted, Ref, ref, watchEffect } from "vue";
+import { computed, onActivated, onMounted, Ref, ref, watchEffect } from "vue";
 import { onBeforeRouteLeave } from "vue-router";
 import { ThemeEnum, LangEnum, SpecialEfficiencyEnum } from '@/enums/system';
 import { useSystemStore } from 'store/app';
@@ -264,13 +264,15 @@ const timeList = ref([
 const type = ref('leo')
 const time = ref('today')
 const data = ref([])
+const topdata = ref([])
+
 const useHoroscope = async () => {
     try {
         let result: any = await fetch(`https://api.vvhan.com/api/horoscope?type=${type.value}&time=${time.value}`)
         const res: any = await result.json()
         if (res.success) {
             current.value = Object.assign(current.value, res.data)
-            data.value = Object.assign([], [
+            topdata.value = Object.assign([], [
                 {
                     label: '更新时间',
                     value: current.value.time
@@ -311,6 +313,8 @@ const useHoroscope = async () => {
                     label: '速配星座',
                     value: current.value.luckyconstellation
                 },
+            ])
+            data.value = Object.assign([], [
                 {
                     label: '短评',
                     value: current.value.shortcomment
