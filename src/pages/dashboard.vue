@@ -2,47 +2,82 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-23 18:17:04
+ * @LastEditTime : 2023-03-27 15:17:36
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
  * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
 -->
 <template>
-    <a-card class="ml-2.5 h-full relative dashboard" :bordered="false">
-        <template #title>
-            {{ typedTitle || 'Welcome' }}
-        </template>
-        <template #extra>
-            <a-space>
-                <a-radio-group type="button" v-model="SystemStore.specialEfficiency"
-                    @change="SystemStore.setSpecialEfficiency">
-                    <a-radio :value="specialEfficiency" :key="specialEfficiency"
-                        v-for="specialEfficiency in SpecialEfficiencyEnum">
-                        <i class="fa-regular fa-snowflake" v-if="specialEfficiency === SpecialEfficiencyEnum.XH"></i>
-                        <i class="fa-solid fa-clover" v-if="specialEfficiency === SpecialEfficiencyEnum.YH"></i>
-                        <i class="fa-solid fa-fan" v-if="specialEfficiency === SpecialEfficiencyEnum.MH"></i>
-                    </a-radio>
-                    <a-radio :value="false">
-                        <i class="fa-solid fa-ban"></i>
-                    </a-radio>
-                </a-radio-group>
-                <a-radio-group type="button" v-model="SystemStore.lang" @change="SystemStore.setLang">
-                    <a-radio :value="lang" :key="lang" v-for="lang in LangEnum">{{ lang.toLocaleUpperCase() }}</a-radio>
-                </a-radio-group>
-                <a-radio-group type="button" v-model="SystemStore.theme" @change="SystemStore.setTheme">
-                    <a-radio :value="theme" v-for="theme in ThemeEnum" :key="theme">
-                        <i class="fa-solid fa-sun" v-if="theme === ThemeEnum.LIGHT"></i>
-                        <i class="fa-solid fa-moon" v-if="theme === ThemeEnum.DARK"></i>
-                    </a-radio>
-                </a-radio-group>
-            </a-space>
-        </template>
-        <span class="dashboard-title"></span>
+    <div class="h-full pl-2.5 dashboard-container">
+        <a-row :gutter="10">
+            <a-col :span="16">
+                <a-card :bordered="false" class="dashboard-container-card mb-2.5">
+                    <template #title>
+                        {{ typedTitle || 'Welcome' }}
+                    </template>
+                    <span class="dashboard-container-title"></span><br />
+                </a-card>
+            </a-col>
+            <a-col :span="8">
+                <a-card :bordered="false" class="dashboard-container-card mb-2.5 text-center">
+                    <a-space wrap align="center" size="large">
+                        <a-radio-group type="button" v-model="SystemStore.specialEfficiency"
+                            @change="SystemStore.setSpecialEfficiency">
+                            <a-radio :value="specialEfficiency" :key="specialEfficiency"
+                                v-for="specialEfficiency in SpecialEfficiencyEnum">
+                                <i class="fa-regular fa-snowflake"
+                                    v-if="specialEfficiency === SpecialEfficiencyEnum.XH"></i>
+                                <i class="fa-solid fa-clover" v-if="specialEfficiency === SpecialEfficiencyEnum.YH"></i>
+                                <i class="fa-solid fa-fan" v-if="specialEfficiency === SpecialEfficiencyEnum.MH"></i>
+                            </a-radio>
+                            <a-radio :value="false">
+                                <i class="fa-solid fa-ban"></i>
+                            </a-radio>
+                        </a-radio-group>
+
+                        <a-radio-group type="button" v-model="SystemStore.lang" @change="SystemStore.setLang">
+                            <a-radio :value="lang" :key="lang" v-for="lang in LangEnum">{{ lang.toLocaleUpperCase()
+                            }}</a-radio>
+                        </a-radio-group>
+
+                        <a-radio-group type="button" v-model="SystemStore.theme" @change="SystemStore.setTheme">
+                            <a-radio :value="theme" v-for="theme in ThemeEnum" :key="theme">
+                                <i class="fa-solid fa-sun" v-if="theme === ThemeEnum.LIGHT"></i>
+                                <i class="fa-solid fa-moon" v-if="theme === ThemeEnum.DARK"></i>
+                            </a-radio>
+                        </a-radio-group>
+                    </a-space>
+                </a-card>
+            </a-col>
+            <a-col :span="8">
+                <a-card :bordered="false" class="dashboard-container-card mb-2.5">
+                    <h3 class="animate__animated animate__slideInRight"><i class="fa fa-heart mb-4"></i></h3>
+                    <h3><i class="fas fa-spinner mb-4"></i></h3>
+                    <h3 class="animate__animated animate__slideInRight"><i class="fal fa-spinner mb-4"></i></h3>
+                    <h3>
+                        <!-- 页面中使用方式 -->
+                        {{ $t('message.hello') }}
+                    </h3>
+                </a-card>
+            </a-col>
+            <a-col :span="8">
+                <a-card :bordered="false" class="dashboard-container-card mb-2.5">
+                </a-card>
+            </a-col>
+            <a-col :span="8">
+                <a-card :bordered="false" class="dashboard-container-card mb-2.5">
+                </a-card>
+            </a-col>
+            <a-col :span="24">
+                <a-card :bordered="false" class="dashboard-container-card ">
+                </a-card>
+            </a-col>
+        </a-row>
         <div class="absolute bottom-3 left-0 text-center w-full dashboard-beian">
             <a href="https://beian.miit.gov.cn">豫ICP备2023002857</a>
         </div>
-    </a-card>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -110,7 +145,12 @@ onActivated(() => {
 </script>
 
 <style lang="scss">
-.dashboard {
+.dashboard-container {
+    &-card {
+        height: calc((100vh - 1.25rem) / 3);
+        // margin-bottom: 0.625rem;
+    }
+
     &-title {
         color: rgb(var(--primary-3)) !important;
         font-size: 1rem;
