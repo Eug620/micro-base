@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-22 10:35:27
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-02-22 11:09:57
+ * @LastEditTime : 2023-03-27 16:25:55
  * @FilePath     : /micro-base/src/pages/playground.vue
  * @Description  : filename
  * 
@@ -29,7 +29,7 @@ const query = new URLSearchParams(location.search)
 
 const store = new ReplStore({
     // initialize repl with previously serialized state
-    serializedState: location.hash.slice(1),
+    serializedState: location.hash.slice(1) || 'eNp1UEtuwjAQvcrIG0AidkILalFArdQjdOkNJAO4ij+yx0hVlLvXSWhQ1XY57zPz5rXs1Tl+jci2rAyVV44gIEW3B2lAaWc9QQseT9DByVsNsySe/SBjwPeLjeFg6jd1VhQmKcZzRtY2YTBU1gSCepTs+p3z1QLuTGWjoRtR5PnThhePxfp5tVk/rBdJVoox4L73lITaNQfCIShAqYyLBNdM2xqbnWTjHcmAPh2m2UR9RJ9mrUwac8n+cw45fhu/5Zdi3/7x9HywLW//LaDrSpGkQ+57VrZkY2+ZPjj+EaxJxbf9YnkjUuQtDEiPTQ32qGQXIhe2QlS1SeYUV109N0jCOC0m7UvOc74RtQokcIQ4Bp0do6kb9MkpWX+gk6Zj3Rc5CKxo',
 
     // starts on the output pane (mobile only) if the URL has a showOutput query
     showOutput: query.has('showOutput'),
