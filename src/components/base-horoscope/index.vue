@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 10:22:01
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-28 10:52:56
+ * @LastEditTime : 2023-03-29 18:45:13
  * @FilePath     : /micro-base/src/components/base-horoscope/index.vue
  * @Description  : filename
  * 
@@ -24,7 +24,7 @@
                     </a-select>
                 </a-space>
             </template>
-            <a-descriptions class="h-5/6 w-full overflow-scroll" :data="topdata"  fill :column="2" />
+            <a-descriptions class="h-5/6 w-full overflow-auto" :data="topdata" fill :column="2" />
         </a-card>
     </a-col>
 
@@ -33,14 +33,44 @@
             <template #title>
                 {{ current.title }}
             </template>
-            <a-descriptions class="h-5/6 w-full overflow-scroll" :data="data"  fill :column="1" />
+            <template #extra>
+                <!-- <a-space wrap align="center" size="large"> -->
+                    <a-radio-group type="button" v-model="SystemStore.specialEfficiency"
+                        @change="SystemStore.setSpecialEfficiency">
+                        <a-radio :value="specialEfficiency" :key="specialEfficiency"
+                            v-for="specialEfficiency in SpecialEfficiencyEnum">
+                            <i class="fa-regular fa-snowflake" v-if="specialEfficiency === SpecialEfficiencyEnum.XH"></i>
+                            <i class="fa-solid fa-clover" v-if="specialEfficiency === SpecialEfficiencyEnum.YH"></i>
+                            <i class="fa-solid fa-fan" v-if="specialEfficiency === SpecialEfficiencyEnum.MH"></i>
+                        </a-radio>
+                        <a-radio :value="false">
+                            <i class="fa-solid fa-ban"></i>
+                        </a-radio>
+                    </a-radio-group>
+
+                    <a-radio-group type="button" class="ml-4" v-model="SystemStore.lang" @change="SystemStore.setLang">
+                        <a-radio :value="lang" :key="lang" v-for="lang in LangEnum">{{ lang.toLocaleUpperCase()
+                        }}</a-radio>
+                    </a-radio-group>
+
+                    <a-radio-group type="button" class="ml-4" v-model="SystemStore.theme" @change="SystemStore.setTheme">
+                        <a-radio :value="theme" v-for="theme in ThemeEnum" :key="theme">
+                            <i class="fa-solid fa-sun" v-if="theme === ThemeEnum.LIGHT"></i>
+                            <i class="fa-solid fa-moon" v-if="theme === ThemeEnum.DARK"></i>
+                        </a-radio>
+                    </a-radio-group>
+                <!-- </a-space> -->
+            </template>
+            <a-descriptions class="h-5/6 w-full overflow-auto" :data="data" fill :column="1" />
         </a-card>
     </a-col>
 </template>
 
 <script setup lang="ts">
-
 import { ref, watchEffect } from "vue"
+import { ThemeEnum, LangEnum, SpecialEfficiencyEnum } from '@/enums/system';
+import { useSystemStore } from 'store/app';
+const SystemStore = useSystemStore()
 const Props = defineProps({
     cardClass: String
 })
@@ -176,7 +206,7 @@ const useHoroscope = async () => {
                 }
             ])
             data.value = Object.assign([], [
-               
+
                 {
                     label: '综合运势',
                     value: current.value?.fortunetext?.all

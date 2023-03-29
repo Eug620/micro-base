@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-29 15:18:15
+ * @LastEditTime : 2023-03-29 18:40:22
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -11,14 +11,8 @@
 <template>
     <div class="h-full pl-2.5 dashboard-container">
         <a-row :gutter="10">
-            <!-- 随机一言 -->
-            <a-col :span="16">
-                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
-                </a-card>
-            </a-col>
-            <a-col :span="8">
-                <BaseTyped class="dashboard-container-card mb-2.5" />
-            </a-col>
+            <!-- 星座 -->
+            <BaseHoroscope card-class="dashboard-container-card  mb-2.5" />
             <a-col :span="8">
                 <a-card :bordered="false" class="dashboard-container-card mb-2.5">
                     <h3 class="animate__animated animate__slideInRight"><i class="fa fa-heart mb-4"></i></h3>
@@ -37,8 +31,14 @@
             <a-col :span="8">
                 <BaseConfigure class="dashboard-container-card mb-2.5" />
             </a-col>
-            <!-- 星座 -->
-            <BaseHoroscope card-class="dashboard-container-card  mb-2.5" />
+             <!-- 随机一言 -->
+             <a-col :span="16">
+                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
+                </a-card>
+            </a-col>
+            <a-col :span="8">
+                <BaseTyped class="dashboard-container-card mb-2.5" />
+            </a-col>
         </a-row>
         <a-card :bordered="false" class="text-center dashboard-beian">
             <a href="https://beian.miit.gov.cn">豫ICP备2023002857</a>
