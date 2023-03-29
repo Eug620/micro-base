@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-28 10:57:21
+ * @LastEditTime : 2023-03-29 15:18:15
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -13,10 +13,11 @@
         <a-row :gutter="10">
             <!-- 随机一言 -->
             <a-col :span="16">
-                <BaseTyped class="dashboard-container-card mb-2.5"/>
+                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
+                </a-card>
             </a-col>
             <a-col :span="8">
-                <BaseConfigure class="dashboard-container-card mb-2.5"/>
+                <BaseTyped class="dashboard-container-card mb-2.5" />
             </a-col>
             <a-col :span="8">
                 <a-card :bordered="false" class="dashboard-container-card mb-2.5">
@@ -31,14 +32,13 @@
             </a-col>
             <!-- 电影 -->
             <a-col :span="8">
-                <BaseCarousel class="dashboard-container-card  mb-2.5"/>
+                <BaseCarousel class="dashboard-container-card  mb-2.5" />
             </a-col>
             <a-col :span="8">
-                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
-                </a-card>
+                <BaseConfigure class="dashboard-container-card mb-2.5" />
             </a-col>
             <!-- 星座 -->
-            <BaseHoroscope card-class="dashboard-container-card  mb-2.5"/>
+            <BaseHoroscope card-class="dashboard-container-card  mb-2.5" />
         </a-row>
         <a-card :bordered="false" class="text-center dashboard-beian">
             <a href="https://beian.miit.gov.cn">豫ICP备2023002857</a>
@@ -58,6 +58,7 @@ import BaseConfigure from '@/components/base-configure/index.vue'
 .dashboard-container {
     &-card {
         height: calc((100vh - 1.25rem - 3.25rem) / 3);
+
         .arco-card-body {
             height: 100%;
         }
