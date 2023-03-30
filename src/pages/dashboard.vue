@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-29 18:40:22
+ * @LastEditTime : 2023-03-30 09:32:57
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -26,10 +26,10 @@
             </a-col>
             <!-- 电影 -->
             <a-col :span="8">
-                <BaseCarousel class="dashboard-container-card  mb-2.5" />
+                <BaseConfigure class="dashboard-container-card mb-2.5" />
             </a-col>
             <a-col :span="8">
-                <BaseConfigure class="dashboard-container-card mb-2.5" />
+                <BaseCarousel class="dashboard-container-card  mb-2.5" />
             </a-col>
              <!-- 随机一言 -->
              <a-col :span="16">

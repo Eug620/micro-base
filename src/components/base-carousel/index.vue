@@ -4,7 +4,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 09:58:02
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-28 10:01:14
+ * @LastEditTime : 2023-03-30 09:37:55
  * @FilePath     : /micro-base/src/components/base-carousel/index.vue
  * @Description  : filename
  * 
@@ -12,15 +12,19 @@
 -->
 <template>
     <a-card :bordered="false" class="base-carousel">
-        <a-carousel v-model:current="moveCurrent" indicator-position="outer" animation-name="card" class="w-full h-5/6"
+        <template #title>
+            {{ carouselList[moveCurrent - 1] && carouselList[moveCurrent - 1].title }}
+        </template>
+        <template #extra>{{ carouselList[moveCurrent - 1] && carouselList[moveCurrent - 1].info.pingfen }} 分</template>
+        <a-carousel v-model:current="moveCurrent" indicator-position="outer" animation-name="card" class="w-full h-3/4"
             :auto-play="true" indicator-type="dot" show-arrow="hover">
             <a-carousel-item class="cursor-pointer" v-for="item in carouselList" :key="item.title">
                 <img :src="item?.info?.imgurl" class="h-full m-auto" @click="useToLink(item)" />
             </a-carousel-item>
         </a-carousel>
-        <div class="h-1/6 text-center animate__animated animate__fadeIn">
+        <!-- <div class="h-1/6 text-center animate__animated animate__fadeIn">
             {{ carouselList[moveCurrent - 1] && carouselList[moveCurrent - 1].title }}
-        </div>
+        </div> -->
     </a-card>
 </template>
 
