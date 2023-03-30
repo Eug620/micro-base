@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-30 09:32:57
+ * @LastEditTime : 2023-03-30 15:14:04
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -14,14 +14,7 @@
             <!-- 星座 -->
             <BaseHoroscope card-class="dashboard-container-card  mb-2.5" />
             <a-col :span="8">
-                <a-card :bordered="false" class="dashboard-container-card mb-2.5">
-                    <h3 class="animate__animated animate__slideInRight"><i class="fa fa-heart mb-4"></i></h3>
-                    <h3><i class="fas fa-spinner mb-4"></i></h3>
-                    <h3 class="animate__animated animate__slideInRight"><i class="fal fa-spinner mb-4"></i></h3>
-                    <h3>
-                        <!-- 页面中使用方式 -->
-                        {{ $t('message.hello') }}
-                    </h3>
+                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
                 </a-card>
             </a-col>
             <!-- 电影 -->
@@ -33,8 +26,7 @@
             </a-col>
              <!-- 随机一言 -->
              <a-col :span="16">
-                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
-                </a-card>
+                <BaseMinio/>
             </a-col>
             <a-col :span="8">
                 <BaseTyped class="dashboard-container-card mb-2.5" />
@@ -51,6 +43,7 @@ import BaseTyped from '@/components/base-typed/index.vue'
 import BaseCarousel from '@/components/base-carousel/index.vue'
 import BaseHoroscope from '@/components/base-horoscope/index.vue'
 import BaseConfigure from '@/components/base-configure/index.vue'
+import BaseMinio from '@/components/base-minio/index.vue'
 
 </script>
 
