@@ -1,0 +1,1 @@
+import{o as r,c as o}from"./acro-design.e5e7160c.js";var e=((r,o)=>{const e=r.__vccOpts||r;for(const[n,t]of o)e[n]=t;return e})({},[["render",function(e,n){return r(),o("div",null,"404")}]]);export{e as default};
