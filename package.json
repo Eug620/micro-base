@@ -45,6 +45,7 @@
     "type-fest": "^2.12.1",
     "typed.js": "^2.0.132",
     "video.js": "^8.0.4",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
     "vue": "^3.2.25",
     "vue-i18n": "^9.2.0-beta.35",

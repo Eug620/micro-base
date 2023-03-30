@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2023-03-30 12:52:40
+ * @LastEditTime : 2023-03-30 16:31:54
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -12,6 +12,7 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import Components from 'unplugin-vue-components/vite';
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
 import { visualizer } from 'rollup-plugin-visualizer'
+import viteCompression from 'vite-plugin-compression';
 const { resolve } = require('path');
 
 // TODO 解决控制台警报i8n
@@ -22,6 +23,7 @@ const getEnvFn = (mode, target) => {
 export default ({ mode }) =>
   defineConfig({
     plugins: [
+      viteCompression(),
       // scriptName(),
       vue(),
       visualizer({
