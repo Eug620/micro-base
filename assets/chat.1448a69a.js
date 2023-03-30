@@ -1,1 +1,0 @@
-import{d as a,f as s,W as t,o as e,q as o}from"./acro-design.b04287fd.js";const r=a({setup(a){const r=s({from:"来自基座的初始化数据"});return(a,s)=>{const n=t("micro-app");return e(),o(n,{name:"chat",url:"https://eug.asia:8081/base/chat/",data:r.value,macro:"",baseRoute:"/chat",disableSandbox:"",inline:""},null,8,["data"])}}});export{r as default};
