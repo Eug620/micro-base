@@ -5,11 +5,13 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AButton: typeof import('@arco-design/web-vue')['Button']
     ACard: typeof import('@arco-design/web-vue')['Card']
     ACarousel: typeof import('@arco-design/web-vue')['Carousel']
     ACarouselItem: typeof import('@arco-design/web-vue')['CarouselItem']
     ACol: typeof import('@arco-design/web-vue')['Col']
     ADescriptions: typeof import('@arco-design/web-vue')['Descriptions']
+    ADrawer: typeof import('@arco-design/web-vue')['Drawer']
     AInput: typeof import('@arco-design/web-vue')['Input']
     ALayout: typeof import('@arco-design/web-vue')['Layout']
     ALayoutSider: typeof import('@arco-design/web-vue')['LayoutSider']
@@ -24,9 +26,9 @@ declare module '@vue/runtime-core' {
     ASpace: typeof import('@arco-design/web-vue')['Space']
     ATable: typeof import('@arco-design/web-vue')['Table']
     BaseCarousel: typeof import('./src/components/base-carousel/index.vue')['default']
-    BaseConfigure: typeof import('./src/components/base-configure/index.vue')['default']
     BaseHoroscope: typeof import('./src/components/base-horoscope/index.vue')['default']
     BaseMinio: typeof import('./src/components/base-minio/index.vue')['default']
+    BasePlayer: typeof import('./src/components/base-player/index.vue')['default']
     BaseSwitch: typeof import('./src/components/base-switch/index.vue')['default']
     BaseTyped: typeof import('./src/components/base-typed/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

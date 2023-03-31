@@ -1,0 +1,75 @@
+<!--
+ * @Author       : eug yyh3531@163.com
+ * @Date         : 2023-03-28 10:44:30
+ * @LastEditors  : eug yyh3531@163.com
+ * @LastEditTime : 2023-03-31 15:15:13
+ * @FilePath     : /micro-base/src/components/base-player/index.vue
+ * @Description  : filename
+ * 
+ * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
+-->
+<template>
+    <a-card :bordered="false" class="base-player" id="BasePlayer">
+        <template #title>
+            <a-input class="!w-1/3" placeholder="请输入视频地址" v-model.trim="inputUrl" allow-clear @press-enter="useInputEnter">
+            </a-input>
+        </template>
+        <template #extra>
+            <a-button type="outline" @click="useSettingDrawer" status="normal" shape="round">Details</a-button>
+        </template>
+        <video-player :src="videoOptions.src" :poster="videoOptions.poster" preload="auto" loop controls liveui muted
+            autoplay playsinline :volume="videoOptions.volume" :playbackRate="videoOptions.playbackRate"
+            :language="videoOptions.language" :notSupportedMessage="videoOptions.notSupportedMessage"
+            :playbackRates="videoOptions.playbackRates" style="width: 100%;height: calc(100% - 46px)" />
+
+        <a-drawer :drawer-style="{zIndex: 1}" :footer="null" popup-container="#BasePlayer" width="100%" @ok="drawerVisible = false" @cancel="drawerVisible = false" :visible="drawerVisible">
+            <template #title> Minio </template>
+            <BaseMinio @video-play="useVideoPlay"/>
+
+        </a-drawer>
+
+    </a-card>
+</template>
+
+<script setup lang="ts">
+import { VideoPlayer } from '@videojs-player/vue'
+import 'video.js/dist/video-js.css'
+import { reactive, ref } from 'vue'
+import BaseMinio from '@/components/base-minio/index.vue'
+
+const inputUrl = ref('http://eug.asia:9000/videos/文豪野犬四-01.mp4')
+const useInputEnter = () => {
+    videoOptions.src = inputUrl.value
+}
+
+const useVideoPlay = (url:string = 'http://eug.asia:9000/videos/文豪野犬四-01.mp4') => {
+    videoOptions.src = url
+    inputUrl.value = url
+}
+
+// video
+const videoOptions = reactive({
+    src: inputUrl.value,
+    poster: 'http://eug.asia:9000/images/ac4c5ed6-53eb-457c-8350-aef04814335c.jpg',
+    volume: .2,
+    playbackRate: 1,
+    language: 'zh-CN',
+    notSupportedMessage: '此视频暂无法播放，请稍后再试',
+    playbackRates: [.5, 1, 1.5, 2, 2.5, 3],
+})
+
+// drawer
+const drawerVisible = ref(false)
+const useSettingDrawer = () => {
+    drawerVisible.value = true
+}
+</script>
+
+<style lang="scss">
+.base-player {
+    .arco-card-body {
+        padding: 0 !important;
+        height: 100% !important;
+    }
+}
+</style>

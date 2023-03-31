@@ -2,46 +2,60 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-30 14:03:30
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-30 15:32:02
+ * @LastEditTime : 2023-03-31 15:07:35
  * @FilePath     : /micro-base/src/components/base-minio/index.vue
  * @Description  : filename
  * 
  * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
 -->
 <template>
-    <a-card :bordered="false" class="dashboard-container-card mb-2.5">
-        <a-table :scroll="{
-            x: '100%',
-            y: '100%'
-        }" stripe :bordered="false" :pagination="false" :columns="tableOptions.columns" :data="tableOptions.data"
-            :load-more="useLoadMore">
-            <template #name="{ record }">
-                <template v-if="record.parentName">
-                    <a-link :href="record.parentName ? `http://eug.asia:9000/${record.parentName}/${record.name}` : null">{{
-                        record.name }}</a-link>
-                </template>
-                <template v-else>{{ record.name }}</template>
+    <a-table :scroll="{
+        x: '100%',
+        y: '100%'
+    }" :bordered="false" :pagination="false" :columns="tableOptions.columns" :data="tableOptions.data"
+        :load-more="useLoadMore">
+        <template #name="{ record }">
+            <template v-if="record.parentName">
+                <a-link :href="record.parentName ? `http://eug.asia:9000/${record.parentName}/${record.name}` : null">{{
+                    record.name }}</a-link>
             </template>
-            <template #size="{ record }">
-                {{ change(record.size) }}
+            <template v-else>{{ record.name }}</template>
+        </template>
+        <template #size="{ record }">
+            {{ useCalculateSize(record.size) }}
+        </template>
+        <template #actions="{ record }">
+            <template v-if="record.parentName && record.name.endsWith('.mp4')">
+                <IconPlayCircle :size="24" class="cursor-pointer" @click="usePlayClick(record)"/>
             </template>
-        </a-table>
-    </a-card>
+        </template>
+    </a-table>
 </template>
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+import {
+    IconPlayCircle
+} from '@arco-design/web-vue/es/icon';
+const emit = defineEmits(['videoPlay'])
+
 const tableOptions = reactive({
     columns: [{
-        title: 'Name',
+        title: '文件名',
         slotName: 'name',
     }, {
-        title: 'Size',
+        title: '大小',
         slotName: 'size',
+    }, {
+        title: '操作',
+        slotName: 'actions',
     }],
     data: []
 })
-function change(limit: number) {
+const usePlayClick = (record: any) => {
+    emit('videoPlay',`http://eug.asia:9000/${record.parentName}/${record.name}`)
+}
+function useCalculateSize(limit: number) {
     if (!limit) return void 0
 
     var size = "";
@@ -86,4 +100,8 @@ const useLoadMore = (record: any, done: Function) => {
 }
 </script>
 
-<style></style>
+<style>
+a{
+    cursor: pointer;
+}
+</style>

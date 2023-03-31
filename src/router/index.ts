@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2023-02-22 13:16:43
+ * @LastEditTime : 2023-03-31 15:14:31
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -13,7 +13,8 @@ import {
   IconApps,
   IconCode,
   IconTool,
-  IconSettings,
+  // IconSettings,
+  IconPlayArrow,
   IconCommand,
   IconCodeSquare
 } from '@arco-design/web-vue/es/icon';
@@ -36,10 +37,10 @@ export const frameIn = [
     component: () => import('@/pages/dashboard.vue'),
   },
   {
-    path: '/setting',
-    name: 'setting',
-    meta: { icon: IconSettings, keepAlive: true  },
-    component: () => import('@/pages/setting.vue'),
+    path: '/player',
+    name: 'player',
+    meta: { icon: IconPlayArrow, keepAlive: true  },
+    component: () => import('@/pages/player.vue'),
   },
   {
     path: '/developer/:page*',
