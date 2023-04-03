@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-30 14:03:30
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-31 15:07:35
+ * @LastEditTime : 2023-04-03 14:54:08
  * @FilePath     : /micro-base/src/components/base-minio/index.vue
  * @Description  : filename
  * 
@@ -78,7 +78,7 @@ function useCalculateSize(limit: number) {
     return size;
 }
 const useGetBucket = () => {
-    fetch('http://eug.asia:5000/minio/bucket/all').then(async res => {
+    fetch('https://eug.asia/egg/api/minio/bucket/all').then(async res => {
         let result = await res.json()
         tableOptions.data = result.data.map((v: any, idx: number) => {
             v.key = idx
@@ -88,7 +88,7 @@ const useGetBucket = () => {
 }
 useGetBucket()
 const useLoadMore = (record: any, done: Function) => {
-    fetch(`http://eug.asia:5000/minio/bucket/${record.name}`).then(async res => {
+    fetch(`https://eug.asia/egg/api/minio/bucket/${record.name}`).then(async res => {
         let result = await res.json()
         done(result.data.map((v: any, idx: number) => {
             v.key = `${record.key}-${idx}`
