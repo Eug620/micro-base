@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-30 14:03:30
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-04-03 14:54:08
+ * @LastEditTime : 2023-04-03 15:08:37
  * @FilePath     : /micro-base/src/components/base-minio/index.vue
  * @Description  : filename
  * 
@@ -16,7 +16,7 @@
         :load-more="useLoadMore">
         <template #name="{ record }">
             <template v-if="record.parentName">
-                <a-link :href="record.parentName ? `http://eug.asia:9000/${record.parentName}/${record.name}` : null">{{
+                <a-link :href="record.parentName ? `https://eug.asia/minio/${record.parentName}/${record.name}` : null">{{
                     record.name }}</a-link>
             </template>
             <template v-else>{{ record.name }}</template>
@@ -53,7 +53,7 @@ const tableOptions = reactive({
     data: []
 })
 const usePlayClick = (record: any) => {
-    emit('videoPlay',`http://eug.asia:9000/${record.parentName}/${record.name}`)
+    emit('videoPlay',`https://eug.asia/minio/${record.parentName}/${record.name}`)
 }
 function useCalculateSize(limit: number) {
     if (!limit) return void 0

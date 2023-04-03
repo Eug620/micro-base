@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 10:44:30
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-31 15:15:13
+ * @LastEditTime : 2023-04-03 15:09:10
  * @FilePath     : /micro-base/src/components/base-player/index.vue
  * @Description  : filename
  * 
@@ -37,12 +37,12 @@ import 'video.js/dist/video-js.css'
 import { reactive, ref } from 'vue'
 import BaseMinio from '@/components/base-minio/index.vue'
 
-const inputUrl = ref('http://eug.asia:9000/videos/文豪野犬四-01.mp4')
+const inputUrl = ref('https://eug.asia/minio/videos/文豪野犬四-01.mp4')
 const useInputEnter = () => {
     videoOptions.src = inputUrl.value
 }
 
-const useVideoPlay = (url:string = 'http://eug.asia:9000/videos/文豪野犬四-01.mp4') => {
+const useVideoPlay = (url:string = 'https://eug.asia/minio/videos/文豪野犬四-01.mp4') => {
     videoOptions.src = url
     inputUrl.value = url
 }
@@ -50,7 +50,7 @@ const useVideoPlay = (url:string = 'http://eug.asia:9000/videos/文豪野犬四-
 // video
 const videoOptions = reactive({
     src: inputUrl.value,
-    poster: 'http://eug.asia:9000/images/ac4c5ed6-53eb-457c-8350-aef04814335c.jpg',
+    poster: 'https://eug.asia/minio/images/ac4c5ed6-53eb-457c-8350-aef04814335c.jpg',
     volume: .2,
     playbackRate: 1,
     language: 'zh-CN',
