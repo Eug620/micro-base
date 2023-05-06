@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-31 15:09:30
+ * @LastEditTime : 2023-05-06 14:06:03
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -12,31 +12,31 @@
     <div class="h-full pl-2.5 dashboard-container">
         <a-row :gutter="10">
             <!-- 星座 -->
-            <BaseHoroscope card-class="dashboard-container-card  mb-2.5" />
+            <BaseHoroscope card-class="dashboard-container-card   mb-2.5 n-bt" />
             <a-col :span="8">
-                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
+                <a-card :bordered="false" class="dashboard-container-card !rounded-xl mb-2.5">
                 </a-card>
             </a-col>
             <!-- 电影 -->
             <a-col :span="8">
-                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
+                <a-card :bordered="false" class="dashboard-container-card  !rounded-xl mb-2.5">
                 </a-card>
                 <!-- <BaseConfigure class="dashboard-container-card mb-2.5" /> -->
             </a-col>
             <a-col :span="8">
-                <BaseCarousel class="dashboard-container-card  mb-2.5" />
+                <BaseCarousel class="dashboard-container-card !rounded-l-xl  mb-2.5" />
             </a-col>
-             <!-- 随机一言 -->
-             <a-col :span="16">
+            <!-- 随机一言 -->
+            <a-col :span="16">
                 <!-- <BaseMinio/> -->
-                <a-card :bordered="false" class="dashboard-container-card  mb-2.5">
+                <a-card :bordered="false" class="dashboard-container-card !rounded-xl mb-2.5">
                 </a-card>
             </a-col>
             <a-col :span="8">
-                <BaseTyped class="dashboard-container-card mb-2.5" />
+                <BaseTyped class="dashboard-container-card !rounded-l-xl mb-2.5" />
             </a-col>
         </a-row>
-        <a-card :bordered="false" class="text-center dashboard-beian">
+        <a-card :bordered="false" class="text-center !rounded-tl-xl dashboard-beian">
             <a href="https://beian.miit.gov.cn">豫ICP备2023002857</a>
         </a-card>
     </div>
@@ -55,10 +55,16 @@ import BaseHoroscope from '@/components/base-horoscope/index.vue'
 .dashboard-container {
     &-card {
         height: calc((100vh - 1.25rem - 3.25rem) / 3);
+        // border-radius: 10px;
 
         .arco-card-body {
             height: 100%;
         }
+    }
+
+    .n-bb {
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
     &-beian {

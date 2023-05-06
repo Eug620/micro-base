@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 10:22:01
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-29 18:45:13
+ * @LastEditTime : 2023-05-06 14:05:16
  * @FilePath     : /micro-base/src/components/base-horoscope/index.vue
  * @Description  : filename
  * 
@@ -11,7 +11,7 @@
 -->
 <template>
     <a-col :span="8">
-        <a-card :bordered="false" :class="Props.cardClass">
+        <a-card :bordered="false" :class="Props.cardClass" class="!rounded-b-lg">
             <template #title>
                 <a-space fill align="center">
                     <a-select placeholder="Please select ..." v-model="type">
@@ -29,7 +29,7 @@
     </a-col>
 
     <a-col :span="16">
-        <a-card :bordered="false" :class="Props.cardClass">
+        <a-card :bordered="false" :class="Props.cardClass" class="!rounded-bl-lg">
             <template #title>
                 {{ current.title }}
             </template>
