@@ -22,7 +22,7 @@ import {
 // NProgress.configure({ showSpinner: false, minimum: 0.2, easeing: 'swing', speed: 1000, trickleRate: 0.2 });
 NProgress.configure({
   showSpinner: false,
-  easing: 'linear',
+  easing: 'ease',
   speed: 1000,
   minimum: 0.2,
   trickle: false,
