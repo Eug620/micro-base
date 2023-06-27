@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2023-03-31 15:14:31
+ * @LastEditTime : 2023-06-27 14:02:25
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -14,9 +14,10 @@ import {
   IconCode,
   IconTool,
   // IconSettings,
-  IconPlayArrow,
+  // IconPlayArrow,
   IconCommand,
-  IconCodeSquare
+  IconCodeSquare,
+  IconStorage
 } from '@arco-design/web-vue/es/icon';
 //配置进度条参数
 // NProgress.configure({ showSpinner: false, minimum: 0.2, easeing: 'swing', speed: 1000, trickleRate: 0.2 });
@@ -37,12 +38,6 @@ export const frameIn = [
     component: () => import('@/pages/dashboard.vue'),
   },
   {
-    path: '/player',
-    name: 'player',
-    meta: { icon: IconPlayArrow, keepAlive: true  },
-    component: () => import('@/pages/player.vue'),
-  },
-  {
     path: '/developer/:page*',
     name: 'developer',
     meta: { icon: IconTool, keepAlive: true },
@@ -59,6 +54,12 @@ export const frameIn = [
     name: 'playground',
     meta: { icon: IconCodeSquare, keepAlive: true  },
     component: () => import('@/pages/playground.vue'),
+  },
+  {
+    path: '/player',
+    name: 'player',
+    meta: { icon: IconStorage, keepAlive: true  },
+    component: () => import('@/pages/player.vue'),
   },
 
 ]

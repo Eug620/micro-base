@@ -1,13 +1,14 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-04-28 14:31:36
- * @LastEditTime : 2023-02-22 14:24:21
+ * @LastEditTime : 2023-06-27 10:01:42
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/layout/LayoutMenu.vue
 -->
 <template>
   <a-menu
+    class="base-layout-menu"
     v-model:selected-keys="defaultSelectedKey"
     breakpoint="xl"
     accordion
@@ -63,4 +64,10 @@ const useMenuItemClick = (name: string) => {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.base-layout-menu{
+  .arco-menu-inner{
+    padding: 4px !important;
+  }
+}
+</style>

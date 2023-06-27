@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-30 14:03:30
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-04-03 15:08:37
+ * @LastEditTime : 2023-06-27 13:35:55
  * @FilePath     : /micro-base/src/components/base-minio/index.vue
  * @Description  : filename
  * 
@@ -25,8 +25,17 @@
             {{ useCalculateSize(record.size) }}
         </template>
         <template #actions="{ record }">
-            <template v-if="record.parentName && record.name.endsWith('.mp4')">
-                <IconPlayCircle :size="24" class="cursor-pointer" @click="usePlayClick(record)"/>
+            <template v-if="record.parentName && (record.parentName === 'videos')">
+                <IconPlayCircle :size="24" class="cursor-pointer" @click="useActionsClick(record, 'videoPlay')" />
+            </template>
+            <template v-if="record.parentName && (record.parentName === 'books')">
+                <IconBook :size="24" class="cursor-pointer" @click="useActionsClick(record, 'bookPreview')" />
+            </template>
+            <template v-if="record.parentName && (record.parentName === 'images')">
+                <IconSearch :size="24" class="cursor-pointer" @click="useActionsClick(record, 'imagesPreview')" />
+            </template>
+            <template v-if="record.parentName && (record.parentName === 'music')">
+                <IconMusic :size="24" class="cursor-pointer" @click="useActionsClick(record, 'musicPreview')" />
             </template>
         </template>
     </a-table>
@@ -35,14 +44,20 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import {
-    IconPlayCircle
+    IconPlayCircle,
+    IconBook,
+    IconSearch,
+    IconMusic
 } from '@arco-design/web-vue/es/icon';
-const emit = defineEmits(['videoPlay'])
+const emit = defineEmits(['videoPlay', 'bookPreview'])
 
 const tableOptions = reactive({
     columns: [{
         title: '文件名',
         slotName: 'name',
+        sortable: {
+          sortDirections: ['ascend', 'descend']
+        }
     }, {
         title: '大小',
         slotName: 'size',
@@ -52,8 +67,12 @@ const tableOptions = reactive({
     }],
     data: []
 })
-const usePlayClick = (record: any) => {
-    emit('videoPlay',`https://eug.asia/minio/${record.parentName}/${record.name}`)
+const useActionsClick = (record: any, type: any) => {
+    emit(type, {
+        url: `https://eug.asia/minio/${record.parentName}/${record.name}`,
+        path: record.parentName,
+        fileName: record.name,
+    })
 }
 function useCalculateSize(limit: number) {
     if (!limit) return void 0
@@ -101,7 +120,7 @@ const useLoadMore = (record: any, done: Function) => {
 </script>
 
 <style>
-a{
+a {
     cursor: pointer;
 }
 </style>
