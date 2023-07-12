@@ -5,6 +5,7 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AAvatar: typeof import('@arco-design/web-vue')['Avatar']
     AButton: typeof import('@arco-design/web-vue')['Button']
     ACard: typeof import('@arco-design/web-vue')['Card']
     ACarousel: typeof import('@arco-design/web-vue')['Carousel']
@@ -17,6 +18,9 @@ declare module '@vue/runtime-core' {
     ALayout: typeof import('@arco-design/web-vue')['Layout']
     ALayoutSider: typeof import('@arco-design/web-vue')['LayoutSider']
     ALink: typeof import('@arco-design/web-vue')['Link']
+    AList: typeof import('@arco-design/web-vue')['List']
+    AListItem: typeof import('@arco-design/web-vue')['ListItem']
+    AListItemMeta: typeof import('@arco-design/web-vue')['ListItemMeta']
     AMenu: typeof import('@arco-design/web-vue')['Menu']
     AMenuItem: typeof import('@arco-design/web-vue')['MenuItem']
     AOption: typeof import('@arco-design/web-vue')['Option']
@@ -33,6 +37,7 @@ declare module '@vue/runtime-core' {
     BasePlayer: typeof import('./src/components/base-player/index.vue')['default']
     BaseSwitch: typeof import('./src/components/base-switch/index.vue')['default']
     BaseTyped: typeof import('./src/components/base-typed/index.vue')['default']
+    BaseWeibo: typeof import('./src/components/base-weibo/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

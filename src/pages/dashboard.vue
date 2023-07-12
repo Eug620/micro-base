@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-05-06 14:06:03
+ * @LastEditTime : 2023-07-12 10:54:16
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -14,8 +14,9 @@
             <!-- 星座 -->
             <BaseHoroscope card-class="dashboard-container-card   mb-2.5 n-bt" />
             <a-col :span="8">
-                <a-card :bordered="false" class="dashboard-container-card !rounded-xl mb-2.5">
-                </a-card>
+                <!-- <a-card :bordered="false" class="dashboard-container-card !rounded-xl mb-2.5">
+                </a-card> -->
+                <BaseWeibo class="dashboard-container-card !rounded-xl mb-2.5"/>
             </a-col>
             <!-- 电影 -->
             <a-col :span="8">
@@ -46,6 +47,7 @@
 import BaseTyped from '@/components/base-typed/index.vue'
 import BaseCarousel from '@/components/base-carousel/index.vue'
 import BaseHoroscope from '@/components/base-horoscope/index.vue'
+import BaseWeibo from '@/components/base-weibo/index.vue'
 // import BaseConfigure from '@/components/base-configure/index.vue'
 // import BaseMinio from '@/components/base-minio/index.vue'
 

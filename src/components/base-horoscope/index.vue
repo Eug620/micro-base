@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 10:22:01
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-05-06 14:05:16
+ * @LastEditTime : 2023-07-12 10:54:52
  * @FilePath     : /micro-base/src/components/base-horoscope/index.vue
  * @Description  : filename
  * 
@@ -148,7 +148,7 @@ const timeList = ref([
         value: 'love'
     }
 ])
-const type = ref('leo')
+const type = ref('aries')
 const time = ref('today')
 const data = ref([])
 const topdata = ref([])
