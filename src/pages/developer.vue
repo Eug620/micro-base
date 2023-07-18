@@ -1,10 +1,10 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-28 14:09:28
- * @LastEditTime : 2023-02-25 18:20:04
- * @LastEditors  : Eug yyh3531@163.com
+ * @LastEditTime : 2023-07-18 13:58:23
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
- * @FilePath     : \micro-base\src\pages\developer.vue
+ * @FilePath     : /micro-base/src/pages/developer.vue
 -->
 <template>
   <div class="developer">
@@ -16,6 +16,7 @@
       macro
       baseRoute="/developer"
       disableSandbox
+      @datachange='useDataChange'
       inline
     />
     <!-- 本地 -->
@@ -26,15 +27,25 @@
       macro
       baseRoute="/developer"
       disableSandbox
+      @datachange='useDataChange'
       inline
     /> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const data = ref({ from: '来自基座的初始化数据' });
+
+const developerRoute = ref('/developer')
+const baseRoute = computed(() => {
+  return developerRoute.value || '/developer'
+})
+
+const useDataChange = (datas:any) => {
+  console.log(datas,'来自子应用的数据');
+}
 </script>
 
 <style></style>
