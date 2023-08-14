@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:01:11
- * @LastEditTime : 2023-03-30 16:31:54
+ * @LastEditTime : 2023-08-14 17:21:07
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/vite.config.ts
@@ -13,6 +13,7 @@ import Components from 'unplugin-vue-components/vite';
 import { ArcoResolver } from 'unplugin-vue-components/resolvers';
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression';
+import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
 const { resolve } = require('path');
 
 // TODO 解决控制台警报i8n
@@ -38,6 +39,30 @@ export default ({ mode }) =>
       }),
       Components({
         resolvers: [ArcoResolver()],
+      }),
+      importToCDN({
+        modules: [
+          {
+            // 引入时的包名
+            name: 'echarts',
+            // app.use(), 全局注册时分配给模块的变量
+            var: 'echarts',
+            // 根据自己的版本号找到对应的CDN网址
+            path: 'https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js',
+            // 根据自己的版本号找到对应的CDN网址
+            // css: 'https://unpkg.com/@arco-design/web-vue@2.47.1/dist/arco.css',
+          },
+          {
+            // 引入时的包名
+            name: 'echarts-wordcloud',
+            // app.use(), 全局注册时分配给模块的变量
+            var: 'echarts-wordcloud',
+            // 根据自己的版本号找到对应的CDN网址
+            path: 'https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js',
+            // 根据自己的版本号找到对应的CDN网址
+            // css: 'https://unpkg.com/@arco-design/web-vue@2.47.1/dist/arco.css',
+          },
+        ],
       }),
     ],
     server: {

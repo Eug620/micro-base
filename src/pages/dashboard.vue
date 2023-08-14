@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-02-21 15:34:00
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-07-12 10:54:16
+ * @LastEditTime : 2023-08-14 17:27:36
  * @FilePath     : /micro-base/src/pages/dashboard.vue
  * @Description  : filename
  * 
@@ -20,9 +20,8 @@
             </a-col>
             <!-- 电影 -->
             <a-col :span="8">
-                <a-card :bordered="false" class="dashboard-container-card  !rounded-xl mb-2.5">
-                </a-card>
-                <!-- <BaseConfigure class="dashboard-container-card mb-2.5" /> -->
+                <a-card :bordered="false" class="dashboard-container-card !rounded-xl mb-2.5">
+                </a-card>                <!-- <BaseConfigure class="dashboard-container-card mb-2.5" /> -->
             </a-col>
             <a-col :span="8">
                 <BaseCarousel class="dashboard-container-card !rounded-l-xl  mb-2.5" />
@@ -30,8 +29,7 @@
             <!-- 随机一言 -->
             <a-col :span="16">
                 <!-- <BaseMinio/> -->
-                <a-card :bordered="false" class="dashboard-container-card !rounded-xl mb-2.5">
-                </a-card>
+                <BaseWordcloud class="dashboard-container-card  !rounded-xl mb-2.5"/>
             </a-col>
             <a-col :span="8">
                 <BaseTyped class="dashboard-container-card !rounded-l-xl mb-2.5" />
@@ -48,6 +46,7 @@ import BaseTyped from '@/components/base-typed/index.vue'
 import BaseCarousel from '@/components/base-carousel/index.vue'
 import BaseHoroscope from '@/components/base-horoscope/index.vue'
 import BaseWeibo from '@/components/base-weibo/index.vue'
+import BaseWordcloud from '@/components/base-wordcloud/index.vue'
 // import BaseConfigure from '@/components/base-configure/index.vue'
 // import BaseMinio from '@/components/base-minio/index.vue'
 
