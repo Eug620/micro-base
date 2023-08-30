@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-30 14:03:30
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-06-27 13:35:55
+ * @LastEditTime : 2023-08-30 16:03:19
  * @FilePath     : /micro-base/src/components/base-minio/index.vue
  * @Description  : filename
  * 
@@ -16,7 +16,7 @@
         :load-more="useLoadMore">
         <template #name="{ record }">
             <template v-if="record.parentName">
-                <a-link :href="record.parentName ? `https://eug.asia/minio/${record.parentName}/${record.name}` : null">{{
+                <a-link :href="record.parentName ? `https://eug.asia/minio/${record.parentName}/${record.name}` : undefined">{{
                     record.name }}</a-link>
             </template>
             <template v-else>{{ record.name }}</template>
@@ -51,7 +51,7 @@ import {
 } from '@arco-design/web-vue/es/icon';
 const emit = defineEmits(['videoPlay', 'bookPreview'])
 
-const tableOptions = reactive({
+const tableOptions:any = reactive({
     columns: [{
         title: '文件名',
         slotName: 'name',

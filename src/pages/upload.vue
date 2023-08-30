@@ -1,0 +1,136 @@
+
+<!--
+ * @Author       : eug yyh3531@163.com
+ * @Date         : 2023-08-23 11:15:19
+ * @LastEditors  : eug yyh3531@163.com
+ * @LastEditTime : 2023-08-30 14:33:03
+ * @FilePath     : /micro-base/src/pages/upload.vue
+ * @Description  : filename
+ * 
+ * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
+-->
+<template>
+    <a-card :bordered="false" class="h-full ml-2.5 ">
+        <a-button class="float-right" @click="useCleans" status="danger">清除全部</a-button>
+        <a-upload :show-file-list="false" :custom-request="customRequest" class="mb-4" />
+        <a-divider class="!mt-1 !mb-2" />
+
+
+        <template v-for="(item, idx) in fileList" :key="item">
+            <a-button class="m-2" status="danger" @click="useDelete(item)">
+                <template #icon>
+                    <IconDelete />
+                </template></a-button>
+            <a-link :href="`https://eug.asia/egg/api/assets/${item}`">{{ item
+            }}</a-link>
+
+            <a-divider class="!my-1" v-if="idx !== fileList.length - 1" />
+        </template>
+
+
+    </a-card>
+</template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+import { Notification } from '@arco-design/web-vue';
+import {
+    IconDelete
+} from '@arco-design/web-vue/es/icon';
+const fileList = ref<string[]>([])
+const size = 1024 * 1024
+
+const useGetFileList = async () => {
+    let res: any = await fetch(`https://eug.asia/egg/api/assets/list`, {
+        method: 'GET',
+    })
+    let result = await res.json()
+    fileList.value = result.data
+}
+
+
+useGetFileList()
+
+const useDelete = async (name: string) => {
+    let res: any = await fetch(`https://eug.asia/egg/api/assets/delete?name=${name}`, {
+        method: 'GET',
+    })
+    let result = await res.json()
+    useGetFileList()
+}
+
+const useCleans = async () => {
+    let res = await fetch(`https://eug.asia/egg/api/assets/cleans`, {
+        method: 'GET',
+    })
+    let result = await res.json()
+    useGetFileList()
+}
+/**
+ * 文件切片
+ * @param file 文件
+ * @param size 单次传输大小
+ */
+const createChunkFileList = (file: File, cur: number = 0, size: number = 1024 * 1024) => {
+    const list = []
+    let idx = 1
+    const total = Math.floor(file.size / size)
+    while (cur < file.size) {
+        list.push({
+            chunk: new File([file.slice(cur, cur + size)], `${idx}-${file.size % size ? total + 1 : total}-${file.name}`),
+            hash: file.name + '_' + idx,
+            name: file.name,
+            total: file.size % size ? total + 1 : total,
+            idx: idx
+        })
+        cur += size
+        idx++
+    }
+    return list
+}
+/**
+ * 自定义上传
+ * @param option 
+ */
+const customRequest = (option: any) => {
+    const { onProgress, onError, onSuccess, fileItem, name } = option
+
+
+    const fileList = createChunkFileList(fileItem.file)
+    const requestAll = fileList.map((val: any) => {
+        const fmt = new FormData()
+        for (const key in val) {
+            fmt.append(key, val[key])
+        }
+        fetch('https://eug.asia/egg/api/assets/upload', {
+            method: 'POST',
+            body: fmt
+        })
+        return fmt
+    })
+
+    Promise.all(requestAll).then(async res => {
+        setTimeout(async () => {
+            let res = await fetch(`https://eug.asia/egg/api/assets/finish?name=${fileItem.name}&size=${size}&total=${fileList.length}`, {
+                method: 'GET',
+            })
+            let result = await res.json()
+            if (result.code !== 200) {
+                Notification.error({
+                    title: "上传失败",
+                    content: result.msg,
+                });
+            } else {
+                useGetFileList()
+            }
+        });
+    }).catch(err => {
+    })
+
+    return {
+    }
+};
+
+</script>
+
+<style></style>

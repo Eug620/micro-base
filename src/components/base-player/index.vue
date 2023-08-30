@@ -2,7 +2,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 10:44:30
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-06-27 14:08:28
+ * @LastEditTime : 2023-08-30 16:00:11
  * @FilePath     : /micro-base/src/components/base-player/index.vue
  * @Description  : filename
  * 
@@ -68,7 +68,7 @@
             v-if="visibleStatus.music" :src="previewOptions.url" controls />
 
 
-        <a-drawer :drawer-style="{ zIndex: 1 }" :footer="null" popup-container="#BasePlayer" width="100%"
+        <a-drawer :drawer-style="{ zIndex: 1 }" :footer="false" popup-container="#BasePlayer" width="100%"
             @ok="drawerVisible = false" @cancel="drawerVisible = false" :visible="drawerVisible">
             <template #title> Minio </template>
             <BaseMinio @video-play="useVideoPlay" @book-preview="useBookPreview" @images-preview="useImagesPreview"

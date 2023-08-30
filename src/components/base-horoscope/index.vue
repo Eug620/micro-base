@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 10:22:01
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-07-12 10:54:52
+ * @LastEditTime : 2023-08-30 16:04:43
  * @FilePath     : /micro-base/src/components/base-horoscope/index.vue
  * @Description  : filename
  * 
@@ -70,7 +70,7 @@
 import { ref, watchEffect } from "vue"
 import { ThemeEnum, LangEnum, SpecialEfficiencyEnum } from '@/enums/system';
 import { useSystemStore } from 'store/app';
-const SystemStore = useSystemStore()
+const SystemStore: any = useSystemStore()
 const Props = defineProps({
     cardClass: String
 })

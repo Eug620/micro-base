@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-03-23 17:10:34
- * @LastEditTime : 2023-08-22 09:43:44
+ * @LastEditTime : 2023-08-23 11:16:05
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/router/index.ts
@@ -14,6 +14,7 @@ import {
   IconCode,
   IconTool,
   IconBug,
+  IconUpload,
   // IconSettings,
   // IconPlayArrow,
   IconCommand,
@@ -67,6 +68,12 @@ export const frameIn = [
     name: 'demo',
     meta: { icon: IconBug, keepAlive: true  },
     component: () => import('@/pages/demo.vue'),
+  },
+  {
+    path: '/upload',
+    name: 'upload',
+    meta: { icon: IconUpload, keepAlive: true  },
+    component: () => import('@/pages/upload.vue'),
   },
 ]
 const routes = [
