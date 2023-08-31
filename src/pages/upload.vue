@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-08-23 11:15:19
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-08-30 14:33:03
+ * @LastEditTime : 2023-08-31 16:23:42
  * @FilePath     : /micro-base/src/pages/upload.vue
  * @Description  : filename
  * 
@@ -40,8 +40,11 @@ import {
 const fileList = ref<string[]>([])
 const size = 1024 * 1024
 
+const fetchURL = 'https://eug.asia/egg/api'
+// const fetchURL = 'http://127.0.0.1:5000'
+
 const useGetFileList = async () => {
-    let res: any = await fetch(`https://eug.asia/egg/api/assets/list`, {
+    let res: any = await fetch(`${fetchURL}/assets/list`, {
         method: 'GET',
     })
     let result = await res.json()
@@ -52,15 +55,15 @@ const useGetFileList = async () => {
 useGetFileList()
 
 const useDelete = async (name: string) => {
-    let res: any = await fetch(`https://eug.asia/egg/api/assets/delete?name=${name}`, {
+    let res: any = await fetch(`${fetchURL}/assets/delete?name=${name}`, {
         method: 'GET',
     })
     let result = await res.json()
     useGetFileList()
 }
 
-const useCleans = async () => {
-    let res = await fetch(`https://eug.asia/egg/api/assets/cleans`, {
+const useCleans = async (dir?: string) => {
+    let res = await fetch(`${fetchURL}/assets/cleans${dir && `?dir=${dir}`}`, {
         method: 'GET',
     })
     let result = await res.json()
@@ -74,13 +77,9 @@ const useCleans = async () => {
 const createChunkFileList = (file: File, cur: number = 0, size: number = 1024 * 1024) => {
     const list = []
     let idx = 1
-    const total = Math.floor(file.size / size)
     while (cur < file.size) {
         list.push({
-            chunk: new File([file.slice(cur, cur + size)], `${idx}-${file.size % size ? total + 1 : total}-${file.name}`),
-            hash: file.name + '_' + idx,
-            name: file.name,
-            total: file.size % size ? total + 1 : total,
+            chunk: new File([file.slice(cur, cur + size)],file.name),
             idx: idx
         })
         cur += size
@@ -95,23 +94,21 @@ const createChunkFileList = (file: File, cur: number = 0, size: number = 1024 * 
 const customRequest = (option: any) => {
     const { onProgress, onError, onSuccess, fileItem, name } = option
 
-
     const fileList = createChunkFileList(fileItem.file)
     const requestAll = fileList.map((val: any) => {
         const fmt = new FormData()
-        for (const key in val) {
-            fmt.append(key, val[key])
-        }
-        fetch('https://eug.asia/egg/api/assets/upload', {
+        fmt.append('chunk', val.chunk)
+        return fetch(`${fetchURL}/assets/upload?idx=${val.idx}`, {
             method: 'POST',
             body: fmt
         })
-        return fmt
     })
 
     Promise.all(requestAll).then(async res => {
+        console.log(res,'????');
+        
         setTimeout(async () => {
-            let res = await fetch(`https://eug.asia/egg/api/assets/finish?name=${fileItem.name}&size=${size}&total=${fileList.length}`, {
+            let res = await fetch(`${fetchURL}/assets/finish?name=${fileItem.name}&size=${size}&total=${fileList.length}`, {
                 method: 'GET',
             })
             let result = await res.json()
