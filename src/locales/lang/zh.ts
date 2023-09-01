@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-04-26 14:23:43
- * @LastEditTime : 2023-06-27 14:04:58
+ * @LastEditTime : 2023-09-01 10:36:24
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/locales/lang/zh.ts
@@ -13,6 +13,8 @@ export default {
   menu: {
     layout: '布局',
     player: '娱乐',
+    demo: '示例',
+    upload: '上传',
     developer: '研发',
     chat: '文库',
     setting: '配置',

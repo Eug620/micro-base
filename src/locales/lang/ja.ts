@@ -1,7 +1,7 @@
 /*
  * @Author       : Eug
  * @Date         : 2022-04-26 14:24:28
- * @LastEditTime : 2023-05-23 11:00:27
+ * @LastEditTime : 2023-09-01 10:38:32
  * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
  * @FilePath     : /micro-base/src/locales/lang/ja.ts
@@ -13,6 +13,8 @@ export default {
   menu: {
     layout: 'レイアウト',
     player: 'メディア',
+    demo: '実際の例',
+    upload: 'アップロード',
     developer: '開発者',
     chat: 'チャット',
     setting: 'テスト',

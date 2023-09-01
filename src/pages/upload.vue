@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-08-23 11:15:19
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-08-31 16:23:42
+ * @LastEditTime : 2023-09-01 11:11:30
  * @FilePath     : /micro-base/src/pages/upload.vue
  * @Description  : filename
  * 
@@ -11,8 +11,9 @@
 -->
 <template>
     <a-card :bordered="false" class="h-full ml-2.5 ">
-        <a-button class="float-right" @click="useCleans" status="danger">清除全部</a-button>
-        <a-upload :show-file-list="false" :custom-request="customRequest" class="mb-4" />
+        <a-button class="float-right" @click="() => useCleans()" status="danger">清除全部</a-button>
+        <a-upload :show-file-list="false" :custom-request="customRequest" class="mb-4 mr-4" />
+        <a-progress :steps="3" size="small" :percent="pregress" />
         <a-divider class="!mt-1 !mb-2" />
 
 
@@ -32,16 +33,27 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { computed, reactive, ref, unref } from "vue";
 import { Notification } from '@arco-design/web-vue';
 import {
     IconDelete
 } from '@arco-design/web-vue/es/icon';
 const fileList = ref<string[]>([])
 const size = 1024 * 1024
+const uploadPregress = ref<Map<string, boolean>>(new Map())
 
 const fetchURL = 'https://eug.asia/egg/api'
 // const fetchURL = 'http://127.0.0.1:5000'
+
+const pregress = computed(() => {
+    let finish = 0
+    let total = 0
+    unref(uploadPregress).forEach((value, key) => {
+        total += 1
+        value && (finish += 1)
+    })
+    return total && +(finish/total).toFixed(2)
+})
 
 const useGetFileList = async () => {
     let res: any = await fetch(`${fetchURL}/assets/list`, {
@@ -63,7 +75,7 @@ const useDelete = async (name: string) => {
 }
 
 const useCleans = async (dir?: string) => {
-    let res = await fetch(`${fetchURL}/assets/cleans${dir && `?dir=${dir}`}`, {
+    let res = await fetch(`${fetchURL}/assets/cleans${dir ? `?dir=${dir}` : ''}`, {
         method: 'GET',
     })
     let result = await res.json()
@@ -79,7 +91,7 @@ const createChunkFileList = (file: File, cur: number = 0, size: number = 1024 * 
     let idx = 1
     while (cur < file.size) {
         list.push({
-            chunk: new File([file.slice(cur, cur + size)],file.name),
+            chunk: new File([file.slice(cur, cur + size)], file.name),
             idx: idx
         })
         cur += size
@@ -93,20 +105,25 @@ const createChunkFileList = (file: File, cur: number = 0, size: number = 1024 * 
  */
 const customRequest = (option: any) => {
     const { onProgress, onError, onSuccess, fileItem, name } = option
+    unref(uploadPregress).clear()
 
     const fileList = createChunkFileList(fileItem.file)
     const requestAll = fileList.map((val: any) => {
+        unref(uploadPregress).set(val.idx, false)
         const fmt = new FormData()
         fmt.append('chunk', val.chunk)
-        return fetch(`${fetchURL}/assets/upload?idx=${val.idx}`, {
-            method: 'POST',
-            body: fmt
+        return new Promise((resolve, reject) => {
+            fetch(`${fetchURL}/assets/upload?idx=${val.idx}`, {
+                method: 'POST',
+                body: fmt
+            }).then((res) => {
+                unref(uploadPregress).set(val.idx, true)
+                resolve(res)
+            })
         })
     })
 
     Promise.all(requestAll).then(async res => {
-        console.log(res,'????');
-        
         setTimeout(async () => {
             let res = await fetch(`${fetchURL}/assets/finish?name=${fileItem.name}&size=${size}&total=${fileList.length}`, {
                 method: 'GET',
@@ -121,7 +138,8 @@ const customRequest = (option: any) => {
                 useGetFileList()
             }
         });
-    }).catch(err => {
+    }).finally(() => {
+        // unref(uploadPregress).clear()
     })
 
     return {
