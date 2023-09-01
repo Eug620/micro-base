@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-08-23 11:15:19
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-09-01 11:11:30
+ * @LastEditTime : 2023-09-01 11:39:13
  * @FilePath     : /micro-base/src/pages/upload.vue
  * @Description  : filename
  * 
@@ -12,21 +12,30 @@
 <template>
     <a-card :bordered="false" class="h-full ml-2.5 ">
         <a-button class="float-right" @click="() => useCleans()" status="danger">清除全部</a-button>
-        <a-upload :show-file-list="false" :custom-request="customRequest" class="mb-4 mr-4" />
-        <a-progress :steps="3" size="small" :percent="pregress" />
+        <a-upload :disabled="!!uploadPregress.size && pregress !== 1" :show-file-list="false" :custom-request="customRequest"
+            class="mb-4 mr-4">
+            <!-- <template #upload-button>
+                <a-button type="primary" shape="round">
+                    <IconUpload/>点击上传
+                </a-button>
+            </template> -->
+        </a-upload>
+        <a-progress :animation="true" :steps="5" size="small" :percent="pregress" />
         <a-divider class="!mt-1 !mb-2" />
 
 
-        <template v-for="(item, idx) in fileList" :key="item">
-            <a-button class="m-2" status="danger" @click="useDelete(item)">
-                <template #icon>
-                    <IconDelete />
-                </template></a-button>
-            <a-link :href="`https://eug.asia/egg/api/assets/${item}`">{{ item
-            }}</a-link>
-
-            <a-divider class="!my-1" v-if="idx !== fileList.length - 1" />
-        </template>
+        <div class="overflow-y-auto" style="height: calc(100vh - 100px);">
+            <template v-for="(item, idx) in fileList" :key="item">
+                <a-button class="m-2" status="danger" @click="useDelete(item)">
+                    <template #icon>
+                        <IconDelete />
+                    </template></a-button>
+                <a-link :href="`https://eug.asia/egg/api/assets/${item}`">{{ item
+                }}</a-link>
+    
+                <a-divider class="!my-1" v-if="idx !== fileList.length - 1" />
+            </template>
+        </div>
 
 
     </a-card>
@@ -36,7 +45,8 @@
 import { computed, reactive, ref, unref } from "vue";
 import { Notification } from '@arco-design/web-vue';
 import {
-    IconDelete
+    IconDelete,
+    IconUpload
 } from '@arco-design/web-vue/es/icon';
 const fileList = ref<string[]>([])
 const size = 1024 * 1024
@@ -52,7 +62,7 @@ const pregress = computed(() => {
         total += 1
         value && (finish += 1)
     })
-    return total && +(finish/total).toFixed(2)
+    return total && +(finish / total).toFixed(2)
 })
 
 const useGetFileList = async () => {
