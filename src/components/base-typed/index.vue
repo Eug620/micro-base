@@ -4,7 +4,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-03-28 09:42:36
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-03-30 10:18:16
+ * @LastEditTime : 2024-04-22 18:22:46
  * @FilePath     : /micro-base/src/components/base-typed/index.vue
  * @Description  : filename
  * 
@@ -63,10 +63,10 @@ const initTyped = () => {
 }
 const useResetTyped = () => {
     try {
-        fetch('https://api.vvhan.com/api/ian?type=json').then(async res => {
+        fetch('https://api.vvhan.com/api/ian/rand?type=json').then(async res => {
             let result = await res.json()
-            ian.value = result.data.vhan
-            source.value = result.data.source
+            ian.value = result.data.content
+            source.value = result.data.form
             initTyped()
         })
     } catch (err) {
@@ -103,7 +103,7 @@ onActivated(() => {
 <style lang="scss">
 .base-typed {
     &-container {
-        color: rgb(var(--primary-3)) !important;
+        // color: rgb(var(--primary-3)) !important;
         font-size: 1rem;
     }
 
