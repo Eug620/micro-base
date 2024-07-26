@@ -1,14 +1,14 @@
 <!--
  * @Author       : Eug
  * @Date         : 2022-03-23 17:11:51
- * @LastEditTime : 2022-04-21 12:15:43
- * @LastEditors  : Eug
+ * @LastEditTime : 2024-04-22 19:06:39
+ * @LastEditors  : eug yyh3531@163.com
  * @Descripttion : Descripttion
- * @FilePath     : /github/micro-base/src/pages/chat.vue
+ * @FilePath     : /micro-base/src/pages/chat.vue
 -->
 <template>
   <!-- 线上 -->
-  <micro-app
+  <!-- <micro-app
     name="chat"
     url="https://eug.asia:8081/base/chat/"
     :data="data"
@@ -16,9 +16,9 @@
     baseRoute="/chat"
     disableSandbox
     inline
-  />
+  /> -->
   <!-- 本地 -->
-  <!-- <micro-app
+  <micro-app
     name="chat"
     url="http://127.0.0.1:8081/base/chat/"
     :data="data"
@@ -26,7 +26,7 @@
     baseRoute="/chat"
     disableSandbox
     inline
-  /> -->
+  />
 </template>
 
 <script lang="ts" setup>

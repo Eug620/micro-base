@@ -3,7 +3,7 @@
  * @Author       : eug yyh3531@163.com
  * @Date         : 2023-08-23 11:15:19
  * @LastEditors  : eug yyh3531@163.com
- * @LastEditTime : 2023-09-01 11:39:13
+ * @LastEditTime : 2024-04-22 19:19:09
  * @FilePath     : /micro-base/src/pages/upload.vue
  * @Description  : filename
  * 
@@ -30,8 +30,9 @@
                     <template #icon>
                         <IconDelete />
                     </template></a-button>
-                <a-link :href="`https://eug.asia/egg/api/assets/${item}`">{{ item
-                }}</a-link>
+                <!-- <a-link :href="`https://eug.asia/egg/api/assets/${item}`"> -->
+                <a-link :href="`${fetchURL}/assets/${item}`">
+                {{ item }}</a-link>
     
                 <a-divider class="!my-1" v-if="idx !== fileList.length - 1" />
             </template>
@@ -52,8 +53,8 @@ const fileList = ref<string[]>([])
 const size = 1024 * 1024
 const uploadPregress = ref<Map<string, boolean>>(new Map())
 
-const fetchURL = 'https://eug.asia/egg/api'
-// const fetchURL = 'http://127.0.0.1:5000'
+// const fetchURL = 'https://eug.asia/egg/api'
+const fetchURL = 'http://127.0.0.1:5000'
 
 const pregress = computed(() => {
     let finish = 0
@@ -135,6 +136,7 @@ const customRequest = (option: any) => {
 
     Promise.all(requestAll).then(async res => {
         setTimeout(async () => {
+            // debugger
             let res = await fetch(`${fetchURL}/assets/finish?name=${fileItem.name}&size=${size}&total=${fileList.length}`, {
                 method: 'GET',
             })
